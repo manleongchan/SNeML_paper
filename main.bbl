@@ -1,0 +1,551 @@
+\begin{thebibliography}{10}
+
+\bibitem{abbott2016observation}
+Benjamin~P Abbott, Richard Abbott, TD~Abbott, et~al.
+\newblock Observation of gravitational waves from a binary black hole merger.
+\newblock {\em Physical review letters}, 116(6):061102, 2016.
+
+\bibitem{abbott2016gw151226}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, et~al.
+\newblock Gw151226: observation of gravitational waves from a 22-solar-mass
+  binary black hole coalescence.
+\newblock {\em Physical review letters}, 116(24):241103, 2016.
+
+\bibitem{abbott2017gw170608}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, et~al.
+\newblock Gw170608: Observation of a 19 solar-mass binary black hole
+  coalescence.
+\newblock {\em The Astrophysical Journal Letters}, 851(2):L35, 2017.
+
+\bibitem{abbott2017gw170814}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, et~al.
+\newblock Gw170814: a three-detector observation of gravitational waves from a
+  binary black hole coalescence.
+\newblock {\em Physical review letters}, 119(14):141101, 2017.
+
+\bibitem{abbott2017gw170817}
+Benjamin~P Abbott, Rich Abbott, TD~Abbott, et~al.
+\newblock Gw170817: observation of gravitational waves from a binary neutron
+  star inspiral.
+\newblock {\em Physical Review Letters}, 119(16):161101, 2017.
+
+\bibitem{abbott2017gravitational}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, et~al.
+\newblock Gravitational waves and gamma-rays from a binary neutron star merger:
+  Gw170817 and grb 170817a.
+\newblock {\em The Astrophysical Journal Letters}, 848(2):L13, 2017.
+
+\bibitem{abbott2017multi}
+Benjamin~P Abbott, Richard Abbott, TD~Abbott, et~al.
+\newblock Multi-messenger observations of a binary neutron star merger.
+\newblock {\em Astrophys. J. Lett}, 848(2):L12, 2017.
+
+\bibitem{aso2013interferometer}
+Yoichi Aso, Yuta Michimura, Kentaro Somiya, et~al.
+\newblock Interferometer design of the kagra gravitational wave detector.
+\newblock {\em Physical Review D}, 88(4):043007, 2013.
+
+\bibitem{somiya2012detector}
+Kentaro Somiya.
+\newblock Detector configuration of kagra--the japanese cryogenic
+  gravitational-wave detector.
+\newblock {\em Classical and Quantum Gravity}, 29(12):124007, 2012.
+
+\bibitem{abbott2018prospects}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, et~al.
+\newblock Prospects for observing and localizing gravitational-wave transients
+  with advanced ligo, advanced virgo and kagra.
+\newblock {\em Living Reviews in Relativity}, 21(1):3, 2018.
+
+\bibitem{aasi2015advanced}
+Junaid Aasi, BP~Abbott, Richard Abbott, et~al.
+\newblock Advanced ligo.
+\newblock {\em Classical and quantum gravity}, 32(7):074001, 2015.
+
+\bibitem{acernese2014advanced}
+F~Acernese, M~Agathos, K~Agatsuma, et~al.
+\newblock Advanced virgo: a second-generation interferometric gravitational
+  wave detector.
+\newblock {\em Classical and Quantum Gravity}, 32(2):024001, 2014.
+
+\bibitem{gossan2016observing}
+SE~Gossan, Patrick Sutton, A~Stuver, et~al.
+\newblock Observing gravitational waves from core-collapse supernovae in the
+  advanced detector era.
+\newblock {\em Physical Review D}, 93(4):042002, 2016.
+
+\bibitem{abbott2016first}
+Benjamin~P Abbott, Richard Abbott, TD~Abbott, et~al.
+\newblock First targeted search for gravitational-wave bursts from
+  core-collapse supernovae in data of first-generation laser interferometer
+  detectors.
+\newblock {\em Physical Review D}, 94(10):102001, 2016.
+
+\bibitem{sato1987analysis}
+Katsuhiko Sato and Hideyuki Suzuki.
+\newblock Analysis of neutrino burst from the supernova 1987a in the large
+  magellanic cloud.
+\newblock {\em Physical review letters}, 58(25):2722, 1987.
+
+\bibitem{baron1990effect}
+E~Baron and J~Cooperstein.
+\newblock The effect of iron core structure on supernovae.
+\newblock {\em The Astrophysical Journal}, 353:597--611, 1990.
+
+\bibitem{bethe1990supernova}
+Hans~Albrecht Bethe.
+\newblock Supernova mechanisms.
+\newblock {\em Reviews of Modern Physics}, 62(4):801, 1990.
+
+\bibitem{o2011black}
+Evan O'Connor and Christian~D Ott.
+\newblock Black hole formation in failing core-collapse supernovae.
+\newblock {\em The Astrophysical Journal}, 730(2):70, 2011.
+
+\bibitem{bethe1985revival}
+Hans~A Bethe and James~R Wilson.
+\newblock Revival of a stalled supernova shock by neutrino heating.
+\newblock {\em The Astrophysical Journal}, 295:14--23, 1985.
+
+\bibitem{janka2012explosion}
+Hans-Thomas Janka.
+\newblock Explosion mechanisms of core-collapse supernovae.
+\newblock {\em Annual Review of Nuclear and Particle Science}, 62:407--451,
+  2012.
+
+\bibitem{kotake2012core}
+Kei Kotake, Kohsuke Sumiyoshi, Shoichi Yamada, et~al.
+\newblock Core-collapse supernovae as supercomputing science: A status report
+  toward six-dimensional simulations with exact boltzmann neutrino transport in
+  full general relativity.
+\newblock {\em Progress of Theoretical and Experimental Physics}, 2012(1),
+  2012.
+
+\bibitem{mezzacappa2014two}
+Anthony Mezzacappa, Stephen~W Bruenn, Eric~J Lentz, et~al.
+\newblock Two-and three-dimensional multi-physics simulations of core collapse
+  supernovae: A brief status report and summary of results from the" oak ridge"
+  group.
+\newblock {\em arXiv preprint arXiv:1405.7075}, 2014.
+
+\bibitem{takiwaki2016three}
+Tomoya Takiwaki, Kei Kotake, and Yudai Suwa.
+\newblock Three-dimensional simulations of rapidly rotating core-collapse
+  supernovae: finding a neutrino-powered explosion aided by non-axisymmetric
+  flows.
+\newblock {\em Monthly Notices of the Royal Astronomical Society: Letters},
+  461(1):L112--L116, 2016.
+
+\bibitem{summa2018rotation}
+Alexander Summa, Hans-Thomas Janka, Tobias Melson, and Andreas Marek.
+\newblock Rotation-supported neutrino-driven supernova explosions in three
+  dimensions and the critical luminosity condition.
+\newblock {\em The Astrophysical Journal}, 852(1):28, 2018.
+
+\bibitem{bruenn2016development}
+Stephen~W Bruenn, Eric~J Lentz, W~Raphael Hix, et~al.
+\newblock The development of explosions in axisymmetric ab initio core-collapse
+  supernova simulations of 12--25 stars.
+\newblock {\em The Astrophysical Journal}, 818(2):123, 2016.
+
+\bibitem{janka2007theory}
+H-Th Janka, K~Langanke, Andreas Marek, G~Mart{\'\i}nez-Pinedo, and
+  B~M{\"u}ller.
+\newblock Theory of core-collapse supernovae.
+\newblock {\em Physics Reports}, 442(1-6):38--74, 2007.
+
+\bibitem{couch2015role}
+Sean~M Couch and Christian~D Ott.
+\newblock The role of turbulence in neutrino-driven core-collapse supernova
+  explosions.
+\newblock {\em The Astrophysical Journal}, 799(1):5, 2015.
+
+\bibitem{blondin2003stability}
+John~M Blondin, Anthony Mezzacappa, and Christine DeMarino.
+\newblock Stability of standing accretion shocks, with an eye toward
+  core-collapse supernovae.
+\newblock {\em The Astrophysical Journal}, 584(2):971, 2003.
+
+\bibitem{leblanc1970numerical}
+JM~LeBlanc and JR~Wilson.
+\newblock A numerical example of the collapse of a rotating magnetized star.
+\newblock {\em The Astrophysical Journal}, 161:541, 1970.
+
+\bibitem{burrows2007simulations}
+Adam Burrows, Luc Dessart, Eli Livne, Christian~D Ott, and Jeremiah Murphy.
+\newblock Simulations of magnetically driven supernova and hypernova explosions
+  in the context of rapid rotation.
+\newblock {\em The Astrophysical Journal}, 664(1):416, 2007.
+
+\bibitem{takiwaki2009special}
+Tomoya Takiwaki, Kei Kotake, and Katsuhiko Sato.
+\newblock Special relativistic simulations of magnetically dominated jets in
+  collapsing massive stars.
+\newblock {\em The Astrophysical Journal}, 691(2):1360, 2009.
+
+\bibitem{moiseenko2006magnetorotational}
+SG~Moiseenko, GS~Bisnovatyi-Kogan, and NV~Ardeljan.
+\newblock A magnetorotational core-collapse model with jets.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  370(1):501--512, 2006.
+
+\bibitem{mosta2014magnetorotational}
+Philipp M{\"o}sta, Sherwood Richers, Christian~D Ott, et~al.
+\newblock Magnetorotational core-collapse supernovae in three dimensions.
+\newblock {\em The Astrophysical Journal Letters}, 785(2):L29, 2014.
+
+\bibitem{woosley2006progenitor}
+SE~Woosley and Alexander Heger.
+\newblock The progenitor stars of gamma-ray bursts.
+\newblock {\em The Astrophysical Journal}, 637(2):914, 2006.
+
+\bibitem{yoon2005evolution}
+S-C Yoon and Norbert Langer.
+\newblock On the evolution of rapidly rotating massive white dwarfs towards
+  supernovae or collapses.
+\newblock {\em Astronomy \& Astrophysics}, 435(3):967--985, 2005.
+
+\bibitem{de2013rotation}
+SE~De~Mink, N~Langer, RG~Izzard, Hugues Sana, and Alex de~Koter.
+\newblock The rotation rates of massive stars: the role of binary interaction
+  through tides, mass transfer, and mergers.
+\newblock {\em The Astrophysical Journal}, 764(2):166, 2013.
+
+\bibitem{ott2009gravitational}
+Christian~D Ott.
+\newblock The gravitational-wave signature of core-collapse supernovae.
+\newblock {\em Classical and Quantum Gravity}, 26(6):063001, 2009.
+
+\bibitem{kotake2013multiple}
+Kei Kotake.
+\newblock Multiple physical elements to determine the gravitational-wave
+  signatures of core-collapse supernovae.
+\newblock {\em Comptes Rendus Physique}, 14(4):318--351, 2013.
+
+\bibitem{kotake2009stochastic}
+Kei Kotake, Wakana Iwakami, Naofumi Ohnishi, and Shoichi Yamada.
+\newblock Stochastic nature of gravitational waves from supernova explosions
+  with standing accretion shock instability.
+\newblock {\em The Astrophysical Journal Letters}, 697(2):L133, 2009.
+
+\bibitem{heng2009rotating}
+Ik~Siong Heng.
+\newblock Rotating stellar core-collapse waveform decomposition: a principal
+  component analysis approach.
+\newblock {\em Classical and Quantum Gravity}, 26(10):105005, 2009.
+
+\bibitem{rover2009bayesian}
+Christian R{\"o}ver, Marie-Anne Bizouard, Nelson Christensen, et~al.
+\newblock Bayesian reconstruction of gravitational wave burst signals from
+  simulations of rotating stellar core collapse and bounce.
+\newblock {\em Physical Review D}, 80(10):102004, 2009.
+
+\bibitem{powell2015classification}
+Jade Powell, Daniele Trifir{\`o}, Elena Cuoco, Ik~Siong Heng, and Marco
+  Cavagli{\`a}.
+\newblock Classification methods for noise transients in advanced
+  gravitational-wave detectors.
+\newblock {\em Classical and Quantum Gravity}, 32(21):215012, 2015.
+
+\bibitem{powell2017classification}
+Jade Powell, Alejandro Torres-Forn{\'e}, Ryan Lynch, et~al.
+\newblock Classification methods for noise transients in advanced
+  gravitational-wave detectors ii: performance tests on advanced ligo data.
+\newblock {\em Classical and Quantum Gravity}, 34(3):034002, 2017.
+
+\bibitem{suvorova2019reconstructing}
+Sofia Suvorova, Jade Powell, and Andrew Melatos.
+\newblock Reconstructing gravitational wave core-collapse supernova signals
+  with dynamic time warping.
+\newblock {\em Physical Review D}, 99(12):123012, 2019.
+
+\bibitem{logue2012inferring}
+J~Logue, CD~Ott, IS~Heng, P~Kalmus, and JHC Scargill.
+\newblock Inferring core-collapse supernova physics with gravitational waves.
+\newblock {\em Physical Review D}, 86(4):044023, 2012.
+
+\bibitem{engels2014multivariate}
+William~J Engels, Raymond Frey, and Christian~D Ott.
+\newblock Multivariate regression analysis of gravitational waves from rotating
+  core collapse.
+\newblock {\em Physical Review D}, 90(12):124026, 2014.
+
+\bibitem{summerscales2008maximum}
+TZ~Summerscales, Adam Burrows, Lee~Samuel Finn, and Christian~D Ott.
+\newblock Maximum entropy for gravitational wave data analysis: Inferring the
+  physical parameters of core-collapse supernovae.
+\newblock {\em The Astrophysical Journal}, 678(2):1142, 2008.
+
+\bibitem{gursel1989near}
+Yekta G{\"u}rsel and Massimo Tinto.
+\newblock Near optimal solution to the inverse problem for gravitational-wave
+  bursts.
+\newblock {\em Physical Review D}, 40(12):3884, 1989.
+
+\bibitem{rakhmanov2006rank}
+Malik Rakhmanov.
+\newblock Rank deficiency and tikhonov regularization in the inverse problem
+  for gravitational-wave bursts.
+\newblock {\em Classical and Quantum Gravity}, 23(19):S673, 2006.
+
+\bibitem{hayama2007coherent}
+Kazuhiro Hayama, Soumya~D Mohanty, Malik Rakhmanov, and Shantanu Desai.
+\newblock Coherent network analysis for triggered gravitational wave burst
+  searches.
+\newblock {\em Classical and Quantum Gravity}, 24(19):S681, 2007.
+
+\bibitem{krizhevsky2012imagenet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1097--1105, 2012.
+
+\bibitem{NIPS2014_5423}
+Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, et~al.
+\newblock Generative adversarial nets.
+\newblock In Z.~Ghahramani, M.~Welling, C.~Cortes, N.~D. Lawrence, and K.~Q.
+  Weinberger, editors, {\em Advances in Neural Information Processing Systems
+  27}, pages 2672--2680. Curran Associates, Inc., 2014.
+
+\bibitem{simonyan2014very}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem{chen2014semantic}
+Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan~L
+  Yuille.
+\newblock Semantic image segmentation with deep convolutional nets and fully
+  connected crfs.
+\newblock {\em arXiv preprint arXiv:1412.7062}, 2014.
+
+\bibitem{zeiler2014visualizing}
+Matthew~D Zeiler and Rob Fergus.
+\newblock Visualizing and understanding convolutional networks.
+\newblock In {\em European conference on computer vision}, pages 818--833.
+  Springer, 2014.
+
+\bibitem{szegedy2015going}
+Christian Szegedy, Wei Liu, Yangqing Jia, et~al.
+\newblock Going deeper with convolutions.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1--9, 2015.
+
+\bibitem{kononenko2001machine}
+Igor Kononenko.
+\newblock Machine learning for medical diagnosis: history, state of the art and
+  perspective.
+\newblock {\em Artificial Intelligence in medicine}, 23(1):89--109, 2001.
+
+\bibitem{redmon2016you}
+Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 779--788, 2016.
+
+\bibitem{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem{zhang2016colorful}
+Richard Zhang, Phillip Isola, and Alexei~A Efros.
+\newblock Colorful image colorization.
+\newblock In {\em European conference on computer vision}, pages 649--666.
+  Springer, 2016.
+
+\bibitem{karpathy2015deep}
+Andrej Karpathy and Li~Fei-Fei.
+\newblock Deep visual-semantic alignments for generating image descriptions.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 3128--3137, 2015.
+
+\bibitem{lample2016neural}
+Guillaume Lample, Miguel Ballesteros, Sandeep Subramanian, Kazuya Kawakami, and
+  Chris Dyer.
+\newblock Neural architectures for named entity recognition.
+\newblock {\em arXiv preprint arXiv:1603.01360}, 2016.
+
+\bibitem{mukund2017transient}
+Nikhil Mukund, Sheelu Abraham, Shivaraj Kandhasamy, Sanjit Mitra, and
+  Ninan~Sajeeth Philip.
+\newblock Transient classification in ligo data using difference boosting
+  neural network.
+\newblock {\em Physical Review D}, 95(10):104059, 2017.
+
+\bibitem{zevin2017gravity}
+Michael Zevin, Scott Coughlin, Sara Bahaadini, et~al.
+\newblock Gravity spy: integrating advanced ligo detector characterization,
+  machine learning, and citizen science.
+\newblock {\em Classical and quantum gravity}, 34(6):064003, 2017.
+
+\bibitem{george2017deep}
+Daniel George, Hongyu Shen, and EA~Huerta.
+\newblock Deep transfer learning: A new deep learning glitch classification
+  method for advanced ligo.
+\newblock {\em arXiv preprint arXiv:1706.07446}, 2017.
+
+\bibitem{gabbard2018matching}
+Hunter Gabbard, Michael Williams, Fergus Hayes, and Chris Messenger.
+\newblock Matching matched filtering with deep networks for gravitational-wave
+  astronomy.
+\newblock {\em Physical review letters}, 120(14):141103, 2018.
+
+\bibitem{george2018deep}
+Daniel George and EA~Huerta.
+\newblock Deep learning for real-time gravitational wave detection and
+  parameter estimation: Results with advanced ligo data.
+\newblock {\em Physics Letters B}, 778:64--70, 2018.
+
+\bibitem{astone2018new}
+P~Astone, P~Cerd{\'a}-Dur{\'a}n, I~Di~Palma, et~al.
+\newblock New method to observe gravitational waves emitted by core collapse
+  supernovae.
+\newblock {\em Physical Review D}, 98(12):122002, 2018.
+
+\bibitem{goodfellow2016deep}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep learning}.
+\newblock MIT press, 2016.
+
+\bibitem{miller2015prospects}
+John Miller, Lisa Barsotti, Salvatore Vitale, et~al.
+\newblock Prospects for doubling the range of advanced ligo.
+\newblock {\em Physical Review D}, 91(6):062005, 2015.
+
+\bibitem{LIGOW}
+B.~Lantz, S.~Danilishin, S.~Hild, et~al.
+\newblock Ligo instrument science white paper.
+\newblock 2018.
+
+\bibitem{o2015introduction}
+Keiron O'Shea and Ryan Nash.
+\newblock An introduction to convolutional neural networks.
+\newblock {\em arXiv preprint arXiv:1511.08458}, 2015.
+
+\bibitem{lecun1988theoretical}
+Yann LeCun, D~Touresky, G~Hinton, and T~Sejnowski.
+\newblock A theoretical framework for back-propagation.
+\newblock In {\em Proceedings of the 1988 connectionist models summer school},
+  volume~1, pages 21--28. CMU, Pittsburgh, Pa: Morgan Kaufmann, 1988.
+
+\bibitem{abadi2016tensorflow}
+Mart{\'\i}n Abadi, Ashish Agarwal, Paul Barham, et~al.
+\newblock Tensorflow: Large-scale machine learning on heterogeneous distributed
+  systems.
+\newblock {\em arXiv preprint arXiv:1603.04467}, 2016.
+
+\bibitem{abdikamalov2014measuring}
+Ernazar Abdikamalov, Sarah Gossan, Alexandra~M DeMaio, and Christian~D Ott.
+\newblock Measuring the angular momentum distribution in core-collapse
+  supernova progenitors with gravitational waves.
+\newblock {\em Physical Review D}, 90(4):044001, 2014.
+
+\bibitem{dimmelmeier2008gravitational}
+Harald Dimmelmeier, Christian~D Ott, Andreas Marek, and H-Thomas Janka.
+\newblock Gravitational wave burst signal from core collapse of rotating stars.
+\newblock {\em Physical Review D}, 78(6):064056, 2008.
+
+\bibitem{richers2017equation}
+Sherwood Richers, Christian~D Ott, Ernazar Abdikamalov, Evan O’Connor, and
+  Chris Sullivan.
+\newblock Equation of state effects on gravitational waves from rotating core
+  collapse.
+\newblock {\em Physical Review D}, 95(6):063019, 2017.
+
+\bibitem{10.1093mnrasstz990}
+H~Andresen, E~Müller, H-Th Janka, et~al.
+\newblock {Gravitational waves from 3D core-collapse supernova models: The
+  impact of moderate progenitor rotation}.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  486(2):2238--2253, 04 2019.
+
+\bibitem{kuroda2017correlated}
+Takami Kuroda, Kei Kotake, Kazuhiro Hayama, and Tomoya Takiwaki.
+\newblock Correlated signatures of gravitational-wave and neutrino emission in
+  three-dimensional general-relativistic core-collapse supernova simulations.
+\newblock {\em The Astrophysical Journal}, 851(1):62, 2017.
+
+\bibitem{muller2012parametrized}
+E~M{\"u}ller, H-Th Janka, and A~Wongwathanarat.
+\newblock Parametrized 3d models of neutrino-driven supernova
+  explosions-neutrino emission asymmetries and gravitational-wave signals.
+\newblock {\em Astronomy \& Astrophysics}, 537:A63, 2012.
+
+\bibitem{powell2019gravitational}
+Jade Powell and Bernhard M{\"u}ller.
+\newblock Gravitational wave emission from 3d explosion models of core-collapse
+  supernovae with low and normal explosion energies.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  487(1):1178--1190, 2019.
+
+\bibitem{radice2019characterizing}
+David Radice, Viktoriya Morozova, Adam Burrows, David Vartanyan, and Hiroki
+  Nagakura.
+\newblock Characterizing the gravitational wave signal from core-collapse
+  supernovae.
+\newblock {\em The Astrophysical Journal Letters}, 876(1):L9, 2019.
+
+\bibitem{yakunin2015gravitational}
+Konstantin~N Yakunin, Anthony Mezzacappa, Pedro Marronetti, et~al.
+\newblock Gravitational wave signatures of ab initio two-dimensional core
+  collapse supernova explosion models for 12--25 m⊙ stars.
+\newblock {\em Physical Review D}, 92(8):084040, 2015.
+
+\bibitem{yakunin2017gravitational}
+Konstantin~N Yakunin, Anthony Mezzacappa, Pedro Marronetti, et~al.
+\newblock The gravitational wave signal of a core collapse supernova explosion
+  of a 15 $\text{M}_\odot $ star.
+\newblock {\em arXiv preprint arXiv:1701.07325}, 2017.
+
+\bibitem{murphy2009model}
+Jeremiah~W Murphy, Christian~D Ott, and Adam Burrows.
+\newblock A model for gravitational wave emission from neutrino-driven
+  core-collapse supernovae.
+\newblock {\em The Astrophysical Journal}, 707(2):1173, 2009.
+
+\bibitem{ott2013general}
+Christian~D Ott, Ernazar Abdikamalov, Philipp M{\"o}sta, et~al.
+\newblock General-relativistic simulations of three-dimensional core-collapse
+  supernovae.
+\newblock {\em The Astrophysical Journal}, 768(2):115, 2013.
+
+\bibitem{karachentsev2004catalog}
+Igor~D Karachentsev, Valentina~E Karachentseva, Walter~K Huchtmeier, and
+  Dmitry~I Makarov.
+\newblock A catalog of neighboring galaxies.
+\newblock {\em The Astronomical Journal}, 127(4):2031, 2004.
+
+\bibitem{belokurov2007cats}
+V~Belokurov, Daniel~B Zucker, NW~Evans, et~al.
+\newblock Cats and dogs, hair and a hero: a quintet of new milky way
+  companions.
+\newblock {\em The Astrophysical Journal}, 654(2):897, 2007.
+
+\bibitem{roma2019astrophysics}
+Vincent Roma, Jade Powell, Ik~Siong Heng, and Raymond Frey.
+\newblock Astrophysics with core-collapse supernova gravitational wave signals
+  in the next generation of gravitational wave detectors.
+\newblock {\em Physical Review D}, 99(6):063018, 2019.
+
+\bibitem{scheidegger2010influence}
+S~Scheidegger, R~K{\"a}ppeli, SC~Whitehouse, T~Fischer, and M~Liebend{\"o}rfer.
+\newblock The influence of model parameters on the prediction of gravitational
+  wave signals from stellar core collapse.
+\newblock {\em Astronomy \& Astrophysics}, 514:A51, 2010.
+
+\bibitem{andresen2017gravitational}
+Haakon Andresen, Bernhard M{\"u}ller, Ewald M{\"u}ller, and H-Th Janka.
+\newblock Gravitational wave signals from 3d neutrino hydrodynamics simulations
+  of core-collapse supernovae.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  468(2):2032--2051, 2017.
+
+\bibitem{kuroda2016new}
+Takami Kuroda, Kei Kotake, and Tomoya Takiwaki.
+\newblock A new gravitational-wave signature from standing accretion shock
+  instability in supernovae.
+\newblock {\em The Astrophysical Journal Letters}, 829(1):L14, 2016.
+
+\end{thebibliography}

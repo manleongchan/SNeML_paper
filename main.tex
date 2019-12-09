@@ -70,7 +70,7 @@
  %$^5$ Caltech, California, United States}           
  
  
-\author{Authors$^{12}$}
+\author{Authors$^{12}$\cm{fix}}
 \affiliation{
 $^1$Department of Applied Physics, Fukuoka University, Nanakuma 8-19-1, Fukuoka 814-0180, Japan\\
 $^2$SUPA, School of Physics and Astronomy, University of Glasgow, Glasgow G12 8QQ, UK}
@@ -79,19 +79,23 @@ $^2$SUPA, School of Physics and Astronomy, University of Glasgow, Glasgow G12 8Q
 %\date{\commitDATE\\\mbox{\small \commitID}\\\mbox{\dcc}}
 
 \begin{abstract}
-We demonstrate the application of a convolutional neural network 
-to the gravitational wave signals from core collapse supernovae.
-Using simulated time series of gravitational wave detectors, 
-we show that a convolutional neural network can be used to detect and classify, based on the explosion mechanisms,  
-the gravitational wave signals buried in noise.
-For the waveforms used in the training of the convolutional neural network, 
-our results suggest that a network of advanced LIGO, advanced VIRGO and KAGRA, or a network of LIGO A+, advanced VIRGO and KAGRA
-is likely to detect a magnetorotational core collapse supernovae within the Large and Small Magellanic Clouds, or 
-a Galactic event if the explosion mechanism is the neutrino-driven mechanism.
-By testing the convolutional neural network with waveforms not used for training, 
-we show that the true alarm probabilities are $52\%$ and $83\%$ at $60$kpc for waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$.
-For waveforms $\text{s}20$ and $\text{SFHx}$ at $10$ kpc, the true alarm probabilities are $70\%$ and $93\%$ respectively. All at false alarm probability equal to $0.1$.
-\end{abstract}
+We demonstrate the application of a convolutional neural network to the
+gravitational wave signals from core collapse supernovae. Using simulated time
+series of gravitational wave detectors, we show that based on the explosion
+mechanisms, a convolutional neural network can be used to detect and classify
+the gravitational wave signals buried in noise. For the waveforms used in the
+training of the convolutional neural network, our results suggest that a
+network of advanced LIGO, advanced VIRGO and KAGRA, or a network of LIGO A+,
+advanced VIRGO and KAGRA is likely to detect a magnetorotational core collapse
+supernovae within the Large and Small Magellanic Clouds, or a Galactic event if
+the explosion mechanism is the neutrino-driven mechanism.  By testing the
+convolutional neural network with waveforms not used for training, we show that
+the true alarm probabilities are $52\%$ and $83\%$ at $60$kpc for waveforms
+$\text{R3E1AC}$ and $\text{R4E1FC\_L}$.  For waveforms $\text{s}20$ and
+$\text{SFHx}$ at $10$ kpc, the true alarm probabilities are $70\%$ and $93\%$
+respectively. All at false alarm probability equal to $0.1$\cm{why is this nopt
+also written as a percentage? Should it be 10\%?}.  \end{abstract}
+
 \pacs{}
 \maketitle
 \acrodef{GW}[GW]{gravitational wave}
@@ -109,126 +113,256 @@ For waveforms $\text{s}20$ and $\text{SFHx}$ at $10$ kpc, the true alarm probabi
 \acrodef{aLIGO}[aLIGO]{advanced LIGO}
 \acrodef{AdVirgo}[AdVirgo]{advanced VIRGO}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Since 2015 when LIGO has made the first direct observation of \acp{GW} from the merger of a binary black hole\cite{abbott2016observation},
-there have been numerous observations of \acp{GW} from similar systems in the observation runs of LIGO 
-and VIRGO \cite{abbott2016gw151226, abbott2017gw170608, abbott2017gw170814}.
-These discoveries have been a crucial milestone in \ac{GW} astronomy and have opened up a new window on the sky.
-More recently, LIGO and VIRGO have observed the \acp{GW} from a binary neutron star merger\cite{abbott2017gw170817, abbott2017gravitational, abbott2017multi}.
-For this event, the \acp{GW} and the associated gamma-ray burst were observed simultaneously. 
-Other counterparts across the electromagnetic spectrum were also observed by later follow-up observations \cite{abbott2017multi}.
-In the near future, many more observations of \acp{GW} from similar compact binary coalescence systems can be expected
-as KAGRA starts joint observations with LIGO and VIRGO \cite{aso2013interferometer, somiya2012detector, abbott2018prospects}.
+%
+% general background on GWs
+%
+Since 2015 when LIGO made the first direct observation of \acp{GW} from the
+merger of a binary black hole~\cite{abbott2016observation}, there have been
+numerous observations of \acp{GW} from similar systems in the subsequent
+observation runs of LIGO and VIRGO~\cite{abbott2016gw151226,
+abbott2017gw170608, abbott2017gw170814}. These discoveries represent a crucial
+milestone in \ac{GW} astronomy and have opened up a new window on the universe.
+More recently, LIGO and VIRGO have observed the \acp{GW} from a binary neutron
+star merger~\cite{abbott2017gw170817, abbott2017gravitational, abbott2017multi}
+where the \acp{GW} and an associated gamma-ray burst were observed
+simultaneously. Other counterparts across the electromagnetic spectrum were
+also observed by later follow-up observations~\cite{abbott2017multi}. In the
+near future, many more observations of \acp{GW} from similar \ac{CBC} systems
+can be expected as KAGRA starts joint observations with LIGO and
+VIRGO~\cite{aso2013interferometer, somiya2012detector, abbott2018prospects}.
 
-
-In addition to compact binary coalescences, massive stars with $10-100 \text{M}_\odot $ at zeros-age main sequence ending their lives by becoming 
+%
+% intro to core-collapse supernovae
+%
+In addition to \acp{CBC}, massive stars with $10-100 \text{M}_\odot $ at
+zeros-age main sequence ending their lives by becoming 
 %with core of $10-100 \text{M}_\odot $ prior to collapse 
-\acp{CCSN} are also considered to be potential sources to the second generation detectors such as the \ac{aLIGO} \cite{aasi2015advanced}, 
-\ac{AdVirgo} \cite{acernese2014advanced} and KAGRA interferometers \cite{aso2013interferometer, gossan2016observing, abbott2016first}.
-It is currently not entirely clear to astronomers how such a massive star becomes supernova. 
-The basic theory of the explosion, confirmed by the neutrino events observed from SN1987A\cite{sato1987analysis}, goes as the following.
-A massive star at the final stage of its life will form core that is composed of iron nuclei after it has burned all its stellar fuel via nuclear reaction.
-The iron core is supported by the pressure of relativistic degenerate electrons.
-If the mass of the core exceeds the effective Chandrasekhar mass\cite{baron1990effect, bethe1990supernova}, core collapse will ensue and continue until it reaches nuclear density.
-The nuclear equation of state will then stiffens by the strong nuclear force above the nuclear density and stops 
-the core collapse.
-The inner core will bounce back and a shock wave will be sent through the infalling matter.
-By losing energy to the dissociation of the iron nuclei and to neutrino cooling, the shock wave will stall.
-For the star to become a supernova, the shock wave will need to be revived\cite{o2011black}.  
-The mechanism via which the shock wave is revived and causes the explosion has been the subject of intense study.
-However, it still remains an unsolved problem.
+\acp{CCSN} are also considered to be potential sources to the second generation
+detectors such as \ac{aLIGO}~\cite{aasi2015advanced},
+\ac{AdVirgo}~\cite{acernese2014advanced} and KAGRA
+interferometers~\cite{aso2013interferometer, gossan2016observing,
+abbott2016first}. It is currently not entirely clear to astronomers how such
+massive stars become supernovae. The basic theory of the explosion, confirmed
+by the neutrino events observed from SN1987A~\cite{sato1987analysis}, begins
+with a massive star at the final stage of its life forming a core that is
+composed of iron nuclei after it has burned all its stellar fuel via fusion
+reactions. The iron core is supported by the pressure of relativistic
+degenerate electrons and if the mass of the core exceeds the effective
+Chandrasekhar mass~\cite{baron1990effect, bethe1990supernova}, core collapse
+will ensue and continue until the core reaches nuclear density. The nuclear
+equation of state will then stiffens by the strong nuclear force above the
+nuclear density and stops the core collapse. The inner core will bounce back
+and a shock wave will be sent through the infalling matter.  By losing energy
+to the dissociation of the iron nuclei and to neutrino cooling, the shock wave
+will stall. For the star to become a supernova, the shock wave will need to be
+revived~\cite{o2011black}. However the mechanism via which this occurs and the
+supernova explosion is caused has been the subject of intense study and remains
+an unsolved problem.
 
-There exist two most popular theories, the neutrino-driven mechanism\cite{bethe1985revival, bethe1990supernova} and the magnetorotational mechanism\cite{janka2012explosion, kotake2012core, mezzacappa2014two}.
-For supernova progenitors with core rotation too slow to affect the dynamics\cite{takiwaki2016three, summa2018rotation}, the neutrino-driven mechanism is believed to be the active mechanism.
-The majority of the observed \acp{CCSN} can be explained by the neutrino mechanism\cite{bruenn2016development}.
-The neutrino mechanism\cite{bethe1985revival, janka2007theory} suggests that about $5-10\%$ of the outgoing neutrino luminosity is stored below the shock, 
-which causes turbulence to occur and thermal pressure to increase.
-The stalled shock can be revived by their combined effects\cite{couch2015role}. 
-Producing a \ac{CCSN} via the neutrino mechanism may also require convection and the standing accretion shock instability\cite{blondin2003stability}.
-On the other hand, the magnetorotational mechanism requires rapid core spin and strong magnetic field\cite{leblanc1970numerical, burrows2007simulations, takiwaki2009special, moiseenko2006magnetorotational,mosta2014magnetorotational}. 
-Together, they may produce an outflow that may cause the most energetic \acp{CCSN} observed.
-The magnetorotational mechanism may be able to explain the extreme hypernovae and the observed long gamma-ray bursts\cite{woosley2006progenitor, yoon2005evolution, de2013rotation}.
+%
+% discussion of the CCSN mechanisms
+%
+There exist two most popular theories~\cm{theories for what?}, the
+neutrino-driven mechanism~\cite{bethe1985revival, bethe1990supernova} and the
+magnetorotational mechanism~\cite{janka2012explosion, kotake2012core,
+mezzacappa2014two}. For supernova progenitors with core rotation too slow to
+affect the dynamics~\cite{takiwaki2016three, summa2018rotation}, the
+neutrino-driven mechanism is believed to be the active mechanism. The majority
+of the observed \acp{CCSN} can be explained by the neutrino
+mechanism~\cite{bruenn2016development}~\cm{why?}. The neutrino
+mechanism~\cite{bethe1985revival, janka2007theory} suggests that approximately
+$5-10\%$ of the outgoing neutrino luminosity is stored below the shock, which
+causes turbulence to occur and thermal pressure to increase. The stalled shock
+can be revived by their combined effects~\cite{couch2015role}. Producing a
+\ac{CCSN} via the neutrino mechanism may also require convection and the
+standing accretion shock instability~\cite{blondin2003stability}. On the other
+hand, the magnetorotational mechanism requires rapid core spin and a strong
+magnetic field~\cite{leblanc1970numerical, burrows2007simulations,
+takiwaki2009special,
+moiseenko2006magnetorotational,mosta2014magnetorotational}. Together, they may
+produce an outflow that may cause the most energetic \acp{CCSN}
+observed~\cm{are you referring to a real observed CCSN, if so you should
+provide a reference.}. The magnetorotational mechanism may \cm{also?} be able
+to explain the extreme hypernovae and the observed long gamma-ray
+bursts\cite{woosley2006progenitor, yoon2005evolution, de2013rotation}.
  
+%
+% GWS from CCSN and the existing literature
+%
+Correctly classifying the \ac{GW} signals from a \ac{CCSN} is important in
+understanding the explosion mechanism.
+%Electromagnetic observations provide only indirect informations about the
+%mechanism of a \ac{CCSN} because photons interact strongly with matter and
+%only information from the optically thin regions far from the central core
+%could reach us.  However, 
+As \acp{GW} are emitted\cm{generated?} in the central core of a \ac{CCSN}, they
+are likely to carry direct information of the \ac{CCSN} and therefore provide a
+probe of the explosion mechanism that produces them. In \ac{GW} astronomy, for
+\ac{CBC} events the established method for searching for signals is
+matched-filtering~\cm{give ref for pycbc and gstlal}. However, since the
+emission process of the \acp{GW} from \acp{CCSN} is affected by turbulence in
+the post-bounce and is \cm{expected to be?} stochastic in nature,  the signal
+evolution cannot be predicted robustly~\cite{ott2009gravitational,
+kotake2013multiple, kotake2009stochastic}.  This in turn prevents
+matched-filtering from being applied to \acp{CCSN}.
+%Although, Neutrino radiation-hydrodynamics simulations have been an ongoing
+%effort to decode and understand explosion mechanism of \acp{CCSN} and the
+%\acp{GW} they produce\cite{ott2009gravitational}.
+Methods and algorithms have been developed for the detection and classification
+of signals from \acp{CCSN}.  For example, a method known as principle component
+analysis has been developed~\cite{heng2009rotating, rover2009bayesian,
+powell2015classification, powell2017classification,
+suvorova2019reconstructing}. This method creates a set of component basis
+vectors from a \cm{larger?} set of \ac{CCSN} waveforms belonging to a
+particular mechanism where the basis vectors represent the common features of
+those waveforms.  There have been other approaches developed in the literature
+such as Bayesian inference~\cite{rover2009bayesian}, Bayesian model
+selection~\cite{logue2012inferring} , multivariate regression
+modelling~\cite{engels2014multivariate}, maximum
+entropy~\cite{summerscales2008maximum}, maximum
+likelihood~\cite{gursel1989near} and Tikhonov regularization
+scheme~\cite{rakhmanov2006rank, hayama2007coherent}.  
 
-Correctly classifying the \ac{GW} from a \ac{CCSN} is important in understanding the explosion mechanism.
-%Electromagnetic observations provide only indirect informations about the mechanism of a \ac{CCSN} 
-%because photons interact strongly with matter and only information from the optically thin regions far from the central core could reach us. 
-%However, 
-As \acp{GW} are emitted in the central core of a \ac{CCSN}, 
-they are likely to carry direct information of the \ac{CCSN} and therefore provide a probe of the explosion mechanism that produces them.
-In \ac{GW} astronomy, when it comes to the search for signals from compact binary coalescences, the established routine is matched filtering.
-However, as the emission process of the \acp{GW} from \acp{CCSN} is affected by turbulence in the post-bounce and is stochastic in nature,  
-the signal evolution cannot be predicted robustly\cite{ott2009gravitational, kotake2013multiple, kotake2009stochastic}.
-This in turn prevents the match filtering routine to be applied to \acp{CCSN}.
-%Although, Neutrino radiation-hydrodynamics simulations have been an ongoing effort to decode and understand explosion mechanism of \acp{CCSN} and the \acp{GW} they produce\cite{ott2009gravitational}.
-Methods and algorithms have been developed for the detection and classification of signals from \acp{CCSN}. 
-For example, a method known as principle component analysis has been developed\cite{heng2009rotating, rover2009bayesian, powell2015classification, powell2017classification, suvorova2019reconstructing}.
-This method creates a set of component basis vectors from a set of \ac{CCSN} waveforms of a particular mechanism
-that represent the common features of the waveforms of that mechanism.
-There have been other approaches developed in the literature such as Bayesian inference\cite{rover2009bayesian}, Bayesian model selection\cite{logue2012inferring}
-, multivariate regression model\cite{engels2014multivariate}, maximum entropy\cite{summerscales2008maximum}, 
-maximum likelihood\cite{gursel1989near} and Tikhonov regularization scheme\cite{rakhmanov2006rank, hayama2007coherent}.  
+%
+% introduce machine learning
+% 
+In recent years, the field of machine learning and its sub-field, deep
+learning, have been rapidly developing and have shown great potential in many
+scientific fields~\cite{krizhevsky2012imagenet, NIPS2014_5423,
+simonyan2014very, chen2014semantic, zeiler2014visualizing, szegedy2015going}.
+For example, deep learning has been successfully applied to fields including
+medical diagnosis~\cite{kononenko2001machine}, object
+detection~\cite{redmon2016you}, image
+recognition/processing/generation~\cite{he2016deep, krizhevsky2012imagenet,
+zhang2016colorful, karpathy2015deep}, and  language
+processing~\cite{lample2016neural}. In \ac{GW} astronomy, deep learning has
+mostly been applied to the identifications of detector noise artefacts
+(glitches)~\cite{mukund2017transient, zevin2017gravity, george2017deep} and the
+detection of astrophysical signals~\cite{george2018deep, gabbard2018matching,
+astone2018new} and their parameter estimation~\cm{add ref to Hunters latest
+paper}. A \ac{CNN} is a deep learning algorithm that has the advantage of
+capturing spatial and temporal features of the input data~\cm{this doesn't
+really mean anything. Spatial refers to features in certain locations in images
+and temporal refers to locations in a time series of in the time axis of a
+spectrogram image}. Another advantage of the use of a \ac{CNN} in the detection
+of a \ac{GW} signal is that a \ac{CNN} is relatively computationally cheap
+compared to other more traditional methods. This is because the heavy
+computational work is usually done during the training stage of a \ac{CNN}
+prior to its actual application~\cite{goodfellow2016deep}.
 
-In recent years, the field of machine learning and its sub-field, deep learning, have been rapidly developing because of 
-its potentials in many fields \cite{krizhevsky2012imagenet, NIPS2014_5423, simonyan2014very, chen2014semantic, zeiler2014visualizing, szegedy2015going}.
-For example, deep learning have been successfully applied to fields including medical diagnosis\cite{kononenko2001machine}, object detection\cite{redmon2016you}, image recognition/processing/generation\cite{he2016deep, krizhevsky2012imagenet, zhang2016colorful, karpathy2015deep},    and  language processing\cite{lample2016neural}.
-In \ac{GW} astronomy, deep learning has mostly been applied to both the identifications of glitch\cite{mukund2017transient, zevin2017gravity, george2017deep, gabbard2018matching} and signals\cite{george2018deep, astone2018new}. 
-\ac{CNN} is a deep learning algorithm that has the advantage of capturing spatial and temporal features of the input data.
-Another advantage of the use of a \ac{CNN} in the detection of a signal is that a \ac{CNN} is relatively computationally cheap compared to other more traditional methods.
-This is because the heavy computational work is usually done during the training stage of a \ac{CNN} prior to its actual application\cite{goodfellow2016deep}.
+%
+% the main point of the paper
+%
+In this work, we demonstrate that a \ac{CNN} can be applied to the detection of
+\acp{GW} from \acp{CCSN} and to the classification of their explosion
+mechanisms.  To train our \ac{CNN}, we use simulated \ac{CCSN} waveforms from a
+number of studies and simlate sources at a range of distances from $10$ to
+$200$ kpc for two networks of four \ac{GW} detectors. The first network
+consists of \ac{aLIGO}, \ac{AdVirgo} and KAGRA. For the second network, we
+still include the detectors of \ac{AdVirgo} and KAGRA, but replace the two
+detectors of \ac{aLIGO} with a modest set of planned upgrade version of them -
+LIGO A+ in Hanford and Livingston~\cite{miller2015prospects, LIGOW}. We then
+apply the \ac{CNN} to waveforms excluded from the training set to show that the
+\ac{CNN} is not only able to identify the waveforms it familiarised itself with
+during training, but also new waveforms~\cm{this is a strange statement. The
+ability of the CNN to work on the training data is completely outweighed by its
+perfromance on the independent testing set. The testing set perfroamnce is all
+that you should mention here.}.
 
-In this work, we demonstrate a \ac{CNN} can be applied to the detection of the \acp{GW} from \acp{CCSN}
-and the classification of their explosion mechanisms.
-To train our \ac{CNN}, we use simulated \ac{CCSN} waveforms from a number of studies and simlate sources 
-at a range of distances from $10$ to $200$ kpc for two networks of four detectors.
-The first network consists of \ac{aLIGO}, \ac{AdVirgo} and KAGRA.
-For the second network, we still include the detectors of \ac{AdVirgo} and KAGRA,  
-but replace the two detectors of \ac{aLIGO} with 
-a modest set of planned upgrade version of them - LIGO A+ in Hanford and Livingston\cite{miller2015prospects, LIGOW}.
-We will then apply the \ac{CNN} to waveforms excluded from the training session to show that the \ac{CNN} 
-is not only able to identify the waveforms it familiarised itself with during training, but also new waveforms.
-
-The remaining of this paper is constructed as follows. 
-In section \ref{sec:CNN}, we will present a brief explanation of the concept of \ac{CNN} as well as the \ac{CNN} we used for this work.
-In section \ref{sec:spwf}, we introduce the waveforms we use for the training of the \ac{CNN} in this work. We will also discuss the procedure with which we generated the data for the \ac{CNN}.
-The results will be shown in sections \ref{sec:result} and \ref{sec:unseen}, followed by a conclusion in section \ref{sec:conclusion}.
+%
+% paper structure
+%
+The remaining of this paper is structured as follows. In Section~\ref{sec:CNN},
+we present a brief explanation of the concept of a \ac{CNN} as well as the
+\ac{CNN} architecture  used for this study. In Section~\ref{sec:spwf}, we
+introduce the waveforms we use for the training of the \ac{CNN} and  also
+discuss the procedure with which we generated the input data for the \ac{CNN}.
+The results are shown in Sections~\ref{sec:result} and~\ref{sec:unseen},
+followed by our conclusions in Section~\ref{sec:conclusion}.
 %\section{Supernova waveform}\label{sec:spwf}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Convolutional Neural network}\label{sec:CNN}
-A \ac{CNN} is a computational processing system that is composed of interconnected layers of computational nodes\cite{o2015introduction}.
-The nodes are known as neurons and are associated with an activation function.
-The activation function can perform an elementwise nonlinear operation to the input of the layer. 
-In a \ac{CNN}, there are three types of layers: convolutional layer, max-pooling layer, and fully connected layer\cite{o2015introduction}.
-Convolutional layer performs the mathematical operation of convolution between the weights of the layer's neurons and the input to that layer.
-Max-pooling layer is just a down-sampling layer that down samples the input along its dimensionality.
-It can reduce the computational cost by decreasing the number of parameters of the \ac{CNN}.
-Fully connected layer is a layer that connects every neuron in its layer to every neuron of its immediate previous and next layer.
-In the case of detection and classification, fully connected layers are used to compute class scores.
 
-When multiple layers of these three types are stacked and connected one after the other, 
-a \ac{CNN} has been formed, where the output of each layer is the input of the next layer.
-How these layers are connected in a \ac{CNN} is known as the architecture of the \ac{CNN}.
-It describes the structure of a \ac{CNN} and the number of neurons in each layer. % (width and depth) 
-In general, the first layer in a \ac{CNN}, also known as the input layer, is often a convolutional layer, 
-while the last layer or the output layer is often a fully connected layer with an associated loss function. 
-The architecture of the rest of the \ac{CNN} should depend on the specific task that the \ac{CNN} is trained to solve. 
-An over-complicated model with too many trainable parameters 
-is easier to result in overfit and harder to train, 
-while a too-simple \ac{CNN} will have a hard time capturing the feature inherent to the input.
-In addition, the number of layers and neurons of each layer in a \ac{CNN} are known as hyperparameters.
-Other hyperparameters include the parameters of max-pooling layers, type of activation functions, 
-learning rate of the \ac{CNN}, and the application of specific deep learning techniques if there is any.
-The optimal combination of hyperparameters and the architecture is sought by trail and error, and fine tunning.
+%
+% describe the components of a CNN
+%
+A \ac{CNN} is a computational processing system that is composed of
+interconnected layers of computational nodes~\cite{o2015introduction}. The
+nodes are known as neurons and the outputs of which are processed with an
+activation function. The activation function performs an elementwise nonlinear
+operation to the output of the layer. In a standard \ac{CNN}, there are
+commonly three types of layers: convolutional layers, max-pooling layers, and
+fully connected layers~\cite{o2015introduction}. Convolutional layers perform
+the mathematical operation of convolution between the weights of the layer's
+neurons and the input to that layer. Max-pooling layers perform a down-sampling
+process that reduces the size of the data by selecting the maximum of data
+samples within fixed size bins. It can reduce the computational cost by
+decreasing the number of trainable parameters (weights and biases) of the
+\ac{CNN}.  Fully connected layers are layers that connect every neuron in its
+layer to every neuron of its immediate previous and next layer. In the case of
+detection and classification, the output layer is also a fully connected layer
+with a softmax activation function with output used to represent the class
+scores or probabilities.~\cm{even after editing, this isn't the clearest
+description of a CNN. You are lacking an initial statement that says what a CNN
+does - it takes in data and is able to classify it as one of the N types it has
+learnt through training.}
 
-During the training stage, the weights of the neurons in a \ac{CNN} are updated using an algorithm called back propagation\cite{lecun1988theoretical}.
-The output of the \ac{CNN} is used as an input to the loss function associated with the output layer. 
-The back propagation algorithm will then compute the gradient of the loss function 
-which is used to adjust the values of the weights of the neurons in each layer and minimise the loss function.
-When the loss function is minimised, the \ac{CNN} will classify its input into the correct category with the highest confidence. 
-The process of achieving the minimisation of the loss function during the training stage is referred to as learning.
+%
+% decribe the structure of the CNN
+%
+When multiple layers of these three types are stacked and connected one after
+the other, a \ac{CNN} has been formed, where the output of each layer is the
+input of the next layer. How these layers are connected in a \ac{CNN}, the
+numbers of layers, their type, the number of neurons, the convolutional filter
+size, max-pooling size, and the activation functions used, describes the
+architecture of the \ac{CNN} (also known as hyper-parameters). The first layer
+in a \ac{CNN}, also known as the input layer, is often a convolutional layer,
+while the last layer or the output layer is often a fully connected layer with
+an associated loss function~\cm{the loss isn't really associated with the
+output layer. It is associated withe whole network.}. The architecture of the
+remainder of the \ac{CNN} should depend on the specific task that it is being
+trained to solve. An over-complicated model with too many trainable parameters
+makes it easier to result in over-fitting (a procedure where the network
+essentially memorises the training data but is unable to generalise to new
+data). Alternatively, an overly simple architecture will struggle to capture
+the features inherent to the input and not perform well in classification.
+Automated schemes do exist for finding the optimal combination of
+hyperparameters but in general (and in our case) the final architecture is
+often obtained through rough trial and error, followed by fine tunning.
 
-In this work, we employ a \ac{CNN} of $8$ convolutional layers, $3$ max-pooling layers, and $3$ fully connected layers.
-The exact architecture of the \ac{CNN} is shown in Table \ref{table:architecture} and illustrated in Figure \ref{fig:CNN}.
+%
+% describe training
+%
+During the training stage, the weights of the neurons in a \ac{CNN} are updated
+using an algorithm called back-propagation~\cite{lecun1988theoretical}. The
+output of the \ac{CNN} is used as an input to the loss-function~\cm{you need to
+define what the loss function is supposed to do and how by minimising it you
+make the network produce the right result. It isn't clear here.} and
+back-propagation then computes the gradient of the loss-function with respect
+to the traininable weights and biases within the network. A gradient descent
+algorithm is then used to adjust the values of the weights and biases of the
+neurons in each layer in order to iteratively minimise the loss-function.  When
+the loss function is minimised and training is therefore complete, the \ac{CNN}
+will be able to take in input in the form of new data and its output will best
+represent the probability of that data belonging to each of the trained
+classes. A well performing network will give high output probabilities to the
+correct class in most cases. The process of achieving the minimisation of the
+loss function during the training stage is the process whereby the machine is
+"learning"..
+
+%
+% describe the specific architecture used here
+% 
+In this work, we employ a \ac{CNN} of $8$ convolutional layers, $3$ max-pooling
+layers, and $3$ fully connected layers. The exact architecture of the \ac{CNN}
+is shown in Table~\ref{table:architecture} and illustrated in
+Fig.~\ref{fig:CNN}.
+
 \begin{table}[]
 \centering
 \begin{threeparttable}
@@ -258,55 +392,108 @@ Layer & Type      & Neurons  & Filter size & Act. Fun \\ \hline
 \begin{tablenotes}
 \setlength\labelsep{0pt}
 \normalfont{
-\item The architecture of the \ac{CNN} used in this work for the purpose of distinguishing supernova signal mechanisms and background noise.
-In the table, Conv means convolutional neural layer, Max-pool max-pooling layer, and Fully-con fully-connected layers.
-Neuron and Act. Fun mean the number of neurons and the activation function for the layer respectively. 
-The numbers in the bracket for the fully-connected layers are the number used for drop-out.}
+\item The architecture of the \ac{CNN} used in this work for the purpose of
+distinguishing supernova signals in backgound \ac{GW} detector noise vs detectr
+noise alone. In the table, Conv means convolutional layer, Max-pool means
+max-pooling layer, and Fully-con means fully-connected layer. Neuron and Act.
+Fun indicate the number of neurons and the activation function used for the
+layer respectively. The numbers in the bracket for the fully-connected layers
+are the number used for drop-out~\cm{You haven't discussed drop-out yet. You
+should mention it earlier when you introduce CNNs}.}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
-\begin{figure}
-\includegraphics[width=0.48\textwidth]{CNN2.png}
-\caption{An illustration of the architecture of the \ac{CNN} used in this paper for the detection and classification of \ac{CCSN} signals in noisy data.
-The \ac{CNN} consists of $8$ convolutional layers, $3$ max-pooling layers and $3$ fully connected layer including the output layer.
-The input layer takes the simulated time series of the detectors as input, feeding through the \ac{CNN}. The \ac{CNN} will output three probabilities at the last layer.
-The numbers above or below each layer indicate the kernal size of the layer. For example, the first convolutional layer has $11$ filters, 
-each of which is $1$ by $32$ in size. 
-The elements in the figure are not to scale.
+
+\begin{figure*}
+\includegraphics[width=0.96\textwidth]{CNN2.png}
+\caption{An illustration of the architecture of the \ac{CNN} used in this paper
+for the detection and classification of \ac{CCSN} \ac{GW} signals in noisy data. The
+\ac{CNN} consists of $8$ convolutional layers, $3$ max-pooling layers and $3$
+fully connected layer including the output layer.  The input layer takes the
+simulated time series of the detectors as input, feeding through the \ac{CNN}.
+The \ac{CNN} will output three probabilities at the last layer.  The numbers
+above or below each layer indicate the kernal size of the layer. For example,
+the first convolutional layer has $11$ filters, each of which is $1$ by $32$ in
+size~\cm{this is the only place that you describe the timeseries being the
+input and what the network does in a single sentence. This text should appear
+in the main bodty of the paper}.~\cm{Also, because I'm very picky about plots
+and images - even though I made the image full page width, the timeseries plots
+are TOO small and the axes are insanely small to read. You seem to have
+strecthed curly bracket symbols to the point that they look super-wierd.}
 \label{fig:CNN}}
-\end{figure}
-Since the problem we are trying to solve is a problem of multi-class classification, 
-the loss function employed for this work is categorical cross entropy\cite{abadi2016tensorflow}, given by
+\end{figure*}
+
+%
+% define the loss function 
+%
+The problem we are trying to solve is a problem of multi-class
+classification, and hence the loss function employed for this work is the
+categorical cross-entropy~\cite{abadi2016tensorflow}, defined as
+%
 \begin{equation}\label{eq:cce}
- L(y,\hat{y}) = -\sum^M_{j=1}\sum^C_{i=1}(y_{ij}log(\hat{y}_{ij})),
+ L(y,\hat{y}) = -\sum^M_{j=1}\sum^C_{i=1}y_{ij}\log(\hat{y}_{ij}),
 \end{equation}
-where $C$ is the number of the classes and $M$ is the number of the training samples.
-For the $j^{\text{th}}$ sample and the $i^{th}$ class, $y_{ij}$ is the correponding class value. It is equal to $1$ for the true class and $0$ otherwise.
-Similarly, $\hat{y}_{ij}$ is the predicted probability from the \ac{CNN} for the $i^{th}$ class and the $j^{\text{th}}$ sample.
+%
+where $C$ is the number of the classes and $M$ is the number of the training
+samples~\cm{the loss is computed over batches so here $M$ should be the batch
+size. However, you haven't introduced batches yet, which you need to do when
+you're discussing training}. For the $j^{\text{th}}$ sample and the $i^{th}$
+class, $y_{ij}$ is the correponding class value. It is equal to $1$ for the
+true class and $0$ otherwise.  Similarly, $\hat{y}_{ij}$ is the predicted
+probability from the \ac{CNN} for the $i^{th}$ class and the $j^{\text{th}}$
+sample.
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data}\label{sec:spwf}
-We establish a \ac{CNN} for the purpose of distinguishing detector time series among three classes, 
-i.e., magnetorotational signals + background noise, neutrino-driven signals + background noise, and pure background noise. 
-For this purpose, it is necessary to prepare training, validation and testing data of these three classes.
-The training data is used for tuning the weights of the neurons in the layers in the \ac{CNN}, 
-while validating data is to verify that the \ac{CNN} is learning the features inherent to the data and testing data is to test the performance of the trained \ac{CNN}. 
+%
+% describe the classes and training, validation, and testing
+%
+We establish a \ac{CNN} for the purpose of distinguishing detector time series
+among three classes, i.e., magnetorotational signals $+$ background noise,
+neutrino-driven signals $+$ background noise, and pure background noise. For
+this purpose, it is necessary to prepare training, validation and testing data
+of these three classes. The training data is used for tuning the weights of
+the neurons in the layers in the \ac{CNN}, while validating data is to verify
+that the \ac{CNN} is learning the features inherent to the data and testing
+data is to test the performance of the trained \ac{CNN}. 
 
-In general, the input of a \ac{CNN} is numerical data.
-In our case, a data sample is a set of simulated time series stacked together as a $k \times p$ matrix 
-where $k$ is the number of detectors and $p$ the number of elements in the time series.
-To this end, we use simulated waveforms in the literature.
-The magnetorotational \ac{CCSN} signals are taken from\cite{abdikamalov2014measuring, dimmelmeier2008gravitational, richers2017equation}. 
-The simulations in \cite{abdikamalov2014measuring} were focused on the dependence of the waveforms on the angular momentum distrubion of the progenitors and generated 92 waveforms.
-In \cite{dimmelmeier2008gravitational}, 136 waveforms were generated to investigate a variety of rotation rates and masses of the progenitors.
-The simulations in \cite{richers2017equation} covered a parameter space of $18$ different equations of state and $98$ rotation profiles for a progenitor of $12M_{\odot}$ generating in total $1824$ waveforms.
-All the simulations from the studies were 2D.
-For the neutrino-driven mechanism, we employ the waveforms from\cite{10.1093mnrasstz990, kuroda2017correlated, muller2012parametrized, powell2019gravitational, 
-radice2019characterizing, yakunin2015gravitational, yakunin2017gravitational, ott2009gravitational, murphy2009model, ott2013general}.
-The simulations in \cite{10.1093mnrasstz990, kuroda2017correlated, muller2012parametrized, powell2019gravitational, 
-radice2019characterizing, yakunin2017gravitational} were 3D while the simulations in \cite{yakunin2015gravitational, ott2009gravitational, murphy2009model, ott2013general} were 2D.
-These simulations cover a wide range of progenitor masses from $9\text{M}_\odot$ to $60\text{M}_\odot$.
-The progenitor masses of the simulations are shown in Table \ref{table:waveforms}.
+%
+% describe the magneto waveforms
+%
+In our case, we define an input data sample as a set of simulated time series
+stacked together as a $k \times p$ matrix where $k$ is the number of detectors
+and $p$ the number of elements in the time series. To this end, we use
+simulated waveforms taken from the literature. The magnetorotational \ac{CCSN}
+signals are taken from~\cite{abdikamalov2014measuring,
+dimmelmeier2008gravitational, richers2017equation}. The simulations
+in~\cite{abdikamalov2014measuring} were focused on the dependence of the
+waveforms on the angular momentum distribution of the progenitors and proivide
+us with 92 waveforms. In~\cite{dimmelmeier2008gravitational}, 136 waveforms are
+available from investigations into a variety of rotation rates and masses of
+the progenitors. The simulations in~\cite{richers2017equation} covered a
+parameter space of $18$ different equations of state and $98$ rotation profiles
+for a progenitor of $12M_{\odot}$ providing a total of $1824$ waveforms. All
+the simulations from the studies were based on 2D simulations of supernovae.
+
+%
+% describe the neutrino waveforms
+%
+For the neutrino-driven mechanism, we employ the waveforms
+from~\cite{10.1093mnrasstz990, kuroda2017correlated, muller2012parametrized,
+powell2019gravitational, radice2019characterizing, yakunin2015gravitational,
+yakunin2017gravitational, ott2009gravitational, murphy2009model,
+ott2013general}. The simulations in~\cite{10.1093mnrasstz990,
+kuroda2017correlated, muller2012parametrized, powell2019gravitational,
+radice2019characterizing, yakunin2017gravitational} were from 3D modelling of
+the supernovae while the simulations in~\cite{yakunin2015gravitational,
+ott2009gravitational, murphy2009model, ott2013general} were 2D. These
+simulations cover a wide range of progenitor masses from $9\text{M}_\odot$ to
+$60\text{M}_\odot$ and the specific progenitor masses of the simulations are
+shown in Table~\ref{table:waveforms}. Examples of the simulated waveforms for
+both mechanisms are shown in Figs.~\ref{fig:magwaveforms} and
+\ref{fig:neuwaveforms}.
+
 \begin{table}[]
 \centering
 \begin{threeparttable}
@@ -314,7 +501,7 @@ The progenitor masses of the simulations are shown in Table \ref{table:waveforms
 \label{table:waveforms}
 \begin{tabular}{rccc}
 \toprule
-                         & Mechanism         & Mass ($\text{M}_\odot$)                         & No.  \\
+    & Mechanism         & Mass ($\text{M}_\odot$)                         & No.  \\
 \hline                         
 Abdikamalov\cite{abdikamalov2014measuring} & M   & 12.0                          & 92   \\
 Dimmelmeier\cite{dimmelmeier2008gravitational} & M   & 11.2,15.0,20.0,40.0        & 136  \\
@@ -335,13 +522,16 @@ Yakunin$_2$\cite{yakunin2017gravitational}   & N   & 15                         
 \begin{tablenotes}
 \setlength\labelsep{0pt}
 \normalfont{
-\item The mass range of the progenitors of the simulated waveforms used in this work.
-The first column refers to the studies. Mechanism indicates the explosion mechanism for 
-the waveforms, with M for the magnetorotational mechanism and N for the neutrino-driven mechanism.
-Mass refers the mass, in solar mass, of the progenitors in the simulations. No. means the number of waveforms available from the study.}
+\item The mass ranges and mechanisms of the progenitors of the simulated
+waveforms used in this work.  The first column refers to the studies. Mechanism
+indicates the explosion mechanism for the waveforms, with M for the
+magnetorotational mechanism and N for the neutrino-driven mechanism.  Mass
+refers the mass, in units of solar mass, of the progenitors in the simulations.
+No. means the number of waveforms available from the study.} 
 \end{tablenotes}
-\end{threeparttable}
+\end{threeparttable} 
 \end{table}
+
 %Anderson 2016 also does 3d, 20 mass, 11 mass
 %kuroda 2017 3d, 15mass, 11mass
 %powell 2018 3d 18mass, one model
@@ -353,20 +543,29 @@ Mass refers the mass, in solar mass, of the progenitors in the simulations. No. 
 %ott2013
 %which cover both 2D simulations with masses of $15M_{\odot}$\cite{ott2009gravitational}, 
 %and $12, 15, 20$ and $40M_{\odot}$\cite{murphy2009model}, and 3D simulations for a progenitor of $27M_{\odot}$\cite{ott2013general}.$26$ 
-Examples of the simulated waveforms for both mechanisms are shown in Figures \ref{fig:magwaveforms} and \ref{fig:neuwaveforms}.
+
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{mag_waveforms.png}
-\caption{Examples of simulated waveforms used in the work for which the explosion mechanism is magnetorotational mechanism.
-The top panel shows a waveform from\cite{abdikamalov2014measuring}. 
-The progenitor is $12\text{M}_\odot$ with differential rotation parameter $A=300\text{km}$. 
-The initial angular velocity at the core $\Omega_c$ is $8.5\text{rads/s}$.
-The middle panel shows that from \cite{dimmelmeier2008gravitational}.
-The simulation is done assuming a progenitor of $15\text{M}_\odot$ with $A=50$km and $\Omega_c = 1.91\text{rads/s}$.
-The panel in the bottom shows a waveform from \cite{richers2017equation}. For this simulation, the progenitor is $12\text{M}_\odot$,  $A$ and $\Omega_c$ are $10000$km and $0.5\text{rad/s}$ respectively.
-In all panels, only the $h+$ polarisations are shown because the simulations are axis-symmetric or 2D, and described by only one polarisation. 
-The sources are assumed to be at $10$ kpc from earth. The time is not related to the time at core bounce.
-\label{fig:magwaveforms}}
+\caption{Examples of simulated waveforms used in the work for which the
+explosion mechanism is magnetorotational mechanism.  The top panel shows a
+waveform from~\cite{abdikamalov2014measuring}. The progenitor is
+$12\text{M}_\odot$ with differential rotation parameter $A=300\text{km}$. The
+initial angular velocity at the core $\Omega_c$ is $8.5\text{rads/s}$. The
+middle panel shows a waveform from~\cite{dimmelmeier2008gravitational}. The
+simulation corresponds to a progenitor of $15\text{M}_\odot$ with $A=50$km and
+$\Omega_c = 1.91\text{rads/s}$.  The lower panel shows a waveform
+from~\cite{richers2017equation} where the progenitor is $12\text{M}_\odot$, $A$
+and $\Omega_c$ are $10000$km and $0.5\text{rad/s}$ respectively. In all panels,
+only the $h_{+}$ polarisations are shown because the simulations are
+axis-symmetric or 2D, and therefore described by only one polarisation.  The
+sources are assumed to be at a distance of $10$ kpc. The time is not related to
+the time at core bounce~\cm{then what is the time in reference to? Also, these
+plots are too small and squashed. The text is certainly too small to be
+readable and they should all have equal y and x-axis scales for comparison.}.
+\label{fig:magwaveforms}} 
 \end{figure}
+
+
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{neu_waveforms.png}
 \caption{Examples of simulated waveforms used in the work for which the explosion mechanism is neutrino-driven mechanism.
@@ -533,6 +732,8 @@ Network            & Detectors                & Acronym                 \\
 \end{threeparttable}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Result and discussion}\label{sec:result}
 After the \ac{CNN} is trained, we can estimate its performance using the testing samples.
 The results are presented in this section.

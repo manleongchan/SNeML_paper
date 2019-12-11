@@ -882,110 +882,168 @@ Network            & Detectors                & Acronym                 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Result and discussion}\label{sec:result}
-After the \ac{CNN} is trained, we can estimate its performance using the testing samples.
-The results are presented in this section.
-One of the most used and convenient ways to determine the classifying performance of a model is to plot the \ac{ROC} curve.
-A \ac{ROC} shows the performance of a classifying model by showing the \ac{TAP} at a given \ac{FAP}. 
-Since \ac{ROC} is usually plotted for model distinguishing two classes, 
-for a multi-class classification problem, 
-a \ac{ROC} for a class should be viewed as the class versus the others.
-This means in this context, \ac{FAP} means the fraction of samples from other 
-classes misidentified as a sample from the class the \ac{ROC} is associated with.
-\ac{TAP} is identical to that of two-class classification problem and indicates the fraction of samples correctly identified.
-For a given \ac{FAP}, a model with a higher \ac{TAP} is considered more capable than a model with a lower \ac{TAP}.
-In Figure \ref{fig:ROClog}, we show the \acp{ROC} for both the mechanisms and \ac{GW} detector networks tested in this work. 
-For simplicity, we show only the results for three distances, namely, $20$, $60$ and $100$ kpc.
+%
+% Introduction to the ROC results
+%
+After the \ac{CNN} is trained, we can estimate its performance using the
+testing samples~\cm{what about the validation samples? These haven't been
+motivated yet.} and the results of which are presented in this section. One of
+the most commonly used and convenient ways to determine the classification
+performance of a \ac{CNN} or equivelent signal detection algorithm is to plot
+the \ac{ROC} curve. A \ac{ROC} shows the performance of a classifying model by
+defining the \ac{TAP} as a function of the \ac{FAP}. Since \ac{ROC} curves are
+usually plotted for models distinguishing between two classes, for a
+multi-class classification problem, a \ac{ROC} for a class should be viewed as
+the class versus the others. This means in this context, \ac{FAP} means the
+fraction of samples from other classes misidentified as a sample from the class
+the \ac{ROC} is associated with. The \ac{TAP} is identical to that of a
+two-class classification problem and indicates the fraction of samples
+correctly identified.  For a given \ac{FAP}, a model with a higher \ac{TAP} is
+considered more capable than a model with a lower \ac{TAP}~\cm{it appears to me
+that you haven't actually defined what your classification statistic is. Can
+you make sure that the reader understands that how you go from the output of
+the final sigmoid layer to making ROC curves. You have to define a detction
+statistic.}. 
+
+%
+% describe ROC curve plots (Fig 5)
+%
+In Fig.~\ref{fig:ROClog}, we show the \acp{ROC} for both of the \ac{CCSN}
+mechanisms and \ac{GW} detector networks tested in this work. For simplicity,
+we show only the results for three distances, namely, $20$, $60$ and $100$ kpc.
+For all the distances tested, the \ac{CNN} achieves a higher \ac{TAP} for any
+given \acp{FAP} for magnetorotational than neutrino-driven signals.  That is
+not surprising as the intrinsic amplitudes for magnetorotational signals are
+higher than those of neutrino-driven signals~\cm{maybe a bit more description?
+Maybe give some detection probabilities at standard FAP values in the text?}.
+
 \begin{figure*}
      \begin{center}
-%
-        \subfigure[]{%
-            \label{fig:ROClog1}%
+        \subfigure[]{
+            \label{fig:ROClog1}
             \includegraphics[width=0.45\textwidth]{ROC_curves_neutrino.png}%
         }\quad
-        \subfigure[]{%
+        \subfigure[]{
             \label{fig:ROClog2}
             \includegraphics[width=0.45\textwidth]{ROC_curves_mag.png}%
-        }%
-%
+        }
     \end{center}
-    \caption{ROC curves showing the classification performance of the \ac{CNN} for \ac{CCSN} signals of different explosion mechanisms at three distances, $20$, $60$, and $100$kpc.
-The left panel shows the results for the neutrino-driven mechanism, while the panel on the right shows those for the magnetorotational mechanism.
-In both panels, the solid lines are for the network H+L+VK, while the dashed lines are for HLVK.
-\label{fig:ROClog}}%
+    \caption{\ac{ROC} curves showing the classification performance of the
+\ac{CNN} for \ac{CCSN} signals of different explosion mechanisms at three
+distances, $20$, $60$, and $100$kpc. The left panel shows the results for the
+neutrino-driven mechanism, while the panel on the right shows those for the
+magnetorotational mechanism. In both panels, the solid lines are for the
+network H+L+VK, while the dashed lines are for HLVK.~\cm{please make these
+plots square with equal length sides. Also add a diagonal line to indicate the
+worst performance bound. Also make the y-axis scales the same for both plots or
+at least highlight the fact that they are different in the text since it is
+initially misleading. The legends don't need to have both solid and dashed
+lines. Also add sub-labels indicateing that the left is magneto and the right
+is neutrino.}\label{fig:ROClog}} 
 \end{figure*}
-For all the distances tested, the \ac{CNN} achieves a higher \ac{TAP} for any given \acp{FAP} 
-for magnetorotational than neutrino-driven signals.
-That is not surprising as the amplitudes for magnetorotational signals are higher than that of neutrino-driven signals.
 
-We can also show the classification efficiency of the \ac{CNN}  as a function of distance.
-This is done by fixing the \ac{FAP} and plotting the \ac{TAP}. 
-The results for three chosen \acp{FAP} are shown in Figure \ref{fig:eff}.
+%
+% discuss the accuracy as a function of distance (Fig 6)
+%
+We also show the classification efficiency of the \ac{CNN}  as a function of
+distance.  This is done by fixing the \ac{FAP} and plotting the \ac{TAP}.  The
+results for three chosen \acp{FAP} values are shown in Fig.~\ref{fig:eff}.  In
+this figure, a similar trend is seen that magnetorotational signals are easier
+for the \ac{CNN} to identify than neutrino-driven signals at a given distance.
+For magnetorotational signals from sources located at $50$ kpc and a \ac{FAP}
+of $0.1$, the \ac{CNN} achieves a \ac{TAP} of $94\%$ and $82\%$ for the
+networks H+L+VK and HLVK respectively. At more restrict \acp{FAP} such as
+$0.001$, the \ac{CNN} still achieves \acp{TAP} $86\%$ and $68\%$ for sources at
+the same distance for the two networks respectively.  For sources that are
+located at a slightly further distance of $60$ kpc, both networks achieve a
+\ac{TAP} of close to or larger than $80\%$ at a \ac{FAP} of $0.1$. Such a range
+includes distances associated with the Large and Small Magellanic Clouds and
+covers the satellite galaxies imbetween~\cite{karachentsev2004catalog,
+belokurov2007cats}.  For sources at $100$ kpc, the \acp{TAP} are close to or
+larger than $60\%$ for H+L+VK for all chosen \acp{FAP} values, and is $73\%$ if
+the \ac{FAP} is $0.1$. Even for sources at $150$ and $200$ kpc, the \acp{TAP}
+are $54\%$ and $38\%$ respectively for the same \ac{FAP}, indicating that with
+such a \ac{GW} network, it is possible to detect magnetorotational \ac{CCSN}
+signals out to such a distance. On the other hand, it is more difficult for the
+\ac{CNN} to detect and classify the neutrino-driven signals, due to their
+weaker amplitudes. Nonetheless, for sources at $10$ kpc, the \ac{CNN} achieves
+a \ac{TAP} of $76\%$ and $55\%$ for H+L+VK and HLVK respectively if the
+\ac{FAP} is $0.1$.  This means that for a \ac{GW} from a Galactic \ac{CCSN}
+signal it is possible to detect and classify it with either of these \ac{GW}
+detcetor networks.
+
+%
+% the TAP as a function of distance
+%
 \begin{figure*}
      \begin{center}
-%
-        \subfigure[]{%
-            \label{fig:eff1}%
-            \includegraphics[width=0.45\textwidth]{Neutrino_efficiency.png}%
+        \subfigure[]{
+            \label{fig:eff1}
+            \includegraphics[width=0.45\textwidth]{Neutrino_efficiency.png}
         }\quad
-        \subfigure[]{%
+        \subfigure[]{
             \label{fig:eff2}
-            \includegraphics[width=0.45\textwidth]{Magnetarotational_efficiency.png}%
-        }%
-%
+            \includegraphics[width=0.45\textwidth]{Magnetarotational_efficiency.png}
+        }
     \end{center}
-    \caption{Efficiency curves showing the classification ability of the \ac{CNN} as a function of distance for both mechanisms and networks.
-The left panel shows the results for the neutrino-driven mechanism, while the right shows those for the magnetorotational mechanism. 
-In both panels, the solid lines show the results for the network H+L+VK, and the dashed lines for HLVK.
-Three \acp{FAP} are chosen, i.e.: blue for \ac{FAP} $=0.1$, green for \ac{FAP} $=0.01$, red for \ac{FAP} $=0.001$.
-\label{fig:eff}}%
-\end{figure*}
-In this figure, a similar trend is seen that magnetorotational signals are easier for the \ac{CNN} to identify than neutrino-driven signals at any distance. 
-For magnetorotational signals from sources located at $50$ kpc and a \ac{FAP} of $0.1$, 
-the \ac{CNN} achieves a \ac{TAP} of $94\%$ and $82\%$ for the networks H+L+VK and HLVK respectively.
-At more restrict \acp{FAP} such as $0.001$, the \ac{CNN} still achieves \acp{TAP} $86\%$ and $68\%$ for sources at the same distance for the two networks respectively.
-For sources that are located at a slightly further distance of $60$ kpc, both networks achieve a \ac{TAP} of close to or larger than $80\%$ at a \ac{FAP} of $0.1$.  
-Such a range is well into the Large and Small Magellanic Clouds and covers the satellite galaxies in between\cite{karachentsev2004catalog, belokurov2007cats}.
-For sources at $100$ kpc, the \acp{TAP} are close to or larger than $60\%$ for H+L+VK for all chosen \acp{FAP}, and is $73\%$ if the \ac{FAP} is $0.1$.  
-Even for sources at $150$ and $200$ kpc, the \acp{TAP} are $54\%$ and $38\%$ respectively for the same \ac{FAP}, indicating that with such a \ac{GW} network,
-it is possible to detect magnetorotational \ac{CCSN} signals out to such a distance.
-On the other hand, it is more difficult for the \ac{CNN} to detect and classify the neutrino-driven signals, due to their weaker amplitudes.
-Nonetheless, for sources at $10$ kpc,
-the \ac{CNN} achieves a \ac{TAP} of $76\%$ and $55\%$ for H+L+VK and HLVK respectively if the \ac{FAP} is $0.1$.
-This means that the \ac{GW} from a Galactic \ac{CCSN} signal is possible to be detected and classified with either of these networks.
-\begin{figure*}
-     \begin{center}
-%
-        \subfigure[]{%
-            \label{fig:ROCfixed1}%
-            \includegraphics[width=0.45\textwidth]{ROC_fixed_neutrino.png}%
-        }\quad
-        \subfigure[]{%
-            \label{fig:ROCfixed2}
-            \includegraphics[width=0.45\textwidth]{ROC_fixed_mag.png}%
-        }%
-%
-    \end{center}
-    \caption{Efficiency curves showing the ability of the \ac{CNN} in distinguishing input data with a fixed decision threshold(0.5), and their corresponding \acp{FAP}.
-    The left panel shows the results for the neutrino-driven mechanism, and the right shows that for the magnetorotational mechanism.
-    In both panels, the solid lines show the \acp{TAP} and \acp{FAP} for the network H+L+VK, and the dashed lines show those for HLVK.  
-\label{fig:ROCfixed}}%
+    \caption{Efficiency curves showing the classification ability of the
+\ac{CNN} as a function of distance for both mechanisms and networks.  The left
+panel shows the results for the neutrino-driven mechanism, while the right
+shows those for the magnetorotational mechanism. In both panels, the solid
+lines show the results for the network H+L+VK, and the dashed lines for HLVK.
+Three \acp{FAP} values are chosen, blue for \ac{FAP} $=0.1$, green for \ac{FAP}
+$=0.01$, red for \ac{FAP} $=0.001$.\label{fig:eff}}
 \end{figure*}
 
-In practice, since the output of a \ac{CNN} is probabilities indicating how likely the input belongs to each of the classes, 
-it may be desired to set a threshold on which the decision whether the input belong to a class is made.
-For example, an input will be classified into a class if the corresponding probability is larger than the pre-selected threshold.
-In such a scenario, the \ac{FAP} and \ac{TAP} would be affected by the choice of the threshold.
-We show such a result in Figure \ref{fig:ROCfixed}, where we employed a threshold of $0.5$. 
-For H+L+VK and magnetorotational signals at $10$ kpc, the \ac{TAP} is $99\%$. 
-If the distance is extended to $80$ kpc, the \ac{TAP} is still close to $80\%$.
-For the largest distances tested in this work, $150$ and $200$ kpc, the \acp{TAP} are $43\%$ and $29\%$ respectively.
-For HLVK, the \ac{TAP} is $98\%$ and $49\%$ for sources at $10$ and $80$ kpc respectively.
+%
+% the TAP vs distance plot for fixed threshold
+%
+\begin{figure*}
+     \begin{center}
+        \subfigure[]{
+            \label{fig:ROCfixed1}
+            \includegraphics[width=0.45\textwidth]{ROC_fixed_neutrino.png}
+        }\quad
+        \subfigure[]{
+            \label{fig:ROCfixed2}
+            \includegraphics[width=0.45\textwidth]{ROC_fixed_mag.png}
+        }
+    \end{center}
+    \caption{Efficiency curves showing the ability of the \ac{CNN} in
+distinguishing input data with a fixed decision threshold $(0.5)$~\cm{what is
+this? Is it defined in the text?}, and their corresponding \acp{FAP}~\cm{and
+TAP?}. The left panel shows the results for the neutrino-driven mechanism, and
+the right shows that for the magnetorotational mechanism. In both panels, the
+solid lines show the \acp{TAP} and \acp{FAP} for the network H+L+VK, and the
+dashed lines show those for HLVK.\label{fig:ROCfixed}}
+\end{figure*}
+
+In practice, since the output of a \ac{CNN} is probabilities indicating how
+likely the input belongs to each of the classes, it may be desired to set a
+threshold on which the decision whether the input belong to a class is made.
+For example, an input will be assigned into a certain class if the
+corresponding probability is larger than the pre-selected threshold. In such a
+scenario, the \ac{FAP} and \ac{TAP} would be affected by the choice of the
+threshold. We show such a result in Fig.~\ref{fig:ROCfixed}, where we employed
+a threshold of $0.5$~\cm{I'm a bit confused. You have 3 classes so how exactly
+are you doing this analysis? You mentioned before that you are treating one
+class vs the remainder but when you talk about magneto does that mean that the
+other model is noise AND neutrino. That would be strange.}. For H+L+VK and
+magnetorotational signals at $10$ kpc, the \ac{TAP} is $99\%$. If the distance
+is extended to $80$ kpc, the \ac{TAP} is still close to $80\%$.  For the
+largest distances tested in this work, $150$ and $200$ kpc, the \acp{TAP} are
+$43\%$ and $29\%$ respectively~\cm{these numbers don't seem to match the
+plot.}. For HLVK, the \ac{TAP} is $98\%$ and $49\%$ for sources at $10$ and
+$80$ kpc respectively.
 %The \acp{TAP} decrease to $10\%$ and $9\%$ for sources at $150$ and $200$ kpc.
-Throughout the distances, the \ac{CNN} maintains a \ac{FAP} no larger than $0.04$ for both networks.
-For neutrino-driven signals, it is shown that H+L+VK has a \acp{TAP} of $66\%$ at $10$ kpc while it is $55\%$ at $10$ kpc for HLVK.
-Both of the networks have \acp{FAP} close to or less than $0.2$.
-It should be noted that the results presented here are averaged over all the data samples in the testing samples.
-The performance on any individual waveform may vary depending on the morphology and the amplitudes of the waveform.
+For all distances, the \ac{CNN} maintains a \ac{FAP} no larger than $0.04$ for
+both networks regarding magnetorotational waveforms. For neutrino-driven
+signals, we show that H+L+VK has a \acp{TAP} of $66\%$ at $10$ kpc while it
+is $55\%$ at $10$ kpc for HLVK.  Both of the networks have \acp{FAP} close to
+or less than $0.2$. It should be noted that the results presented here are
+averaged over all the data samples in the testing samples. The performance on
+any individual waveform may vary depending on the morphology and the amplitudes
+of the waveform.
 
 %Also shown in this figure is a curve showing the \ac{TAP} for all the classes, defined by,
 %\begin{equation}\label{eq:TAPforall}
@@ -994,95 +1052,158 @@ The performance on any individual waveform may vary depending on the morphology 
 %This curve provides an overall estimate of the fraction of input that the \ac{CNN} will correctly classify.
 %Unsurprisingly, this curve resides between the lines for magnetorotational and neutrino-driven signals.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Waveforms Excluded from Training}\label{sec:unseen}
-The above section proves that using a \ac{CNN}, it is possible to detect and classify \ac{CCSN} waveforms 
-if the waveforms have been used to train the \ac{CNN}. 
-However, in reality, it is likely that the \acp{GW} from a \ac{CCSN} may only be partially similar to the simulated waveforms, 
-while having some other features that are different or even unexpected. 
-A \ac{CNN} that is only capable of recognising waveforms with which it is familiar may prove to be not entirely applicable.
-Therefore, we apply our trained \ac{CNN} to waveforms from other studies that were not used during the training.
-Similar to what was done in \cite{roma2019astrophysics}, 
-we take the waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ from \cite{scheidegger2010influence} as the test waveforms for the magnetorotational mechanism.
-The test waveforms for the neutrino-driven mechanisms are $\text{s}20$ from \cite{andresen2017gravitational} and $\text{SFHx}$ from \cite{kuroda2016new}.
-The waveforms are shown in Figure \ref{fig:Extratestwaveform}.
-The test waveforms in this section should not be confused with the testing samples in section \ref{sec:result}, 
-which are randomly drawn from the same distribution as the training samples.
+%
+% introduce the issue of test samples from different families
+%
+The previous section proves that using a \ac{CNN}, it is possible to detect and
+classify \ac{CCSN} waveforms if appropriate waveforms have been used to train
+the \ac{CNN}. However, in reality, it is likely that the \acp{GW} from a
+\ac{CCSN} may only be partially similar to the simulated waveforms, while
+having some other features that are different or even unexpected. A \ac{CNN}
+that is only capable of recognising waveforms with which it is familiar may
+prove to be not be entirely applicable. Therefore, we apply our trained
+\ac{CNN} to waveforms from other studies that were not used during the
+training. Similar to the procedure used in~\cite{roma2019astrophysics}, we take
+the waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
+from~\cite{scheidegger2010influence} as the test waveforms for the
+magnetorotational mechanism. The test waveforms for the neutrino-driven
+mechanisms are $\text{s}20$ from~\cite{andresen2017gravitational} and
+$\text{SFHx}$ from~\cite{kuroda2016new}. Examples of these waveforms are shown
+in Fig.~\ref{fig:Extratestwaveform}. The test waveforms in this section should
+not be confused with the testing samples in Sec.~\ref{sec:result}, which are
+randomly drawn from the same distribution as the training samples.
+
+%
+% plots of extra test waveforms
+%
 \begin{figure}
      \begin{center}
-%
-        \subfigure[]{%
-            \label{fig:ex_waveform_neu}%
-            \includegraphics[width=0.45\textwidth]{ex_waveform_neu.png}%
+        \subfigure[]{
+            \label{fig:ex_waveform_neu}
+            \includegraphics[width=0.45\textwidth]{ex_waveform_neu.png}
         }\quad
-        \subfigure[]{%
+        \subfigure[]{
             \label{fig:ex_waveform_mag}
-            \includegraphics[width=0.45\textwidth]{ex_waveform_mag.png}%
-        }%
-%
+            \includegraphics[width=0.45\textwidth]{ex_waveform_mag.png}
+        }
     \end{center}
-    \caption{The waveforms excluded from the training session of the \ac{CNN} and used as an extra test for the performance of the \ac{CNN}.
-    From the top to the bottom, the waveforms shown are $\text{SFHx}$, $\text{s}20$(neutrino-driven mechanism), 
-    $\text{R3E1AC}$ and $\text{R4E1FC\_L}$(magnetorotational mechanism), respectively. 
-    The time in the x-axis is not related to core bounce.
-\label{fig:Extratestwaveform}}%
+    \caption{The waveforms excluded from the training session of the \ac{CNN}
+and used as an extra test for the performance of the trained \ac{CNN}. From the
+top to the bottom, the waveforms shown are $\text{SFHx}$, $\text{s}20$
+(neutrino-driven mechanism), $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
+(magnetorotational mechanism), respectively. The time in the x-axis is not
+related to core bounce~\cm{again, why state this (same comment as for Fig.
+2}.\label{fig:Extratestwaveform}} 
 \end{figure}
+
+%
+% 
+%
 \begin{figure}
      \begin{center}
-%
-        \subfigure[]{%
-            \label{fig:extra_waveform_test_neu}%
-            \includegraphics[width=0.45\textwidth]{extra_neu_waveform_test.png}%
+        \subfigure[]{
+            \label{fig:extra_waveform_test_neu}
+            \includegraphics[width=0.45\textwidth]{extra_neu_waveform_test.png}
         }\quad
-        \subfigure[]{%
+        \subfigure[]{
             \label{fig:extra_waveform_test_mag}
-            \includegraphics[width=0.45\textwidth]{extra_mag_waveform_test.png}%
-        }%
-%
+            \includegraphics[width=0.45\textwidth]{extra_mag_waveform_test.png}
+        }
     \end{center}
-    \caption{Efficiency curves showing the ability of the \ac{CNN} in distinguishing input data.
-    The upper panel shows the results for the the waveforms $\text{SFHx}$ and $\text{s}20$ (neutrino-driven mechanism), 
-    and the lower panel shows that for the waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ (the magnetorotational mechanism).
-    In both panels, the solid lines show the \acp{TAP} and \acp{FAP} for H+L+VK, and the dashed lines show those for HLVK.  
-    The waveforms have not been used for the training of the \ac{CNN}.
-\label{fig:Extratest}}%
+    \caption{Efficiency curves showing the ability of the \ac{CNN} in
+distinguishing input data.  The upper panel shows the results for the the
+waveforms $\text{SFHx}$ and $\text{s}20$ (neutrino-driven mechanism), and the
+lower panel shows that for the waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
+(the magnetorotational mechanism).  In both panels, the solid lines show the
+\acp{TAP} and \acp{FAP} for H+L+VK, and the dashed lines show those for HLVK.
+The waveforms have not been used for the training of the \ac{CNN}.
+\label{fig:Extratest}}
 \end{figure}
-Using the procedure described in section \ref{sec:spwf}, we generate $1200$ injections for each distance and each class has around 400 injections.
-The performance of the \ac{CNN} on the test waveforms are shown in Figure \ref{fig:Extratest}.
-For waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ at $50$kpc and a \ac{FAP} of $0.1$, the \ac{CNN} achieves a \ac{TAP} of $87\%$ with H+L+VK and $59\%$ with HLVK respectively.
-At $60$kpc, the \acp{TAP} drop slightly to $83\%$ and $52\%$ respectively.
-This indicates that with the \ac{CNN}, it is possible to detect these waveforms from sources that are well into the Large and Small Magellanic Clouds.
-For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and $70\%$ for the two networks if the sources are at $10$kpc and the \ac{FAP} is $0.1$. 
-The efficiency for the waveforms $\text{s}20$ and $\text{SFHx}$ is noticeably higher than that for the neutrino-driven mechanism in Figure \ref{fig:eff} for the same distance.
-This is because as mentioned before, the detection and classification efficiency in Figure \ref{fig:eff} are the results averaged over the testing samples.
-It is possible that individual waveforms may be easier for the \ac{CNN} to detect. The results indicate that the \ac{CNN} has generalised the features of the explosion mechanisms.
+
+%
+% the new test waveofmr procedure
+%
+Using the procedure described in Sec.~\ref{sec:spwf}, we generate $1200$
+injections~\cm{injections is jargon. Use the same terminolgy as used in the
+rest of the paper} for each distance and therefore each class has $\sim 400$
+injections. The performance of the \ac{CNN} on the test waveforms is shown in
+Fig.~\ref{fig:Extratest}. For waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
+at $50$kpc and a \ac{FAP} of $0.1$, the \ac{CNN} achieves a \ac{TAP} of $87\%$
+with H+L+VK and $59\%$ with HLVK respectively. At $60$kpc, the \acp{TAP} drops
+slightly to $83\%$ and $52\%$ respectively. This indicates that with the
+\ac{CNN}, it is possible to detect these waveforms from sources that are at
+distances consistent with the Large and Small Magellanic Clouds. For waveforms
+$\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and $70\%$ for the two
+networks if the sources are at $10$kpc and the \ac{FAP} is $0.1$.  The
+efficiency for the waveforms $\text{s}20$ and $\text{SFHx}$ is noticeably
+higher than that for the neutrino-driven mechanism in Fig.~\ref{fig:eff} for
+the same distance. This is because as mentioned before, the detection and
+classification efficiency in Fig.~\ref{fig:eff} are the results averaged over
+the testing samples. It is possible that individual waveforms may be easier for
+the \ac{CNN} to detect and the results here also indicate that the \ac{CNN} has
+generalised the features of the explosion mechanisms.~\cm{this last statement
+is very vague and needs clarification. What are features? and what does
+generalisation mean in this context?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}\label{sec:conclusion}
-We have demonstrated a \ac{CNN} can be applied for the purpose of distinguishing \ac{GW} detector time series 
-among pure background noise and \ac{CCSN} explosion mechanisms. 
-We trained the \ac{CNN} using $1.8\times10^{5}$ samples of simulated time series for each distance in a number of distances from $10$kpc to $200$kpc.
-The data samples for each classes consisted of approximately $4\times10^5$ samples. 
+%
+% overall main message
+%
+We have demonstrated that a \ac{CNN} can be applied for the purpose of
+distinguishing \ac{GW} detector time-series among pure background noise and
+\ac{CCSN} explosion mechanisms. We have trained the \ac{CNN} using
+$1.8\times10^{5}$ samples of simulated time series for each distance at a
+number of distances from $10$kpc to $200$kpc. The data samples for each
+class consisted of approximately $4\times10^5$ samples. 
 
-We have shown that with a network of HLVK, when the \ac{FAP} was $0.1$, once trained, a \ac{CNN} could achieve a \ac{TAP} close to $80\%$
-for magnetorotational signals from sources at $60$ kpc. 
-Using a network of H+L+VK, we showed that the \ac{TAP} could be even more promising at $91\%$. Both the Large and Small Magellanic Clouds are within this distance.
-If the distance is extended to $150$ or $200$ kpc, a \ac{TAP} of $54\%$ or $38\%$ 
-respectively are still achievable for H+L+VK, indicating the possibility of detections within such distances. 
+%
+% Primary magneto results
+%
+We have shown that with a \ac{GW} detector network of HLVK, when the \ac{FAP}
+was $0.1$, once trained, a \ac{CNN} could achieve a \ac{TAP} close to $80\%$
+for magnetorotational signals from sources at $60$ kpc. Using a network of
+H+L+VK, we showed that the \ac{TAP} is imcreased to $91\%$.  Both the Large and
+Small Magellanic Clouds are within this distance. If the distance is extended
+to $150$ or $200$ kpc, a \ac{TAP} of $54\%$ or $38\%$ respectively are still
+achievable for H+L+VK, indicating the small possibility of detections within
+such distances. 
 
-For the neutrino-driven mechanism, the weaker amplitudes of the waveforms result in lower \acp{TAP} at the same distances.
-For sources at $10$kpc, the trained \ac{CNN}, with a \ac{FAP} of $0.1$, achieved a \ac{TAP} of $55\%$ and $76\%$ for HLVK and H+L+VK respectively.
-This indicates a Galactic \ac{CCSN} event is likely to be detectable.
+%
+% not so good neutrino results
+%
+For the neutrino-driven mechanism, the weaker amplitudes of the waveforms
+result in lower \acp{TAP} at the same distances.  For sources at $10$kpc, the
+trained \ac{CNN}, with a \ac{FAP} of $0.1$, achieved a \ac{TAP} of $55\%$ and
+$76\%$ for HLVK and H+L+VK respectively. This indicates a Galactic \ac{CCSN}
+event would likely be detectable.
 
-We used four waveforms that were not used for the training of the \ac{CNN} to test the performance of the \ac{CNN} in a more realistic situation.
-We found that for waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ from sources at $60$kpc, the \acp{TAP} are $83\%$ and $52\%$ for H+L+VK and HLVK respectively.
-For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and $70\%$ for the two networks respectively.
-The results prove the possibility of using \ac{CNN} for the detection and classification of \ac{CCSN} \ac{GW} signals.
-\\
+%
+% statement about out of treaining data extra test samples
+%
+We used four waveforms that were not used for the training of the \ac{CNN} to
+test the performance of the \ac{CNN} in a more realistic situation. We found
+that for waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ from sources at
+$60$kpc, the \acp{TAP} are $83\%$ and $52\%$ for H+L+VK and HLVK respectively.
+For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and
+$70\%$ for the two networks respectively. The results prove the possibility of
+using a \ac{CNN} as a tool for the detection and classification of \ac{CCSN}
+\ac{GW} signals.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGEMENTS}
-I.S.H. and C.M. are supported by
-the Science and Technology Research Council (grant No.
-ST/L000946/1) and the European Cooperation in
-Science and Technology (COST) action CA17137. 
+%
+%
+%
+I.S.H. and C.M. are supported by the Science and Technology Research Council
+(grant No.~ST/L000946/1) and the European Cooperation in Science and
+Technology (COST) action CA17137. 
+
 \bibliography{main}
-
-
 
 \end{document}

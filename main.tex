@@ -363,6 +363,9 @@ layers, and $3$ fully connected layers. The exact architecture of the \ac{CNN}
 is shown in Table~\ref{table:architecture} and illustrated in
 Fig.~\ref{fig:CNN}.
 
+%
+% table of CNN hyper-parameters
+%
 \begin{table}[]
 \centering
 \begin{threeparttable}
@@ -494,6 +497,9 @@ shown in Table~\ref{table:waveforms}. Examples of the simulated waveforms for
 both mechanisms are shown in Figs.~\ref{fig:magwaveforms} and
 \ref{fig:neuwaveforms}.
 
+%
+% table of simulation paramaters
+%
 \begin{table}[]
 \centering
 \begin{threeparttable}
@@ -544,16 +550,19 @@ No. means the number of waveforms available from the study.}
 %which cover both 2D simulations with masses of $15M_{\odot}$\cite{ott2009gravitational}, 
 %and $12, 15, 20$ and $40M_{\odot}$\cite{murphy2009model}, and 3D simulations for a progenitor of $27M_{\odot}$\cite{ott2013general}.$26$ 
 
+%
+% plot of example magneto waveforms
+%
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{mag_waveforms.png}
-\caption{Examples of simulated waveforms used in the work for which the
-explosion mechanism is magnetorotational mechanism.  The top panel shows a
-waveform from~\cite{abdikamalov2014measuring}. The progenitor is
-$12\text{M}_\odot$ with differential rotation parameter $A=300\text{km}$. The
-initial angular velocity at the core $\Omega_c$ is $8.5\text{rads/s}$. The
-middle panel shows a waveform from~\cite{dimmelmeier2008gravitational}. The
-simulation corresponds to a progenitor of $15\text{M}_\odot$ with $A=50$km and
-$\Omega_c = 1.91\text{rads/s}$.  The lower panel shows a waveform
+\caption{Examples of simulated waveforms for which the explosion is modeled by
+the magnetorotational mechanism. The top panel shows a waveform
+from~\cite{abdikamalov2014measuring}. The progenitor is $12\text{M}_\odot$ with
+differential rotation parameter $A=300\text{km}$. The initial angular velocity
+at the core $\Omega_c$ is $8.5\text{rads/s}$. The middle panel shows a waveform
+from~\cite{dimmelmeier2008gravitational}. The simulation corresponds to a
+progenitor of $15\text{M}_\odot$ with $A=50$km and $\Omega_c =
+1.91\text{rads/s}$.  The lower panel shows a waveform
 from~\cite{richers2017equation} where the progenitor is $12\text{M}_\odot$, $A$
 and $\Omega_c$ are $10000$km and $0.5\text{rad/s}$ respectively. In all panels,
 only the $h_{+}$ polarisations are shown because the simulations are
@@ -565,61 +574,120 @@ readable and they should all have equal y and x-axis scales for comparison.}.
 \label{fig:magwaveforms}} 
 \end{figure}
 
-
+%
+% plot of example neutrino waveforms
+%
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{neu_waveforms.png}
-\caption{Examples of simulated waveforms used in the work for which the explosion mechanism is neutrino-driven mechanism.
-From the top to the bottom, the panels show waveforms from\cite{10.1093mnrasstz990, murphy2009model, radice2019characterizing}, with progenitors of masses equal to $15\text{M}_\odot$,
-$15\text{M}_\odot$ and $60\text{M}_\odot$ respectively. 
-The sources are assumed to be at $10$ kpc from earth. The time is not related to the time at core bounce.
+\caption{Examples of simulated waveforms for which the explosion mechanism is
+modeled by the neutrino-driven mechanism. From the top to the bottom, the
+panels show waveforms from~\cite{10.1093mnrasstz990, murphy2009model,
+radice2019characterizing}, with progenitors of masses equal to
+$15\text{M}_\odot$, $15\text{M}_\odot$ and $60\text{M}_\odot$ respectively.
+The sources are assumed to be at $10$ kpc from earth. The time is not related
+to the time at core bounce.~\cm{then what is the time in reference to? Also, these
+plots are too small and squashed. The text is certainly too small to be
+readable and they should all have equal y and x-axis scales for comparison. Why
+does the x-axis extend to longer than the longest waveform?}
 \label{fig:neuwaveforms}}
 \end{figure}
-Introducing waveforms from a variety of studies essentially introduces a distribution of the waveforms that covers a larger parameter space, 
-making the data samples harder for the \ac{CNN} to learn.
-As a result, the performance of the trained \ac{CNN} on the testing samples 
-may appear to be worse than that if the data were generated using only a subset of the waveforms.
-However, a larger parameter space provides the advantage of forcing the \ac{CNN} to 
-learn the features common among the waveforms, rather than a subset of the waveforms.
-The trained network can thus perform better when facing waveforms with unexpected features, which is more likely in reality.
 
-Since the waveforms are generated at various distances, sampling rates and durations, 
-it is necessary to normalise the waveforms before they can be used for the generation of the time series.
-To do this, we first scale the amplitudes of the waveforms by moving the sources to $10$ kpc from earth.
-We then ensure that the sampling rate are identical for all the waveforms by down sampling 
-them to a pre-selected sampling rate (e.g., $4096$Hz).
-The longest duration $\tau$ among the waveforms is then identified and each of the remaining waveforms is padded with zeros
-to this duration.
-To introduce as less artefact as possible, a high pass filter with a low cut-off frequency equal to $11$Hz 
+%
+% discuss the reason of using multiple waveform families
+%
+Introducing waveforms from a variety of studies introduces a distribution of
+the waveforms that covers a larger parameter space, making the data samples
+harder for the \ac{CNN} to learn. As a result, the performance of the trained
+\ac{CNN} on the testing samples may appear to be worse than that if the data
+were generated using only a subset of the waveforms. However, a larger
+parameter space provides the advantage of forcing the \ac{CNN} to learn the
+features common among the waveforms rather than simply a subset of the
+waveforms.  The trained network can thus perform better when presented with
+waveforms with unexpected features, which is more likely in reality.
+
+%
+% describe data pre-processing
+%
+Since the waveforms are generated at various distances, sampling rates and
+durations, it is necessary to normalise the waveforms before they can be used
+for the generation of the time-series. To do this, we first scale the
+amplitudes of the waveforms by moving the sources to $10$ kpc from earth. We
+then ensure that the sampling rate are identical for all the waveforms by down
+sampling them to a pre-selected sampling rate (e.g., $4096$Hz~\cm{e.g. means
+for example, is this an example rate or is it THE rate?}). The longest duration
+$\tau$ among the waveforms is then identified and each of the remaining
+waveforms is padded with zeros to this duration. To introduce as few artefacts
+as possible, a high pass filter with a low cut-off frequency equal to $11$Hz
 and a tukey window ($\alpha = 0.08$) are applied prior to the zero padding. 
-To balance the difference in the number of waveforms 
-between the two mechanisms in the final data set, $36$ copies of each neutrino-driven waveform are duplicated.
-After this procedure, the simulated 
-waveforms are then $\bold{S}(t) = \{\bold{s}_{1}(t), \bold{s}_{2}(t), ..., \bold{s}_{m}(t)\}$, where $m$ is the number of the waveforms and 
-$\bold{s}_{q}$ is the $q^{\text{th}}$ waveform, defined by,
-\begin{equation}\label{eq:ht}
- \bold{s}_q(t) = \left(\begin{array}{c}
-                        h_q^+(t) \\
-                        h_q^\times(t)
-                       \end{array}\right),
-\end{equation}
-where $h_q^+(t)$ and $h_q^\times(t)$ are the two polarisations of the waveform and $t$ the time. 
-As mentioned, some of the waveforms used in the work are generated with the simulations being axis-symmetric, the \acp{GW} are entirely described by one polarisation $h_q^+(t)$. 
-The corresponding $h_q^\times(t)$ for these waveforms are a zero vector. 
-In this work, we perform simulations for distances equal to $10$, $20$, $30$, $40$, $50$, $60$, $80$, $100$, $150$ and $200$ kpc.
-If for a training session, the distance $d_\text{L}$ interested is not $10$ kpc, the following relationship is employed to scale the amplitudes of the waveforms,
-\begin{equation}\label{eq:sap}
- \bold{s}^{d_\text{L}}_q(t) =  \frac{10\text{kpc}\times\bold{s}_q(t)}{d_\text{L}},
-\end{equation}
-where $\bold{s}^{d_\text{L}}_q(t)$ is the waveform if the source is at $d_\text{L}$ from earth.
 
-The next step is to generate simulated time series for the \ac{GW} detectors in a network using $\bold{S}(t)$.
-%The input data consist of simulated time-series from a network of \ac{GW} detectors.
-Since the purpose of building a \ac{CNN} is to categorise an input data into three exclusive classes,
-in total three types of time-series are generated.
-For the time series containing either a magnetorotational signal or a neutrino-driven signal, 
-we start by selecting a waveform $\bold{s}_q$ from $\bold{S}(t)$.
-A random location of (right ascension, declination) $=(\alpha, \delta)$ in the sky is selected from a uniform distribution on $\alpha$ and a uniform distribution on the sine of $\delta$.
-The corresponding antenna patterns $\bold{F}(\alpha, \delta, t)$, given by the following equation,
+%
+% data augmentation
+%
+To balance the difference in the number of waveforms between the two mechanisms
+in the final data set~\cm{what is the final dataset? Is it the training,
+validation or test, or all of them? Please be clearer}, $36$ copies of each neutrino-driven waveform are
+made~\cm{please explain this in more detail, why is this done and how is this
+done. Surely they are not simply exact copies? Does each copy get a different
+noise realisation or different arrival time? This leaves many questions. Do
+you simply make the number of magneto and neutrino wavelforms equal? What about
+the sub categories? Do you still have 8 times as many Ott2 waveforms as
+Yakunin2? If so, why?}. After this procedure, the
+simulated waveforms are then $\bold{S}(t) = \{\bold{s}_{1}(t), \bold{s}_{2}(t),
+..., \bold{s}_{m}(t)\}$, where $m$ is the number of the waveforms and
+$\bold{s}_{q}$ is the $q^{\text{th}}$ waveform, defined by, 
+%
+\begin{equation}\label{eq:ht}
+\bold{s}_q(t) = \left(\begin{array}{c} h_q^+(t) \\ h_q^\times(t)
+\end{array}\right), 
+\end{equation} 
+%
+where $h_q^+(t)$ and $h_q^\times(t)$ are the two polarisations of the waveform
+and $t$ is the time. As mentioned, some of the waveforms used in the work are
+generated with the simulations being axisymmetric, in which case the waveforms
+are entirely described by one polarisation $h_q^+(t)$. The corresponding
+$h_q^\times(t)$ for these waveforms are defined as a vector of zeros.~\cm{This
+slightly worries me that classification between models may be artifically
+enhanced by forcing the cross polarisation to be zero. The network might be
+able to easily use this to distinguich between classes when in reality
+waveforms will not show this property. A referee may have the sam concern.} 
+
+%
+% rescaling the amplitudes for differnet distances
+%
+In this work, we perform simulations for distances equal to $10$, $20$, $30$,
+$40$, $50$, $60$, $80$, $100$, $150$ and $200$ kpc. If for a training
+procedure, the default distance $d_\text{L}$ of a waveform is not $10$ kpc, the
+following relationship is employed to scale the amplitudes of the waveforms,
+
+\begin{equation}\label{eq:sap} 
+\bold{s}^{d_\text{L}}_q(t) =
+\frac{10\text{kpc}\times\bold{s}_q(t)}{d_\text{L}}, 
+\end{equation} 
+%
+where $\bold{s}^{d_\text{L}}_q(t)$ is the waveform for the source at $d_\text{L}$
+from earth.~\cm{this equation and preceeding text is kind of obvious and could
+be said in far less words. You just simply rescale the amplitude by the
+distance since the amplitude is inversely proportional to the distance.}
+
+%
+% Apply antenna patterns
+%
+The next step is to generate simulated time-series for the \ac{GW} detectors in
+a network using $\bold{S}(t)$.
+%The input data consist of simulated time-series from a network of \ac{GW}
+%detectors.
+Since the purpose of building a \ac{CNN} is to categorise an input data sample
+into three exclusive classes, in total three types of time-series are
+generated.  For the time series containing either a magnetorotational signal or
+a neutrino-driven signal, we start by selecting a waveform $\bold{s}_q$ from
+$\bold{S}(t)$. A random location of (right ascension, declination) $=(\alpha,
+\delta)$ in the sky is selected from a uniform distribution on $\alpha$ and a
+uniform distribution on $\sin\delta$. The corresponding antenna patterns
+$\bold{F}(\alpha, \delta, t)$, given by the following equation~\cm{the
+following equation doesn't give you the antenna patterns. It just lists them as
+an array. Do you really need this array format to explain the waveforms? Does
+it help you?},
+%
 \begin{equation}\label{eq:ap}
 \bold{F}(\alpha, \delta, t)= \left(\begin{array}{cc}
 f_1^+(\alpha, \delta, t)~~f_1^\times(\alpha, \delta, t) \\
@@ -627,33 +695,62 @@ f_1^+(\alpha, \delta, t)~~f_1^\times(\alpha, \delta, t) \\
 f_k^+(\alpha, \delta, t)~~f_k^\times(\alpha, \delta, t) \\
 \end{array}\right),
 \end{equation}
-is computed, 
-where $f^+(\alpha, \delta, t)$ and $f^{\times}(\alpha, \delta, t)$ are the antenna pattern functions for the two polarizations and $k$ is the number of detectors as defined above.
-The relative delays in the arrival times for the location are also computed and applied to the selected waveform.
-The delay in arrival time between a detector and the center of the earth is given by,
+%
+is computed, where $f^+(\alpha, \delta, t)$ and $f^{\times}(\alpha, \delta, t)$
+are the antenna pattern functions for the two polarizations and $k$ is the
+number of detectors as defined above~\cm{How do you select $t$ and what does it
+represent?}. 
+
+%
+% the time delays
+%
+The relative delays in the arrival times of the signals at each
+detector are a function of the sky location and are also computed and applied
+to the selected waveform. The delay in arrival time between a detector and the
+center of the earth is given by,
+%
 \begin{equation}\label{eq:tdetector}
-%
-\Delta t = \frac{\bold{n} \cdot \bold{r}}{c},
-%
+\Delta t = \frac{\bold{n}(\alpha,\delta) \cdot \bold{r}}{c},
 \end{equation}
 %
-where $\bold{n}$ is the propagation direction of the \ac{GW}, $c$ the speed of light, and $\bold{r}$ the location vector of the detector
-relative to the center of the Earth. 
-The resulting signal $ \bold{h}_j(\alpha, \delta, t)$ as received at the detectors is then given by the following equation,
+where $\bold{n}(\alpha,\delta)$ is the propagation direction of the \ac{GW},
+$c$ is the speed of light, and $\bold{r}$ the location vector of the detector
+relative to the center of the Earth. The resulting $j$'th signal $\bold{h}_j(\alpha,
+\delta, t)$ received by the detector network is then described by,
+%
 \begin{equation}\label{eq:ht2}
- \bold{h}_j(\alpha, \delta, t) = \bold{F}(\alpha, \delta, t) \times \bold{s}_q(t),
+ \bold{h}_j(\alpha, \delta, t) = \bold{F}(\alpha, \delta, t) \times
+\bold{s}_q(t+\bold{\Delta t}),
 \end{equation}
-where the time delays $\Delta t$ are absorbed into the corresponding notations and the subscript $j$ is defined in Eq.\ref{eq:cce}.
-Next, we generate independent Gaussian noise $\bold{N}_j(t) = \{\bold{n}_{1j}(t), \bold{n}_{2j}(t), ..., \bold{n}_{kj}(t)\}'$ 
-for each detector in the network using their respective power spectral densities.  
-In the above notation, the symbol $'$ indicates transpose. 
-%It is worth mentioning that although in reality, 
-%noise at \ac{GW} detectors may not be entirely Gaussian and contaminated with glitches,
-%the application of \ac{CNN} is actually not limited to time series where the noise is Gaussian.
-%Although  we will focus on Gaussian noise in this work, 
-%a \ac{CNN} can in fact be trained to identify the presence of a glitch in the data \cite{mukund2017transient, zevin2017gravity, george2017deep, gabbard2018matching}.
-The duration of the generated noise is $1.6$ times longer than $ \bold{h}_j(\alpha, \delta, t)$. 
-A random number $x$ will then be generated determining where in the generated noise the signal will be placed, as given by,
+%
+where the time delays $\Delta t$ are absorbed into the corresponding notations
+and the subscript $j$ is defined in Eq.\ref{eq:cce}~\cm{I changed the equation
+to be more explicit so you don't have to say this previous sentence.}. 
+
+%
+% adding noise
+%
+Next, we generate independent Gaussian noise $\bold{N}_j(t) =
+\{\bold{n}_{1j}(t), \bold{n}_{2j}(t), ..., \bold{n}_{kj}(t)\}'$ for each
+detector in the network using their respective power spectral
+densities~\cm{give references and name the detector epoch, e.g., advanced
+design, O2, 3rd gen, etc..}. In the above notation, the symbol $'$ indicates
+transpose~\cm{why is the noise transpose and not the signal? Maybe I'll find
+out as I keep reading.}. 
+%It is worth mentioning that although in reality, noise at \ac{GW} detectors
+%may not be entirely Gaussian and contaminated with glitches, the application
+%of \ac{CNN} is actually not limited to time series where the noise is
+%Gaussian.  Although  we will focus on Gaussian noise in this work, a \ac{CNN}
+%can in fact be trained to identify the presence of a glitch in the data
+%\cite{mukund2017transient, zevin2017gravity, george2017deep,
+%gabbard2018matching}.
+The duration of the generated noise is $1.6$ times longer than
+$\bold{h}_j(\alpha, \delta, t)$~\cm{Don't start off explanations like this. It
+makes the reader think that you are simply declaring something as fact without
+explaining it}. A random number $x$~\cm{what kind of random number? I assume
+uniform but between what limits?} will then be generated determining where in
+the generated noise the signal will be placed, as given by,
+%
 \begin{equation}
 \bold{d}_j(\alpha, \delta, t, x)=
 \begin{cases}
@@ -662,19 +759,39 @@ A random number $x$ will then be generated determining where in the generated no
 \bold{N}_j(t)~~~~~~~~~~~~~~~~~t > \tau + x. \\
 \end{cases}
 \end{equation}
-This is to avoid the possibility that the \ac{CNN} learns human artefact instead of common features of the waveforms by having the signals always starting at the same place.
-For each time series of the background noise class, independently simulated Gaussian background noise of the same duration as that of the other classes 
-are generated for each detectors in the network.
-This means a data sample for this class is defined as,
+%
+~\cm{please define $\tau$.} This is to avoid the possibility that the \ac{CNN}
+learns the human artefact instead of common features of the waveforms by having
+the signals always starting at the same place.~\cm{well kind of. The reason you
+randomise is that the start time is an unknown parameter so you simply want the
+network to learn to generalise to deal with that kind of variation. Fixing the
+start time at the stame value each time is indeed a human feature but so is
+fixing the distance and all the other things that you fix.} For each
+time-series of the background noise class, independently simulated Gaussian
+background noise~\cm{you need to make it clear that you are also generating
+this noise from the detector PSDs. You could also just say that the background
+noise class is produced identically but with a zero amplitude signal.} of the
+same duration as that of the other classes are generated for each detector in
+the network. This means a data sample for this class is defined as,
+%
 \begin{equation}\label{eq:noise}
  \bold{d}_j(t) = \bold{N}_j(t).
 \end{equation}
 
-Since training a \ac{CNN} of a given structure to its maximum capacity requires many data samples, we augment our data set by iterating over $\bold{S}(t)$ until 
-for each waveform in $\bold{S}(t)$, we have $31$ data samples $\bold{d}$ generated using the procedure described above.
-This step is essential for the \ac{CNN} to learn the features of the waveforms and to identify them effectively under different noise scenarios.
-After that, we generate independent noise realisations for the background noise class.
-The entire data set $\bold{D}$ defined below, has roughly $l = 1.8 \times 10^{5}$ data samples, where each class has approximately $6\times10^{4}$ data samples.
+%
+% data augmentation
+%
+As a general rule, the performance of a \ac{CNN} can always be enhanced by
+increasing the volume of training data. Therefore we augment our data set by
+iterating over $\bold{S}(t)$ until for each waveform in $\bold{S}(t)$, we have
+$31$ data samples $\bold{d}$ generated using the procedure described above.
+This step is essential for the \ac{CNN} to learn the features of the waveforms
+and to identify them effectively under different noise scenarios and starting
+times.  After that, we generate independent noise realisations for the
+background noise class. The entire data set $\bold{D}$ defined below, has
+roughly $l = 1.8 \times 10^{5}$ data samples, where each of the 3 classes
+contains approximately $6\times10^{4}$ data samples.
+%
 \begin{equation}\label{eq:finaldata}
 \bold{D}(\boldsymbol{\alpha}, \boldsymbol{\delta}, \boldsymbol{\delta_t}, \bold{t}, \bold{x}) =  \left(\begin{array}{c}
 \bold{d}_1(\alpha, \delta, \delta_t, t, x) \\
@@ -684,24 +801,52 @@ The entire data set $\bold{D}$ defined below, has roughly $l = 1.8 \times 10^{5}
 \bold{d}_l(t) \\
 \end{array}\right).
 \end{equation}
-In the above equation, the subscript $o$ is the sum of the data samples in which there is a \ac{GW} signal in the time series. 
-The final step is to whiten $\bold{D}$ using the power spectral densities.
-In Figure \ref{fig:sample}, a representative example  of time series for one detector is shown. 
+%
+In the above equation, the subscript $o$ is the sum of the data samples in
+which there is a \ac{GW} signal in the time series.~\cm{this notation is very
+confusing and not really required. Why do you have to stack the waveforms up
+like this? Having to define things like $o$ and $l$ seems messy.} The final
+step is to whiten $\bold{D}$ using the power spectral densities~\cm{If you are
+going to spend effort explaining how you rescale distances (a very simple
+procedure) then you should definitley describe how you whiten the data}. 
+
+%
+% the general training procedure
+%
+In Fig.~\ref{fig:sample}, we show a representative example of a pre-processed
+input time-series for a single detector. A data sample consists of such a
+time-series containing a signal from the same source or simply background noise
+from all the detectors in the network. The data samples are then split into 3
+groups, with $1\times10^{4}$ samples being randomly selected for validation,
+$10\%$ of the remainder for testing and $90\%$ for training. When the training
+is finished for a dataset generated at a given distance, the above described
+procedure will be repeated for another distance until the training for all
+distances have been carried out for a network~\cm{You need to make it clear
+that you are training different networks (with the same architecture) for each
+distance and not iterativley training the same single network.}. The entire
+procedure is then repeated for another network~\cm{the word network is being
+used to describe the CNN and the IFOs, it might be a bit confusing} of \ac{GW}
+detectors. As mentioned previously~\cm{when was it mentioned previoulsy? give a
+ref to the section.}, the \ac{CNN} will be trained for the two networks of
+\ac{GW} detectors presented in Table~\ref{table:network}. For the remaining of
+the paper, we will use their acronyms to refer to the networks~\cm{what are
+these acronymns, state them here.}.
+
+%
+% plot of representative data sample
+%
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{datasample.png}
-\caption{Representative example of the simulated time series used to train/validate/test the \ac{CNN}.
-The blue shows a whitened time series with a signal buried in Gaussian noise of unit variance.
-The red shows the same signal free of noise and whitened. 
-\label{fig:sample}}
+\caption{A representative example of the simulated time-series used to
+train/validate/test the \ac{CNN}. The blue shows a whitened time-series with a
+signal added to Gaussian noise of unit variance~\cm{if you've whitened it then
+of course the noise is zero mean and unit variance - that's the definition so
+no need to say it twice.}. The red curve shows the same whitened signal free of
+noise.~\cm{what waveform is this and what is it's SNR? Please state this in the
+caption. Is this a representative SNR that you can detect? If not then why show
+it.}\label{fig:sample}} 
 \end{figure}
-A data sample consists of such time series of the same signal or background noise from all the detectors in the network.
-The data samples are then split, with $1\times10^{4}$ samples being randomly taken for validation, $10\%$ of the rest for testing and $90\%$ for training.
-When the training is finished for a distance, 
-the above described procedure will be repeated for another distance until the training
-for all distances have been carried out for a network.
-The entire procedure is then repeated for another network of \ac{GW} detectors.
-As mentioned previously, the \ac{CNN} will be trained for two networks of \ac{GW} detectors.
-We present the networks in Table \ref{table:network}. For the remaining of the paper, we will use their acronyms to refer to the networks.
+
 \begin{table}[]
 \centering
 \begin{threeparttable}
@@ -727,7 +872,9 @@ Network            & Detectors                & Acronym                 \\
 \setlength\labelsep{0pt}
 \normalfont{
 \item The networks of detectors used in this work.\\
-* H refers to the detector in Hanford and L the detector in Livingston.}
+* H refers to the detector in Hanford and L the detector in Livingston.~\cm{you
+* have enough space to simply use Hanford and Livingston in the table itslef.
+* You could also have a column for references to the detector papers.}}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

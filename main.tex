@@ -8,9 +8,9 @@
 \usepackage{acronym}   % for acronym
 \usepackage{float}
 \usepackage{xcolor}
-\usepackage{hyperref}
+%\usepackage[backref,breaklinks,colorlinks,citecolor=blue, hyperfootnotes=false]{hyperref}
 \usepackage{latexsym}
-\usepackage{url}
+%\usepackage{url}
 \usepackage{multirow}
 \usepackage[flushleft]{threeparttable}
 \usepackage{natbib}
@@ -22,7 +22,7 @@
 %\usepackage{booktabs, siunitx}
 
 %\usepackage[numbers,sort]{natbib}
-\bibliographystyle{unsrt3}
+%\bibliographystyle{unsrt3}
 %\usepackage{subcaption}
 %\captionsetup[figure]{slc=off} % "slc" is an abbreviation for "singlelinecheck"
 
@@ -70,7 +70,7 @@
  %$^5$ Caltech, California, United States}           
  
  
-\author{Authors$^{12}$\cm{fix}}
+\author{Man Leong Chan$^{1}$, Ik Siong Heng$^{2}$ \& Chris Messenger$^{2}$ }
 \affiliation{
 $^1$Department of Applied Physics, Fukuoka University, Nanakuma 8-19-1, Fukuoka 814-0180, Japan\\
 $^2$SUPA, School of Physics and Astronomy, University of Glasgow, Glasgow G12 8QQ, UK}
@@ -90,11 +90,11 @@ advanced VIRGO and KAGRA is likely to detect a magnetorotational core collapse
 supernovae within the Large and Small Magellanic Clouds, or a Galactic event if
 the explosion mechanism is the neutrino-driven mechanism.  By testing the
 convolutional neural network with waveforms not used for training, we show that
-the true alarm probabilities are $52\%$ and $83\%$ at $60$kpc for waveforms
+the true alarm probabilities are $52\%$ and $83\%$ at $60$ kpc for waveforms
 $\text{R3E1AC}$ and $\text{R4E1FC\_L}$.  For waveforms $\text{s}20$ and
 $\text{SFHx}$ at $10$ kpc, the true alarm probabilities are $70\%$ and $93\%$
-respectively. All at false alarm probability equal to $0.1$\cm{why is this nopt
-also written as a percentage? Should it be 10\%?}.  \end{abstract}
+respectively. All at false alarm probability equal to $10\%$. 
+\end{abstract}
 
 \pacs{}
 \maketitle
@@ -144,7 +144,7 @@ zeros-age main sequence ending their lives by becoming
 detectors such as \ac{aLIGO}~\cite{aasi2015advanced},
 \ac{AdVirgo}~\cite{acernese2014advanced} and KAGRA
 interferometers~\cite{aso2013interferometer, gossan2016observing,
-abbott2016first}. It is currently not entirely clear to astronomers how such
+abbott2016first, abbott2019optically}. It is currently not entirely clear to astronomers how such
 massive stars become supernovae. The basic theory of the explosion, confirmed
 by the neutrino events observed from SN1987A~\cite{sato1987analysis}, begins
 with a massive star at the final stage of its life forming a core that is
@@ -165,29 +165,30 @@ an unsolved problem.
 %
 % discussion of the CCSN mechanisms
 %
-There exist two most popular theories~\cm{theories for what?}, the
-neutrino-driven mechanism~\cite{bethe1985revival, bethe1990supernova} and the
+There exist two most popular theories for how the shock is revived and a star becomes supernova, 
+the neutrino-driven mechanism~\cite{bethe1985revival, bethe1990supernova} and the
 magnetorotational mechanism~\cite{janka2012explosion, kotake2012core,
-mezzacappa2014two}. For supernova progenitors with core rotation too slow to
+mezzacappa2014two} (also see \cite{obergaulinger2006axisymmetric, obergaulinger2006axisymmetric2} for studies bridging these two theories). 
+For supernova progenitors with core rotation too slow to
 affect the dynamics~\cite{takiwaki2016three, summa2018rotation}, the
 neutrino-driven mechanism is believed to be the active mechanism. The majority
 of the observed \acp{CCSN} can be explained by the neutrino
-mechanism~\cite{bruenn2016development}~\cm{why?}. The neutrino
+mechanism~\cite{bruenn2016development}. The neutrino
 mechanism~\cite{bethe1985revival, janka2007theory} suggests that approximately
-$5-10\%$ of the outgoing neutrino luminosity is stored below the shock, which
+$5\%$ of the outgoing neutrino luminosity is stored below the shock, which
 causes turbulence to occur and thermal pressure to increase. The stalled shock
 can be revived by their combined effects~\cite{couch2015role}. Producing a
 \ac{CCSN} via the neutrino mechanism may also require convection and the
 standing accretion shock instability~\cite{blondin2003stability}. On the other
-hand, the magnetorotational mechanism requires rapid core spin and a strong
+hand, the magnetorotational mechanism may require rapid core spin and a strong
 magnetic field~\cite{leblanc1970numerical, burrows2007simulations,
 takiwaki2009special,
-moiseenko2006magnetorotational,mosta2014magnetorotational}. Together, they may
-produce an outflow that may cause the most energetic \acp{CCSN}
-observed~\cm{are you referring to a real observed CCSN, if so you should
-provide a reference.}. The magnetorotational mechanism may \cm{also?} be able
+moiseenko2006magnetorotational,mosta2014magnetorotational} 
+(this may not be absolutely the case, see e.g. \cite{obergaulinger2019magnetorotational}). Together, they may
+produce an outflow that may cause some of the most energetic \acp{CCSN}
+observed and may be able
 to explain the extreme hypernovae and the observed long gamma-ray
-bursts\cite{woosley2006progenitor, yoon2005evolution, de2013rotation}.
+bursts~\cite{woosley2006progenitor, yoon2005evolution, de2013rotation, obergaulinger2017protomagnetar}.
  
 %
 % GWS from CCSN and the existing literature
@@ -198,15 +199,15 @@ understanding the explosion mechanism.
 %mechanism of a \ac{CCSN} because photons interact strongly with matter and
 %only information from the optically thin regions far from the central core
 %could reach us.  However, 
-As \acp{GW} are emitted\cm{generated?} in the central core of a \ac{CCSN}, they
+As \acp{GW} are generated in the central core of a \ac{CCSN}, they
 are likely to carry direct information of the \ac{CCSN} and therefore provide a
 probe of the explosion mechanism that produces them. In \ac{GW} astronomy, for
 \ac{CBC} events the established method for searching for signals is
-matched-filtering~\cm{give ref for pycbc and gstlal}. However, since the
+matched-filtering~\cite{usman2016pycbc, cannon2012toward}. However, since the
 emission process of the \acp{GW} from \acp{CCSN} is affected by turbulence in
-the post-bounce and is \cm{expected to be?} stochastic in nature,  the signal
+the post-bounce and is expected to be stochastic in nature,  the signal
 evolution cannot be predicted robustly~\cite{ott2009gravitational,
-kotake2013multiple, kotake2009stochastic}.  This in turn prevents
+kotake2013multiple, kotake2009stochastic, aloy2019neutron}.  This in turn prevents
 matched-filtering from being applied to \acp{CCSN}.
 %Although, Neutrino radiation-hydrodynamics simulations have been an ongoing
 %effort to decode and understand explosion mechanism of \acp{CCSN} and the
@@ -216,14 +217,14 @@ of signals from \acp{CCSN}.  For example, a method known as principle component
 analysis has been developed~\cite{heng2009rotating, rover2009bayesian,
 powell2015classification, powell2017classification,
 suvorova2019reconstructing}. This method creates a set of component basis
-vectors from a \cm{larger?} set of \ac{CCSN} waveforms belonging to a
+vectors from a larger set of \ac{CCSN} waveforms belonging to a
 particular mechanism where the basis vectors represent the common features of
 those waveforms.  There have been other approaches developed in the literature
-such as Bayesian inference~\cite{rover2009bayesian}, Bayesian model
-selection~\cite{logue2012inferring} , multivariate regression
+such as Bayesian inference~\cite{rover2009bayesian, cannon2012toward}, Bayesian model
+selection~\cite{logue2012inferring}, multivariate regression
 modelling~\cite{engels2014multivariate}, maximum
 entropy~\cite{summerscales2008maximum}, maximum
-likelihood~\cite{gursel1989near} and Tikhonov regularization
+likelihood~\cite{klimenko2016method} and Tikhonov regularization
 scheme~\cite{rakhmanov2006rank, hayama2007coherent}.  
 
 %
@@ -241,13 +242,9 @@ zhang2016colorful, karpathy2015deep}, and  language
 processing~\cite{lample2016neural}. In \ac{GW} astronomy, deep learning has
 mostly been applied to the identifications of detector noise artefacts
 (glitches)~\cite{mukund2017transient, zevin2017gravity, george2017deep} and the
-detection of astrophysical signals~\cite{george2018deep, gabbard2018matching,
-astone2018new} and their parameter estimation~\cm{add ref to Hunters latest
-paper}. A \ac{CNN} is a deep learning algorithm that has the advantage of
-capturing spatial and temporal features of the input data~\cm{this doesn't
-really mean anything. Spatial refers to features in certain locations in images
-and temporal refers to locations in a time series of in the time axis of a
-spectrogram image}. Another advantage of the use of a \ac{CNN} in the detection
+detection of astrophysical signals~\cite{george2018deep, gabbard2018matching, astone2018new},
+and their parameter estimation~\cite{2019arXiv190906296G}.
+An advantage of the use of a \ac{CNN} in the detection
 of a \ac{GW} signal is that a \ac{CNN} is relatively computationally cheap
 compared to other more traditional methods. This is because the heavy
 computational work is usually done during the training stage of a \ac{CNN}
@@ -258,19 +255,22 @@ prior to its actual application~\cite{goodfellow2016deep}.
 %
 In this work, we demonstrate that a \ac{CNN} can be applied to the detection of
 \acp{GW} from \acp{CCSN} and to the classification of their explosion
-mechanisms.  To train our \ac{CNN}, we use simulated \ac{CCSN} waveforms from a
-number of studies and simlate sources at a range of distances from $10$ to
+mechanisms. 
+To train our \ac{CNN}, we use simulated \ac{CCSN} waveforms from a
+number of studies and simulate sources at a range of distances from $10$ to
 $200$ kpc for two networks of four \ac{GW} detectors. The first network
 consists of \ac{aLIGO}, \ac{AdVirgo} and KAGRA. For the second network, we
 still include the detectors of \ac{AdVirgo} and KAGRA, but replace the two
 detectors of \ac{aLIGO} with a modest set of planned upgrade version of them -
-LIGO A+ in Hanford and Livingston~\cite{miller2015prospects, LIGOW}. We then
-apply the \ac{CNN} to waveforms excluded from the training set to show that the
-\ac{CNN} is not only able to identify the waveforms it familiarised itself with
-during training, but also new waveforms~\cm{this is a strange statement. The
-ability of the CNN to work on the training data is completely outweighed by its
-perfromance on the independent testing set. The testing set perfroamnce is all
-that you should mention here.}.
+LIGO A+ in Hanford and Livingston~\cite{miller2015prospects, LIGOW}. All detectors 
+are at their design sensitivities. We then
+apply the \ac{CNN} to waveforms excluded from the training set to show 
+the performance on an independent testing set.
+Similar to~\cite{astone2018new}, 
+we use machine learning techniques for the search of \acp{GW} from \acp{CCSN}.
+However, the \ac{CNN} developed in ~\cite{astone2018new} takes time-frequency images of \ac{GW} detector 
+data from the coherent WaveBurst pipeline~\cite{klimenko2005constraint} as input, 
+while we aim to develop a \ac{CNN} that works independently and takes time series data from \ac{GW} detectors as input.
 
 %
 % paper structure
@@ -291,12 +291,13 @@ followed by our conclusions in Section~\ref{sec:conclusion}.
 %
 % describe the components of a CNN
 %
-A \ac{CNN} is a computational processing system that is composed of
-interconnected layers of computational nodes~\cite{o2015introduction}. The
-nodes are known as neurons and the outputs of which are processed with an
-activation function. The activation function performs an elementwise nonlinear
-operation to the output of the layer. In a standard \ac{CNN}, there are
-commonly three types of layers: convolutional layers, max-pooling layers, and
+A \ac{CNN} is a computational processing system that takes in data and 
+is able to classify the input data as one of the N types it has learnt through training.
+A \ac{CNN} is composed of interconnected layers of computational nodes~\cite{o2015introduction}. 
+The nodes are known as neurons and the outputs of which are processed with an
+activation function. The activation function performs an elementwise non-linear
+operation to the output of the layer. 
+There are commonly three types of layers: convolutional layers, max-pooling layers, and
 fully connected layers~\cite{o2015introduction}. Convolutional layers perform
 the mathematical operation of convolution between the weights of the layer's
 neurons and the input to that layer. Max-pooling layers perform a down-sampling
@@ -304,65 +305,67 @@ process that reduces the size of the data by selecting the maximum of data
 samples within fixed size bins. It can reduce the computational cost by
 decreasing the number of trainable parameters (weights and biases) of the
 \ac{CNN}.  Fully connected layers are layers that connect every neuron in its
-layer to every neuron of its immediate previous and next layer. In the case of
-detection and classification, the output layer is also a fully connected layer
-with a softmax activation function with output used to represent the class
-scores or probabilities.~\cm{even after editing, this isn't the clearest
-description of a CNN. You are lacking an initial statement that says what a CNN
-does - it takes in data and is able to classify it as one of the N types it has
-learnt through training.}
+layer to every neuron of its immediate previous and next layer. 
 
+When multiple layers of these three types are stacked and connected one after
+the other, a \ac{CNN} has been formed, where the output of each layer is the
+input of the next layer. 
 %
 % decribe the structure of the CNN
 %
-When multiple layers of these three types are stacked and connected one after
-the other, a \ac{CNN} has been formed, where the output of each layer is the
-input of the next layer. How these layers are connected in a \ac{CNN}, the
+How these layers are connected in a \ac{CNN}, the
 numbers of layers, their type, the number of neurons, the convolutional filter
 size, max-pooling size, and the activation functions used, describes the
-architecture of the \ac{CNN} (also known as hyper-parameters). The first layer
-in a \ac{CNN}, also known as the input layer, is often a convolutional layer,
-while the last layer or the output layer is often a fully connected layer with
-an associated loss function~\cm{the loss isn't really associated with the
-output layer. It is associated withe whole network.}. The architecture of the
-remainder of the \ac{CNN} should depend on the specific task that it is being
+architecture of the \ac{CNN} (also known as hyper-parameters).  
+In a standard \ac{CNN}, 
+the first layer, also known as the input layer and often a convolutional layer, 
+takes in raw values of the input (or time series from \ac{GW} detectors in our case, this will be explained more in section \ref{sec:spwf}).
+The output layer is usually a fully connected layer
+with a softmax activation function with output used to represent the class
+scores or probabilities in the case of detection and classification.
+For a \ac{CNN} designed to classify its input into different classes, 
+the output layer computes the probabilities of the inferred classes.
+The architecture of the remainder of the \ac{CNN} should depend on the specific task that it is being
 trained to solve. An over-complicated model with too many trainable parameters
-makes it easier to result in over-fitting (a procedure where the network
+makes it easier to result in over-fitting, where the network
 essentially memorises the training data but is unable to generalise to new
-data). Alternatively, an overly simple architecture will struggle to capture
+data. Alternatively, an overly simple architecture will struggle to capture
 the features inherent to the input and not perform well in classification.
 Automated schemes do exist for finding the optimal combination of
-hyperparameters but in general (and in our case) the final architecture is
-often obtained through rough trial and error, followed by fine tunning.
+hyperparameters but in general and in our case the final architecture is
+often obtained through rough trial and error, followed by fine tuning.
 
 %
 % describe training
 %
 During the training stage, the weights of the neurons in a \ac{CNN} are updated
 using an algorithm called back-propagation~\cite{lecun1988theoretical}. The
-output of the \ac{CNN} is used as an input to the loss-function~\cm{you need to
-define what the loss function is supposed to do and how by minimising it you
-make the network produce the right result. It isn't clear here.} and
-back-propagation then computes the gradient of the loss-function with respect
-to the traininable weights and biases within the network. A gradient descent
-algorithm is then used to adjust the values of the weights and biases of the
-neurons in each layer in order to iteratively minimise the loss-function.  When
-the loss function is minimised and training is therefore complete, the \ac{CNN}
+outputs of the \ac{CNN} (the probabilities of the inferred classes in our case) are used as an input to the loss-function that is associated with the entire network.  
+The value of the loss function is used to evaluate how well the algorithm models the input data of the \ac{CNN}.
+After a subset of training data is fed through the \ac{CNN}, the back-propagation algorithm 
+then computes the gradient of the loss-function with respect
+to the trainable weights and biases within the network. 
+The size of the subset of the training data is referred to as batch.
+A gradient descent algorithm is then used to adjust the values of the weights and biases of the
+neurons in each layer in order to iteratively minimise the loss-function.  
+When the loss function is minimised and training is therefore complete, the \ac{CNN}
 will be able to take in input in the form of new data and its output will best
 represent the probability of that data belonging to each of the trained
-classes. A well performing network will give high output probabilities to the
+classes. 
+A well performing network will give high output probabilities to the
 correct class in most cases. The process of achieving the minimisation of the
 loss function during the training stage is the process whereby the machine is
-"learning"..
-
+\textquotedblleft learning\textquotedblright.
 %
 % describe the specific architecture used here
 % 
 In this work, we employ a \ac{CNN} of $8$ convolutional layers, $3$ max-pooling
-layers, and $3$ fully connected layers. The exact architecture of the \ac{CNN}
+layers, and $3$ fully connected layers. We also use a technique, known as drop-out, for addressing over-fitting~\cite{srivastava2014dropout}. 
+This terms refers to the way this technique works - 
+by removing units of random choices temporarily in the hidden layers and their associated connections in the \ac{CNN}.
+The exact architecture of the \ac{CNN}
 is shown in Table~\ref{table:architecture} and illustrated in
-Fig.~\ref{fig:CNN}.
-
+Fig.~\ref{fig:CNN}. 
 %
 % table of CNN hyper-parameters
 %
@@ -401,12 +404,10 @@ noise alone. In the table, Conv means convolutional layer, Max-pool means
 max-pooling layer, and Fully-con means fully-connected layer. Neuron and Act.
 Fun indicate the number of neurons and the activation function used for the
 layer respectively. The numbers in the bracket for the fully-connected layers
-are the number used for drop-out~\cm{You haven't discussed drop-out yet. You
-should mention it earlier when you introduce CNNs}.}
+are the number used for drop-out.}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
-
 \begin{figure*}
 \includegraphics[width=0.96\textwidth]{CNN2.png}
 \caption{An illustration of the architecture of the \ac{CNN} used in this paper
@@ -417,18 +418,13 @@ simulated time series of the detectors as input, feeding through the \ac{CNN}.
 The \ac{CNN} will output three probabilities at the last layer.  The numbers
 above or below each layer indicate the kernal size of the layer. For example,
 the first convolutional layer has $11$ filters, each of which is $1$ by $32$ in
-size~\cm{this is the only place that you describe the timeseries being the
-input and what the network does in a single sentence. This text should appear
-in the main bodty of the paper}.~\cm{Also, because I'm very picky about plots
-and images - even though I made the image full page width, the timeseries plots
-are TOO small and the axes are insanely small to read. You seem to have
-strecthed curly bracket symbols to the point that they look super-wierd.}
+size.
 \label{fig:CNN}}
 \end{figure*}
-
 %
 % define the loss function 
 %
+
 The problem we are trying to solve is a problem of multi-class
 classification, and hence the loss function employed for this work is the
 categorical cross-entropy~\cite{abadi2016tensorflow}, defined as
@@ -437,13 +433,10 @@ categorical cross-entropy~\cite{abadi2016tensorflow}, defined as
  L(y,\hat{y}) = -\sum^M_{j=1}\sum^C_{i=1}y_{ij}\log(\hat{y}_{ij}),
 \end{equation}
 %
-where $C$ is the number of the classes and $M$ is the number of the training
-samples~\cm{the loss is computed over batches so here $M$ should be the batch
-size. However, you haven't introduced batches yet, which you need to do when
-you're discussing training}. For the $j^{\text{th}}$ sample and the $i^{th}$
-class, $y_{ij}$ is the correponding class value. It is equal to $1$ for the
+where $C$ is the number of the classes and $M$ is the number of the batch.
+For the $j^{\text{th}}$ sample and the $i^{\text{th}}$ class, $y_{ij}$ is the corresponding class value. It is equal to $1$ for the
 true class and $0$ otherwise.  Similarly, $\hat{y}_{ij}$ is the predicted
-probability from the \ac{CNN} for the $i^{th}$ class and the $j^{\text{th}}$
+probability from the \ac{CNN} for the $i^{\text{th}}$ class and the $j^{\text{th}}$
 sample.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -457,9 +450,11 @@ among three classes, i.e., magnetorotational signals $+$ background noise,
 neutrino-driven signals $+$ background noise, and pure background noise. For
 this purpose, it is necessary to prepare training, validation and testing data
 of these three classes. The training data is used for tuning the weights of
-the neurons in the layers in the \ac{CNN}, while validating data is to verify
-that the \ac{CNN} is learning the features inherent to the data and testing
-data is to test the performance of the trained \ac{CNN}. 
+the neurons in the layers in the \ac{CNN}. Validating data is usually applied during training 
+to verify that the \ac{CNN} is learning the features inherent to the data and
+to prevent the \ac{CNN} from over-fitting the training data.
+For a \ac{CNN} that is not over-fitting, the value of the loss function will be close between the validation data and training data.
+Testing data is to test the performance of the trained \ac{CNN} and applied after training has completed. 
 
 %
 % describe the magneto waveforms
@@ -469,15 +464,21 @@ stacked together as a $k \times p$ matrix where $k$ is the number of detectors
 and $p$ the number of elements in the time series. To this end, we use
 simulated waveforms taken from the literature. The magnetorotational \ac{CCSN}
 signals are taken from~\cite{abdikamalov2014measuring,
-dimmelmeier2008gravitational, richers2017equation}. The simulations
+dimmelmeier2008gravitational, richers2017equation}\footnote{\href{https://stellarcollapse.org/ccdiffrot}
+{https://stellarcollapse.org/ccdiffrot}}$^{,}$\footnote{\href{https://zenodo.org/record/201145}{https://zenodo.org/record/201145}}. 
+The simulations
 in~\cite{abdikamalov2014measuring} were focused on the dependence of the
-waveforms on the angular momentum distribution of the progenitors and proivide
+waveforms on the angular momentum distribution of the progenitors and provide
 us with 92 waveforms. In~\cite{dimmelmeier2008gravitational}, 136 waveforms are
 available from investigations into a variety of rotation rates and masses of
 the progenitors. The simulations in~\cite{richers2017equation} covered a
 parameter space of $18$ different equations of state and $98$ rotation profiles
-for a progenitor of $12M_{\odot}$ providing a total of $1824$ waveforms. All
+for a progenitor of $12\text{M}_\odot$ providing a total of $1824$ waveforms. All
 the simulations from the studies were based on 2D simulations of supernovae.
+It needs to be pointed out that as the authors in these studies
+were interested in the early stage of post-core bounce, and/or the effects of the equation of states on the \acp{GW} generated at core bounce,
+the simulations were only run for a short amount of time after core bounce. 
+For example, the simulations in~\cite{richers2017equation} were only run for $50$ ms, and only approximately up to $10$ ms after core bounce were used.
 
 %
 % describe the neutrino waveforms
@@ -486,14 +487,17 @@ For the neutrino-driven mechanism, we employ the waveforms
 from~\cite{10.1093mnrasstz990, kuroda2017correlated, muller2012parametrized,
 powell2019gravitational, radice2019characterizing, yakunin2015gravitational,
 yakunin2017gravitational, ott2009gravitational, murphy2009model,
-ott2013general}. The simulations in~\cite{10.1093mnrasstz990,
+ott2013general}\footnote{\href{https://wwwmpa.mpa-garching.mpg.de/ccsnarchive/data/Andresen2019/}
+{https://wwwmpa.mpa-garching.mpg.de/ccsnarchive/
+data/Andresen2019/ }}$^{,}$\footnote{\href{ https://www.astro.princeton.edu/~burrows/gw.3d/  }
+{ https://www.astro.princeton.edu/~burrows/gw.3d/  }}. The simulations in~\cite{10.1093mnrasstz990,
 kuroda2017correlated, muller2012parametrized, powell2019gravitational,
-radice2019characterizing, yakunin2017gravitational} were from 3D modelling of
+radice2019characterizing, yakunin2017gravitational, ott2013general} were from 3D modelling of
 the supernovae while the simulations in~\cite{yakunin2015gravitational,
-ott2009gravitational, murphy2009model, ott2013general} were 2D. These
+ott2009gravitational, murphy2009model} were 2D. These
 simulations cover a wide range of progenitor masses from $9\text{M}_\odot$ to
 $60\text{M}_\odot$ and the specific progenitor masses of the simulations are
-shown in Table~\ref{table:waveforms}. Examples of the simulated waveforms for
+shown in Table~\ref{table:waveforms}. Examples of the waveforms for
 both mechanisms are shown in Figs.~\ref{fig:magwaveforms} and
 \ref{fig:neuwaveforms}.
 
@@ -509,19 +513,19 @@ both mechanisms are shown in Figs.~\ref{fig:magwaveforms} and
 \toprule
     & Mechanism         & Mass ($\text{M}_\odot$)                         & No.  \\
 \hline                         
-Abdikamalov\cite{abdikamalov2014measuring} & M   & 12.0                          & 92   \\
-Dimmelmeier\cite{dimmelmeier2008gravitational} & M   & 11.2,15.0,20.0,40.0        & 136  \\
-Richers\cite{richers2017equation}     & M   & 12.0                          & 1824 \\
-Andresen\cite{10.1093mnrasstz990}    & N   & 15.0                          & 6    \\
-Kuroda\cite{kuroda2017correlated}      & N   & 11.2,15.0                    & 2    \\
-Muller\cite{muller2012parametrized}      & N   & 15.0,20.0                    & 6    \\
-Murphy\cite{murphy2009model}      & N   & 12.0,15.0,20.0,40.0        & 16   \\
-Ott$_1$\cite{ott2009gravitational}       & N   & 15.0                          & 2    \\
-Ott$_2$\cite{ott2013general}       & N   & 27.0                          & 8    \\
-Powell\cite{powell2019gravitational}      & N   & 3.5,18.0                      & 2    \\
-Radice\cite{radice2019characterizing}      & N   & 9,10,11,12,13,19,25,60 & 8    \\
-Yakunin$_1$\cite{yakunin2015gravitational}   & N   & 12,15,20,25                & 4    \\
-Yakunin$_2$\cite{yakunin2017gravitational}   & N   & 15                            & 1   \\
+Abdikamalov~\cite{abdikamalov2014measuring} & M   & 12.0                          & 92   \\
+Dimmelmeier~\cite{dimmelmeier2008gravitational} & M   & 11.2,15.0,20.0,40.0        & 136  \\
+Richers~\cite{richers2017equation}     & M   & 12.0                          & 1824 \\
+Andresen~\cite{10.1093mnrasstz990}    & N   & 15.0                          & 6    \\
+Kuroda~\cite{kuroda2017correlated}      & N   & 11.2,15.0                    & 2    \\
+Muller~\cite{muller2012parametrized}      & N   & 15.0,20.0                    & 6    \\
+Murphy~\cite{murphy2009model}      & N   & 12.0,15.0,20.0,40.0        & 16   \\
+Ott$_1$~\cite{ott2009gravitational}       & N   & 15.0                          & 2    \\
+Ott$_2$~\cite{ott2013general}       & N   & 27.0                          & 8    \\
+Powell~\cite{powell2019gravitational}      & N   & $3.5^{*}$,18.0                      & 2    \\
+Radice~\cite{radice2019characterizing}      & N   & 9,10,11,12,13,19,25,60 & 8    \\
+Yakunin$_1$~\cite{yakunin2015gravitational}   & N   & 12,15,20,25                & 4    \\
+Yakunin$_2$~\cite{yakunin2017gravitational}   & N   & 15                            & 1   \\
 \hline
 \hline
 \end{tabular}
@@ -532,8 +536,11 @@ Yakunin$_2$\cite{yakunin2017gravitational}   & N   & 15                         
 waveforms used in this work.  The first column refers to the studies. Mechanism
 indicates the explosion mechanism for the waveforms, with M for the
 magnetorotational mechanism and N for the neutrino-driven mechanism.  Mass
-refers the mass, in units of solar mass, of the progenitors in the simulations.
-No. means the number of waveforms available from the study.} 
+refers to the mass, in units of solar mass, of the progenitors in the simulations.
+No. means the number of waveforms available from the study.
+All masses are the masses of the stars at
+zeros age unless indicated otherwise.\\
+$^*$ Mass of a star in a binary system with an initial helium mass of $3.5\text{M}_\odot$} 
 \end{tablenotes}
 \end{threeparttable} 
 \end{table}
@@ -553,45 +560,62 @@ No. means the number of waveforms available from the study.}
 %
 % plot of example magneto waveforms
 %
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{mag_waveforms.png}
-\caption{Examples of simulated waveforms for which the explosion is modeled by
-the magnetorotational mechanism. The top panel shows a waveform
+\begin{figure*}
+     \begin{center}
+        \subfigure[]{
+            \label{fig:magsample1}
+            \includegraphics[width=0.315\textwidth]{abd_wave.png}%
+        }\quad
+        \subfigure[]{
+            \label{fig:magsample2}
+            \includegraphics[width=0.315\textwidth]{Dim_wave.png}%
+        }\quad
+        \subfigure[]{
+            \label{fig:magsample3}
+            \includegraphics[width=0.315\textwidth]{richer_wave.png}%
+        }
+    \end{center}
+    \caption{Examples of simulated waveforms for which the explosion is modelled by
+the magnetorotational mechanism. The left panel shows a waveform
 from~\cite{abdikamalov2014measuring}. The progenitor is $12\text{M}_\odot$ with
-differential rotation parameter $A=300\text{km}$. The initial angular velocity
-at the core $\Omega_c$ is $8.5\text{rads/s}$. The middle panel shows a waveform
+differential rotation parameter $A=10^4~\text{km}$. The initial angular velocity
+at the core $\Omega_c$ is $5.0~\text{rads/s}$. The middle panel shows a waveform
 from~\cite{dimmelmeier2008gravitational}. The simulation corresponds to a
-progenitor of $15\text{M}_\odot$ with $A=50$km and $\Omega_c =
-1.91\text{rads/s}$.  The lower panel shows a waveform
+progenitor of $15\text{M}_\odot$ with $A=10^5$ km and $\Omega_c =
+4.56~\text{rads/s}$.  The right panel shows a waveform
 from~\cite{richers2017equation} where the progenitor is $12\text{M}_\odot$, $A$
-and $\Omega_c$ are $10000$km and $0.5\text{rad/s}$ respectively. In all panels,
+and $\Omega_c$ are $10^4$ km and $3.0~\text{rad/s}$ respectively. In all panels,
 only the $h_{+}$ polarisations are shown because the simulations are
 axis-symmetric or 2D, and therefore described by only one polarisation.  The
-sources are assumed to be at a distance of $10$ kpc. The time is not related to
-the time at core bounce~\cm{then what is the time in reference to? Also, these
-plots are too small and squashed. The text is certainly too small to be
-readable and they should all have equal y and x-axis scales for comparison.}.
-\label{fig:magwaveforms}} 
-\end{figure}
-
+sources are assumed to be at a distance of $10$ kpc. The x-axes show the time after 
+core bounce.\label{fig:magwaveforms}} 
+\end{figure*}
 %
 % plot of example neutrino waveforms
 %
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{neu_waveforms.png}
-\caption{Examples of simulated waveforms for which the explosion mechanism is
-modeled by the neutrino-driven mechanism. From the top to the bottom, the
-panels show waveforms from~\cite{10.1093mnrasstz990, murphy2009model,
-radice2019characterizing}, with progenitors of masses equal to
+\begin{figure*}
+     \begin{center}
+        \subfigure[]{
+            \label{fig:neusample1}
+            \includegraphics[width=0.315\textwidth]{and_wave.png}%
+        }\quad
+        \subfigure[]{
+            \label{fig:neusample2}
+            \includegraphics[width=0.315\textwidth]{Radice_wave.png}%
+        }\quad
+        \subfigure[]{
+            \label{fig:neusample3}
+            \includegraphics[width=0.315\textwidth]{Yak_wave.png}%
+        }
+    \end{center}
+    \caption{Examples of simulated waveforms for which the explosion mechanism is
+modelled by the neutrino-driven mechanism. From the left to the right, the
+panels show waveforms from~\cite{10.1093mnrasstz990, 
+radice2019characterizing, yakunin2017gravitational}, with progenitors of masses equal to
 $15\text{M}_\odot$, $15\text{M}_\odot$ and $60\text{M}_\odot$ respectively.
-The sources are assumed to be at $10$ kpc from earth. The time is not related
-to the time at core bounce.~\cm{then what is the time in reference to? Also, these
-plots are too small and squashed. The text is certainly too small to be
-readable and they should all have equal y and x-axis scales for comparison. Why
-does the x-axis extend to longer than the longest waveform?}
-\label{fig:neuwaveforms}}
-\end{figure}
-
+The sources are assumed to be at $10$ kpc from earth. The x-axes show the time after core bounce.
+\label{fig:neuwaveforms}} 
+\end{figure*}
 %
 % discuss the reason of using multiple waveform families
 %
@@ -613,8 +637,7 @@ durations, it is necessary to normalise the waveforms before they can be used
 for the generation of the time-series. To do this, we first scale the
 amplitudes of the waveforms by moving the sources to $10$ kpc from earth. We
 then ensure that the sampling rate are identical for all the waveforms by down
-sampling them to a pre-selected sampling rate (e.g., $4096$Hz~\cm{e.g. means
-for example, is this an example rate or is it THE rate?}). The longest duration
+sampling them to a pre-selected sampling rate of $4096$Hz. The longest duration
 $\tau$ among the waveforms is then identified and each of the remaining
 waveforms is padded with zeros to this duration. To introduce as few artefacts
 as possible, a high pass filter with a low cut-off frequency equal to $11$Hz
@@ -624,15 +647,12 @@ and a tukey window ($\alpha = 0.08$) are applied prior to the zero padding.
 % data augmentation
 %
 To balance the difference in the number of waveforms between the two mechanisms
-in the final data set~\cm{what is the final dataset? Is it the training,
-validation or test, or all of them? Please be clearer}, $36$ copies of each neutrino-driven waveform are
-made~\cm{please explain this in more detail, why is this done and how is this
-done. Surely they are not simply exact copies? Does each copy get a different
-noise realisation or different arrival time? This leaves many questions. Do
-you simply make the number of magneto and neutrino wavelforms equal? What about
-the sub categories? Do you still have 8 times as many Ott2 waveforms as
-Yakunin2? If so, why?}. After this procedure, the
-simulated waveforms are then $\bold{S}(t) = \{\bold{s}_{1}(t), \bold{s}_{2}(t),
+in the training, validation and testing data set, $36$ exact copies of each neutrino-driven waveform are
+made. This will make the ratio of the waveforms modelled by the two mechanisms close to 1, 
+while does not change the ratio of the waveforms from different studies modelled by the neutrino-driven mechanism. 
+This means each waveform in the neutrino-driven mechanism will have equal representations in the data set,
+and waveforms from different mechanisms will have equal representation.
+After this procedure, the simulated waveforms are then $\bold{S}(t) = \{\bold{s}_{1}(t), \bold{s}_{2}(t),
 ..., \bold{s}_{m}(t)\}$, where $m$ is the number of the waveforms and
 $\bold{s}_{q}$ is the $q^{\text{th}}$ waveform, defined by, 
 %
@@ -642,32 +662,20 @@ $\bold{s}_{q}$ is the $q^{\text{th}}$ waveform, defined by,
 \end{equation} 
 %
 where $h_q^+(t)$ and $h_q^\times(t)$ are the two polarisations of the waveform
-and $t$ is the time. As mentioned, some of the waveforms used in the work are
+and $t$ is the time. In this work, we assume a 
+fixed GPS time when generating the training/validation/testing data. 
+At this GPS time, the value of $t$ is zero.
+As mentioned, some of the waveforms used in the work are
 generated with the simulations being axisymmetric, in which case the waveforms
 are entirely described by one polarisation $h_q^+(t)$. The corresponding
-$h_q^\times(t)$ for these waveforms are defined as a vector of zeros.~\cm{This
-slightly worries me that classification between models may be artifically
-enhanced by forcing the cross polarisation to be zero. The network might be
-able to easily use this to distinguich between classes when in reality
-waveforms will not show this property. A referee may have the sam concern.} 
-
+$h_q^\times(t)$ for these waveforms are defined as a vector of zeros. 
 %
 % rescaling the amplitudes for differnet distances
 %
 In this work, we perform simulations for distances equal to $10$, $20$, $30$,
 $40$, $50$, $60$, $80$, $100$, $150$ and $200$ kpc. If for a training
-procedure, the default distance $d_\text{L}$ of a waveform is not $10$ kpc, the
-following relationship is employed to scale the amplitudes of the waveforms,
-
-\begin{equation}\label{eq:sap} 
-\bold{s}^{d_\text{L}}_q(t) =
-\frac{10\text{kpc}\times\bold{s}_q(t)}{d_\text{L}}, 
-\end{equation} 
-%
-where $\bold{s}^{d_\text{L}}_q(t)$ is the waveform for the source at $d_\text{L}$
-from earth.~\cm{this equation and preceeding text is kind of obvious and could
-be said in far less words. You just simply rescale the amplitude by the
-distance since the amplitude is inversely proportional to the distance.}
+procedure, the default distance $d_\text{L}$ of a waveform is not $10$ kpc, the amplitude are rescaled 
+by the distance since the amplitude is inversely proportional to the distance.
 
 %
 % Apply antenna patterns
@@ -682,11 +690,30 @@ generated.  For the time series containing either a magnetorotational signal or
 a neutrino-driven signal, we start by selecting a waveform $\bold{s}_q$ from
 $\bold{S}(t)$. A random location of (right ascension, declination) $=(\alpha,
 \delta)$ in the sky is selected from a uniform distribution on $\alpha$ and a
-uniform distribution on $\sin\delta$. The corresponding antenna patterns
-$\bold{F}(\alpha, \delta, t)$, given by the following equation~\cm{the
-following equation doesn't give you the antenna patterns. It just lists them as
-an array. Do you really need this array format to explain the waveforms? Does
-it help you?},
+uniform distribution on $\sin\delta$. 
+%
+% the time delays
+%
+The relative delays in the arrival times of the signals at each
+detector are a function of the sky location and are also computed and applied
+to the selected waveform. The delay in arrival time between a detector and the
+centre of the earth is given by,
+%
+\begin{equation}\label{eq:tdetector}
+\Delta t = \frac{\bold{n}(\alpha,\delta) \cdot \bold{r}}{c},
+\end{equation}
+%
+where $\bold{n}(\alpha,\delta)$ is the propagation direction of the \ac{GW},
+$c$ is the speed of light, and $\bold{r}$ the location vector of the detector
+relative to the centre of the Earth. The resulting $j^{\text{th}}$ signal $\bold{h}_j(\alpha,
+\delta, t)$ received by the detector network is then described by,
+%
+\begin{equation}\label{eq:ht2}
+ \bold{h}_j(\alpha, \delta, t) = \bold{F}(\alpha, \delta, t) \times
+\bold{s}_q(t+\bold{\Delta t}),
+\end{equation}
+%
+where $\bold{F}(\alpha, \delta, t)$ is a matrix of which the elements are the antenna patterns of each detector in the network,
 %
 \begin{equation}\label{eq:ap}
 \bold{F}(\alpha, \delta, t)= \left(\begin{array}{cc}
@@ -696,47 +723,17 @@ f_k^+(\alpha, \delta, t)~~f_k^\times(\alpha, \delta, t) \\
 \end{array}\right),
 \end{equation}
 %
-is computed, where $f^+(\alpha, \delta, t)$ and $f^{\times}(\alpha, \delta, t)$
+$f^+(\alpha, \delta, t)$ and $f^{\times}(\alpha, \delta, t)$
 are the antenna pattern functions for the two polarizations and $k$ is the
-number of detectors as defined above~\cm{How do you select $t$ and what does it
-represent?}. 
-
-%
-% the time delays
-%
-The relative delays in the arrival times of the signals at each
-detector are a function of the sky location and are also computed and applied
-to the selected waveform. The delay in arrival time between a detector and the
-center of the earth is given by,
-%
-\begin{equation}\label{eq:tdetector}
-\Delta t = \frac{\bold{n}(\alpha,\delta) \cdot \bold{r}}{c},
-\end{equation}
-%
-where $\bold{n}(\alpha,\delta)$ is the propagation direction of the \ac{GW},
-$c$ is the speed of light, and $\bold{r}$ the location vector of the detector
-relative to the center of the Earth. The resulting $j$'th signal $\bold{h}_j(\alpha,
-\delta, t)$ received by the detector network is then described by,
-%
-\begin{equation}\label{eq:ht2}
- \bold{h}_j(\alpha, \delta, t) = \bold{F}(\alpha, \delta, t) \times
-\bold{s}_q(t+\bold{\Delta t}),
-\end{equation}
-%
-where the time delays $\Delta t$ are absorbed into the corresponding notations
-and the subscript $j$ is defined in Eq.\ref{eq:cce}~\cm{I changed the equation
-to be more explicit so you don't have to say this previous sentence.}. 
-
+number of detectors as defined above. 
 %
 % adding noise
 %
-Next, we generate independent Gaussian noise $\bold{N}_j(t) =
-\{\bold{n}_{1j}(t), \bold{n}_{2j}(t), ..., \bold{n}_{kj}(t)\}'$ for each
+Next, we generate independent Gaussian noise $\bold{N}_j(T) =
+\{\bold{n}_{1j}(T), \bold{n}_{2j}(T), ..., \bold{n}_{kj}(T)\}'$ for each
 detector in the network using their respective power spectral
-densities~\cm{give references and name the detector epoch, e.g., advanced
-design, O2, 3rd gen, etc..}. In the above notation, the symbol $'$ indicates
-transpose~\cm{why is the noise transpose and not the signal? Maybe I'll find
-out as I keep reading.}. 
+densities. In the expression, $T$ is the time for the generated noise and should not be confused with the lower case $t$, 
+which is the time for the waveforms.
 %It is worth mentioning that although in reality, noise at \ac{GW} detectors
 %may not be entirely Gaussian and contaminated with glitches, the application
 %of \ac{CNN} is actually not limited to time series where the noise is
@@ -744,38 +741,37 @@ out as I keep reading.}.
 %can in fact be trained to identify the presence of a glitch in the data
 %\cite{mukund2017transient, zevin2017gravity, george2017deep,
 %gabbard2018matching}.
-The duration of the generated noise is $1.6$ times longer than
-$\bold{h}_j(\alpha, \delta, t)$~\cm{Don't start off explanations like this. It
-makes the reader think that you are simply declaring something as fact without
-explaining it}. A random number $x$~\cm{what kind of random number? I assume
-uniform but between what limits?} will then be generated determining where in
+To make the simulated data as realistic as possible, 
+we allow the start time of the signal in a data sample to vary.
+To do this,  the duration of the generated noise $T_{\text{max}}$ is $1.6$ times longer than
+that of $\bold{h}_j(\alpha, \delta, t)$. A random number $p$ drawn from 
+a uniform distribution on the range of $[0, P)$ 
+will then be generated, where
+$P = T_{\text{max}}\times 18\% $  and $p$ 
+determines where in
 the generated noise the signal will be placed, as given by,
 %
 \begin{equation}
-\bold{d}_j(\alpha, \delta, t, x)=
+\bold{d}_j(\alpha, \delta, T, p)=
+\\
 \begin{cases}
-\bold{N}_j(t)~~~~~~~~~~~~~~~~~t < x; \\
-\bold{N}_j(t) + \bold{h}_j(\alpha, \delta, t)~x \leq t \leq \tau + x; \\
-\bold{N}_j(t)~~~~~~~~~~~~~~~~~t > \tau + x. \\
+\bold{N}_j(T)~~~~~~~~~~~~~~~~~T < T_{\text{max}} p; \\
+\bold{N}_j(T) + \bold{h}_j(\alpha, \delta, t)~ T_{\text{max}} p \leq T \leq \tau + T_{\text{max}} p; \\
+\bold{N}_j(T)~~~~~~~~~~~~~~~~~T > \tau + T_{\text{max}} p, \\
 \end{cases}
 \end{equation}
 %
-~\cm{please define $\tau$.} This is to avoid the possibility that the \ac{CNN}
+where $\tau$ is defined in section \ref{sec:spwf}. 
+This will avoid the possibility that the \ac{CNN}
 learns the human artefact instead of common features of the waveforms by having
-the signals always starting at the same place.~\cm{well kind of. The reason you
-randomise is that the start time is an unknown parameter so you simply want the
-network to learn to generalise to deal with that kind of variation. Fixing the
-start time at the stame value each time is indeed a human feature but so is
-fixing the distance and all the other things that you fix.} For each
-time-series of the background noise class, independently simulated Gaussian
-background noise~\cm{you need to make it clear that you are also generating
-this noise from the detector PSDs. You could also just say that the background
-noise class is produced identically but with a zero amplitude signal.} of the
-same duration as that of the other classes are generated for each detector in
-the network. This means a data sample for this class is defined as,
+the signals always starting at the same place.
+For each time-series of the background noise class, independently simulated Gaussian
+background noise  of the
+same duration as that of the other classes are generated using the same power spectrum density 
+for each detector in the network. This means a data sample for this class is defined as,
 %
 \begin{equation}\label{eq:noise}
- \bold{d}_j(t) = \bold{N}_j(t).
+ \bold{d}_j(T) = \bold{N}_j(T).
 \end{equation}
 
 %
@@ -788,28 +784,25 @@ $31$ data samples $\bold{d}$ generated using the procedure described above.
 This step is essential for the \ac{CNN} to learn the features of the waveforms
 and to identify them effectively under different noise scenarios and starting
 times.  After that, we generate independent noise realisations for the
-background noise class. The entire data set $\bold{D}$ defined below, has
+background noise class. The entire data set $\bold{D}$ has
 roughly $l = 1.8 \times 10^{5}$ data samples, where each of the 3 classes
 contains approximately $6\times10^{4}$ data samples.
 %
-\begin{equation}\label{eq:finaldata}
-\bold{D}(\boldsymbol{\alpha}, \boldsymbol{\delta}, \boldsymbol{\delta_t}, \bold{t}, \bold{x}) =  \left(\begin{array}{c}
-\bold{d}_1(\alpha, \delta, \delta_t, t, x) \\
-\vdots \\
-\bold{d}_o(\alpha, \delta, \delta_t, t, x) \\
-\vdots \\
-\bold{d}_l(t) \\
-\end{array}\right).
-\end{equation}
+%\begin{equation}\label{eq:finaldata}
+%\bold{D}(\boldsymbol{\alpha}, \boldsymbol{\delta}, \boldsymbol{\delta_t}, \bold{t}, \bold{x}) =  \left(\begin{array}{c}
+%\bold{d}_1(\alpha, \delta, \delta_t, t, x) \\
+%\vdots \\
+%\bold{d}_o(\alpha, \delta, \delta_t, t, x) \\
+%\vdots \\
+%\bold{d}_l(t) \\
+%\end{array}\right).
+%\end{equation}
 %
-In the above equation, the subscript $o$ is the sum of the data samples in
-which there is a \ac{GW} signal in the time series.~\cm{this notation is very
-confusing and not really required. Why do you have to stack the waveforms up
-like this? Having to define things like $o$ and $l$ seems messy.} The final
-step is to whiten $\bold{D}$ using the power spectral densities~\cm{If you are
-going to spend effort explaining how you rescale distances (a very simple
-procedure) then you should definitley describe how you whiten the data}. 
-
+%In the above equation, the subscript $o$ is the sum of the data samples in
+%which there is a \ac{GW} signal in the time series.~\cm{this notation is very
+%confusing and not really required. Why do you have to stack the waveforms up
+%like this? Having to define things like $o$ and $l$ seems messy.} The final
+%step is to whiten $\bold{D}$ using the power spectral densities. 
 %
 % the general training procedure
 %
@@ -820,31 +813,26 @@ from all the detectors in the network. The data samples are then split into 3
 groups, with $1\times10^{4}$ samples being randomly selected for validation,
 $10\%$ of the remainder for testing and $90\%$ for training. When the training
 is finished for a dataset generated at a given distance, the above described
-procedure will be repeated for another distance until the training for all
-distances have been carried out for a network~\cm{You need to make it clear
-that you are training different networks (with the same architecture) for each
-distance and not iterativley training the same single network.}. The entire
-procedure is then repeated for another network~\cm{the word network is being
-used to describe the CNN and the IFOs, it might be a bit confusing} of \ac{GW}
-detectors. As mentioned previously~\cm{when was it mentioned previoulsy? give a
-ref to the section.}, the \ac{CNN} will be trained for the two networks of
+procedure will be repeated for another distance with a different \ac{CNN} of 
+the same architecture until the training for all
+distances have been carried out for a \ac{GW} detector network. The entire
+procedure is then repeated for another \ac{GW} detector network. 
+As mentioned in the introduction, the \ac{CNN} will be trained for the two networks of
 \ac{GW} detectors presented in Table~\ref{table:network}. For the remaining of
-the paper, we will use their acronyms to refer to the networks~\cm{what are
-these acronymns, state them here.}.
+the paper, we will use their acronyms to refer to the networks, i.e., HLVK and H+L+VK.
 
 %
 % plot of representative data sample
 %
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{datasample.png}
+\includegraphics[width=0.475\textwidth]{datasample.png}
 \caption{A representative example of the simulated time-series used to
 train/validate/test the \ac{CNN}. The blue shows a whitened time-series with a
-signal added to Gaussian noise of unit variance~\cm{if you've whitened it then
-of course the noise is zero mean and unit variance - that's the definition so
-no need to say it twice.}. The red curve shows the same whitened signal free of
-noise.~\cm{what waveform is this and what is it's SNR? Please state this in the
-caption. Is this a representative SNR that you can detect? If not then why show
-it.}\label{fig:sample}} 
+signal added to Gaussian noise generated using the power spectral density of \ac{aLIGO}. 
+The red curve shows the same whitened signal free of
+noise. The original waveform is shown in Fig. \ref{fig:neusample1}.
+The source is at a distance of $10$ kpc from earth.
+\label{fig:sample}} 
 \end{figure}
 
 \begin{table}[]
@@ -852,17 +840,17 @@ it.}\label{fig:sample}}
 \begin{threeparttable}
 \caption{Detector networks}
 \label{table:network}
-\begin{tabular}{ccc}
+\begin{tabular}{lll}
 \toprule
-Network            & Detectors                & Acronym                 \\
+Network            & \multicolumn{1}{c}{Detector}                & Acronym                 \\
 \hline
-\multirow{4}{*}{1} & \ac{aLIGO} H*    & \multirow{4}{*}{HLVK}   \\
-                   & \ac{aLIGO} L* &                         \\
-                   & \ac{AdVirgo}           &                         \\
-                   & KAGRA                    &                         \\
+\multirow{4}{*}{1} & \ac{aLIGO} Hanford~\cite{aasi2015advanced}    & \multirow{4}{*}{HLVK}   \\
+                   & \ac{aLIGO} Livingston &                         \\
+                   & \ac{AdVirgo}~\cite{acernese2014advanced}           &                         \\
+                   & KAGRA~\cite{aso2013interferometer}                    &                         \\
                    \hline
-\multirow{4}{*}{2} & LIGO A+ H          & \multirow{4}{*}{H+L+VK} \\
-                   & LIGO A+ L       &                         \\
+\multirow{4}{*}{2} & LIGO A+ Hanford~\cite{miller2015prospects, LIGOW}          & \multirow{4}{*}{H+L+VK} \\
+                   & LIGO A+ Livingston       &                         \\
                    & \ac{AdVirgo}           &                         \\
                    & KAGRA                    &                         \\
 \hline
@@ -871,10 +859,7 @@ Network            & Detectors                & Acronym                 \\
 \begin{tablenotes}
 \setlength\labelsep{0pt}
 \normalfont{
-\item The networks of detectors used in this work.\\
-* H refers to the detector in Hanford and L the detector in Livingston.~\cm{you
-* have enough space to simply use Hanford and Livingston in the table itslef.
-* You could also have a column for references to the detector papers.}}
+\item The networks of detectors used in this work.}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -886,11 +871,14 @@ Network            & Detectors                & Acronym                 \\
 % Introduction to the ROC results
 %
 After the \ac{CNN} is trained, we can estimate its performance using the
-testing samples~\cm{what about the validation samples? These haven't been
-motivated yet.} and the results of which are presented in this section. One of
-the most commonly used and convenient ways to determine the classification
-performance of a \ac{CNN} or equivelent signal detection algorithm is to plot
-the \ac{ROC} curve. A \ac{ROC} shows the performance of a classifying model by
+testing samples and the results of which are presented in this section. 
+By applying the trained network to the testing samples, 
+the \ac{CNN} will output values of statistics to each of the testing samples. 
+Since we have knowledge of the true class associated with the testing samples,
+it is possible to construct the \ac{ROC} curves.
+The \ac{ROC} curve is one of the most commonly used and convenient ways to 
+determine the classification performance of a \ac{CNN} or equivalent signal detection 
+algorithm. A \ac{ROC} shows the performance of a classifying model by
 defining the \ac{TAP} as a function of the \ac{FAP}. Since \ac{ROC} curves are
 usually plotted for models distinguishing between two classes, for a
 multi-class classification problem, a \ac{ROC} for a class should be viewed as
@@ -899,11 +887,7 @@ fraction of samples from other classes misidentified as a sample from the class
 the \ac{ROC} is associated with. The \ac{TAP} is identical to that of a
 two-class classification problem and indicates the fraction of samples
 correctly identified.  For a given \ac{FAP}, a model with a higher \ac{TAP} is
-considered more capable than a model with a lower \ac{TAP}~\cm{it appears to me
-that you haven't actually defined what your classification statistic is. Can
-you make sure that the reader understands that how you go from the output of
-the final sigmoid layer to making ROC curves. You have to define a detction
-statistic.}. 
+considered more capable than a model with a lower \ac{TAP}.
 
 %
 % describe ROC curve plots (Fig 5)
@@ -914,32 +898,27 @@ we show only the results for three distances, namely, $20$, $60$ and $100$ kpc.
 For all the distances tested, the \ac{CNN} achieves a higher \ac{TAP} for any
 given \acp{FAP} for magnetorotational than neutrino-driven signals.  That is
 not surprising as the intrinsic amplitudes for magnetorotational signals are
-higher than those of neutrino-driven signals~\cm{maybe a bit more description?
-Maybe give some detection probabilities at standard FAP values in the text?}.
+higher than those of neutrino-driven signals.
 
 \begin{figure*}
      \begin{center}
         \subfigure[]{
             \label{fig:ROClog1}
-            \includegraphics[width=0.45\textwidth]{ROC_curves_neutrino.png}%
+            \includegraphics[width=0.475\textwidth]{ROC_curves_neutrino.png}%
         }\quad
         \subfigure[]{
             \label{fig:ROClog2}
-            \includegraphics[width=0.45\textwidth]{ROC_curves_mag.png}%
+            \includegraphics[width=0.475\textwidth]{ROC_curves_mag.png}%
         }
     \end{center}
     \caption{\ac{ROC} curves showing the classification performance of the
 \ac{CNN} for \ac{CCSN} signals of different explosion mechanisms at three
-distances, $20$, $60$, and $100$kpc. The left panel shows the results for the
+distances, $20$, $60$, and $100$ kpc. The left panel shows the results for the
 neutrino-driven mechanism, while the panel on the right shows those for the
 magnetorotational mechanism. In both panels, the solid lines are for the
-network H+L+VK, while the dashed lines are for HLVK.~\cm{please make these
-plots square with equal length sides. Also add a diagonal line to indicate the
-worst performance bound. Also make the y-axis scales the same for both plots or
-at least highlight the fact that they are different in the text since it is
-initially misleading. The legends don't need to have both solid and dashed
-lines. Also add sub-labels indicateing that the left is magneto and the right
-is neutrino.}\label{fig:ROClog}} 
+network H+L+VK, while the dashed lines are for HLVK. The black diagonal lines in both plots indicate 
+the worst scenario where a model has zero ability in distinguishing its input.
+\label{fig:ROClog}} 
 \end{figure*}
 
 %
@@ -951,26 +930,26 @@ results for three chosen \acp{FAP} values are shown in Fig.~\ref{fig:eff}.  In
 this figure, a similar trend is seen that magnetorotational signals are easier
 for the \ac{CNN} to identify than neutrino-driven signals at a given distance.
 For magnetorotational signals from sources located at $50$ kpc and a \ac{FAP}
-of $0.1$, the \ac{CNN} achieves a \ac{TAP} of $94\%$ and $82\%$ for the
+of $10\%$, the \ac{CNN} achieves a \ac{TAP} of $94\%$ and $82\%$ for the
 networks H+L+VK and HLVK respectively. At more restrict \acp{FAP} such as
-$0.001$, the \ac{CNN} still achieves \acp{TAP} $86\%$ and $68\%$ for sources at
+$0.1\%$, the \ac{CNN} still achieves \acp{TAP} $86\%$ and $68\%$ for sources at
 the same distance for the two networks respectively.  For sources that are
 located at a slightly further distance of $60$ kpc, both networks achieve a
-\ac{TAP} of close to or larger than $80\%$ at a \ac{FAP} of $0.1$. Such a range
+\ac{TAP} of close to or larger than $80\%$ at a \ac{FAP} of $10\%$. Such a range
 includes distances associated with the Large and Small Magellanic Clouds and
-covers the satellite galaxies imbetween~\cite{karachentsev2004catalog,
+covers the satellite galaxies in between~\cite{karachentsev2004catalog,
 belokurov2007cats}.  For sources at $100$ kpc, the \acp{TAP} are close to or
 larger than $60\%$ for H+L+VK for all chosen \acp{FAP} values, and is $73\%$ if
-the \ac{FAP} is $0.1$. Even for sources at $150$ and $200$ kpc, the \acp{TAP}
+the \ac{FAP} is $10\%$. Even for sources at $150$ and $200$ kpc, the \acp{TAP}
 are $54\%$ and $38\%$ respectively for the same \ac{FAP}, indicating that with
 such a \ac{GW} network, it is possible to detect magnetorotational \ac{CCSN}
 signals out to such a distance. On the other hand, it is more difficult for the
 \ac{CNN} to detect and classify the neutrino-driven signals, due to their
 weaker amplitudes. Nonetheless, for sources at $10$ kpc, the \ac{CNN} achieves
 a \ac{TAP} of $76\%$ and $55\%$ for H+L+VK and HLVK respectively if the
-\ac{FAP} is $0.1$.  This means that for a \ac{GW} from a Galactic \ac{CCSN}
+\ac{FAP} is $10\%$.  This means that for a \ac{GW} from a Galactic \ac{CCSN}
 signal it is possible to detect and classify it with either of these \ac{GW}
-detcetor networks.
+detector networks.
 
 %
 % the TAP as a function of distance
@@ -979,11 +958,11 @@ detcetor networks.
      \begin{center}
         \subfigure[]{
             \label{fig:eff1}
-            \includegraphics[width=0.45\textwidth]{Neutrino_efficiency.png}
+            \includegraphics[width=0.475\textwidth]{Neutrino_efficiency.png}
         }\quad
         \subfigure[]{
             \label{fig:eff2}
-            \includegraphics[width=0.45\textwidth]{Magnetarotational_efficiency.png}
+            \includegraphics[width=0.475\textwidth]{Magnetarotational_efficiency.png}
         }
     \end{center}
     \caption{Efficiency curves showing the classification ability of the
@@ -991,8 +970,8 @@ detcetor networks.
 panel shows the results for the neutrino-driven mechanism, while the right
 shows those for the magnetorotational mechanism. In both panels, the solid
 lines show the results for the network H+L+VK, and the dashed lines for HLVK.
-Three \acp{FAP} values are chosen, blue for \ac{FAP} $=0.1$, green for \ac{FAP}
-$=0.01$, red for \ac{FAP} $=0.001$.\label{fig:eff}}
+Three \acp{FAP} values are chosen, blue for \ac{FAP} $=10\%$, green for \ac{FAP}
+$=1\%$, red for \ac{FAP} $=0.1\%$.\label{fig:eff}}
 \end{figure*}
 
 %
@@ -1002,17 +981,17 @@ $=0.01$, red for \ac{FAP} $=0.001$.\label{fig:eff}}
      \begin{center}
         \subfigure[]{
             \label{fig:ROCfixed1}
-            \includegraphics[width=0.45\textwidth]{ROC_fixed_neutrino.png}
+            \includegraphics[width=0.475\textwidth]{ROC_fixed_neutrino.png}
         }\quad
         \subfigure[]{
             \label{fig:ROCfixed2}
-            \includegraphics[width=0.45\textwidth]{ROC_fixed_mag.png}
+            \includegraphics[width=0.475\textwidth]{ROC_fixed_mag.png}
         }
     \end{center}
     \caption{Efficiency curves showing the ability of the \ac{CNN} in
-distinguishing input data with a fixed decision threshold $(0.5)$~\cm{what is
-this? Is it defined in the text?}, and their corresponding \acp{FAP}~\cm{and
-TAP?}. The left panel shows the results for the neutrino-driven mechanism, and
+distinguishing input data with a fixed decision threshold $(50\%)$, 
+and their corresponding \acp{FAP} and \ac{TAP}. 
+The left panel shows the results for the neutrino-driven mechanism, and
 the right shows that for the magnetorotational mechanism. In both panels, the
 solid lines show the \acp{TAP} and \acp{FAP} for the network H+L+VK, and the
 dashed lines show those for HLVK.\label{fig:ROCfixed}}
@@ -1020,27 +999,27 @@ dashed lines show those for HLVK.\label{fig:ROCfixed}}
 
 In practice, since the output of a \ac{CNN} is probabilities indicating how
 likely the input belongs to each of the classes, it may be desired to set a
-threshold on which the decision whether the input belong to a class is made.
+threshold probability on which the decision whether the input belong to a class is made.
 For example, an input will be assigned into a certain class if the
-corresponding probability is larger than the pre-selected threshold. In such a
+corresponding probability is larger than the pre-selected threshold probability. In such a
 scenario, the \ac{FAP} and \ac{TAP} would be affected by the choice of the
 threshold. We show such a result in Fig.~\ref{fig:ROCfixed}, where we employed
-a threshold of $0.5$~\cm{I'm a bit confused. You have 3 classes so how exactly
-are you doing this analysis? You mentioned before that you are treating one
-class vs the remainder but when you talk about magneto does that mean that the
-other model is noise AND neutrino. That would be strange.}. For H+L+VK and
-magnetorotational signals at $10$ kpc, the \ac{TAP} is $99\%$. If the distance
+a threshold probability of $50\%$. This value is chosen because for lower values, 
+there could be more than a class with predicted probabilities from the \ac{CNN} 
+larger than the threshold, while higher values could potentially rule out inputs 
+that may otherwise be correctly identified.
+For H+L+VK and magnetorotational signals at $10$ kpc, the \ac{TAP} is $99\%$. If the distance
 is extended to $80$ kpc, the \ac{TAP} is still close to $80\%$.  For the
 largest distances tested in this work, $150$ and $200$ kpc, the \acp{TAP} are
-$43\%$ and $29\%$ respectively~\cm{these numbers don't seem to match the
-plot.}. For HLVK, the \ac{TAP} is $98\%$ and $49\%$ for sources at $10$ and
+$43\%$ and $29\%$ respectively. 
+For HLVK, the \ac{TAP} is $98\%$ and $49\%$ for sources at $10$ and
 $80$ kpc respectively.
 %The \acp{TAP} decrease to $10\%$ and $9\%$ for sources at $150$ and $200$ kpc.
-For all distances, the \ac{CNN} maintains a \ac{FAP} no larger than $0.04$ for
+For all distances, the \ac{CNN} maintains a \ac{FAP} no larger than $4\%$ for
 both networks regarding magnetorotational waveforms. For neutrino-driven
 signals, we show that H+L+VK has a \acp{TAP} of $66\%$ at $10$ kpc while it
 is $55\%$ at $10$ kpc for HLVK.  Both of the networks have \acp{FAP} close to
-or less than $0.2$. It should be noted that the results presented here are
+or less than $20\%$. It should be noted that the results presented in this section are
 averaged over all the data samples in the testing samples. The performance on
 any individual waveform may vary depending on the morphology and the amplitudes
 of the waveform.
@@ -1064,14 +1043,14 @@ the \ac{CNN}. However, in reality, it is likely that the \acp{GW} from a
 \ac{CCSN} may only be partially similar to the simulated waveforms, while
 having some other features that are different or even unexpected. A \ac{CNN}
 that is only capable of recognising waveforms with which it is familiar may
-prove to be not be entirely applicable. Therefore, we apply our trained
+prove to be not entirely applicable. Therefore, we apply our trained
 \ac{CNN} to waveforms from other studies that were not used during the
 training. Similar to the procedure used in~\cite{roma2019astrophysics}, we take
 the waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
 from~\cite{scheidegger2010influence} as the test waveforms for the
 magnetorotational mechanism. The test waveforms for the neutrino-driven
 mechanisms are $\text{s}20$ from~\cite{andresen2017gravitational} and
-$\text{SFHx}$ from~\cite{kuroda2016new}. Examples of these waveforms are shown
+$\text{SFHx}$ from~\cite{kuroda2016new}. These waveforms are shown
 in Fig.~\ref{fig:Extratestwaveform}. The test waveforms in this section should
 not be confused with the testing samples in Sec.~\ref{sec:result}, which are
 randomly drawn from the same distribution as the training samples.
@@ -1079,26 +1058,35 @@ randomly drawn from the same distribution as the training samples.
 %
 % plots of extra test waveforms
 %
-\begin{figure}
+\begin{figure*}
      \begin{center}
         \subfigure[]{
-            \label{fig:ex_waveform_neu}
-            \includegraphics[width=0.45\textwidth]{ex_waveform_neu.png}
+            \label{fig:ex_waveform_mag1}
+            \includegraphics[width=0.475\textwidth]{sch_waveform_R3.png}
+        }
+        \subfigure[]{
+            \label{fig:ex_waveform_mag2}
+            \includegraphics[width=0.475\textwidth]{sch_waveform_R4.png}
         }\quad
         \subfigure[]{
-            \label{fig:ex_waveform_mag}
-            \includegraphics[width=0.45\textwidth]{ex_waveform_mag.png}
+            \label{fig:ex_waveform_neu1}
+            \includegraphics[width=0.475\textwidth]{Kuroda_2016.png}
+        }
+        \subfigure[]{
+            \label{fig:ex_waveform_neu2}
+            \includegraphics[width=0.475\textwidth]{Andresen_2016.png}
         }
     \end{center}
     \caption{The waveforms excluded from the training session of the \ac{CNN}
-and used as an extra test for the performance of the trained \ac{CNN}. From the
-top to the bottom, the waveforms shown are $\text{SFHx}$, $\text{s}20$
-(neutrino-driven mechanism), $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
-(magnetorotational mechanism), respectively. The time in the x-axis is not
-related to core bounce~\cm{again, why state this (same comment as for Fig.
-2}.\label{fig:Extratestwaveform}} 
-\end{figure}
-
+and used as an extra test for the performance of the trained \ac{CNN}. The top 
+panels show the waveforms $\text{R3E1AC}$(left) and $\text{R4E1FC\_L}$(right), 
+modelled by the magnetorotational mechanism.
+The inset plots show the $h_{\times}$ polarisations of the waveform, which are at least one order of magnitude weaker than the 
+$h_{+}$ polarisations.
+The waveforms shown in the bottom panels are $\text{SFHx}$(left) and $\text{s}20$(right), 
+modelled by the neutrino-driven mechanism. 
+Shown in the x-axes are the time after core bounce.\label{fig:Extratestwaveform}} 
+\end{figure*}
 %
 % 
 %
@@ -1106,11 +1094,11 @@ related to core bounce~\cm{again, why state this (same comment as for Fig.
      \begin{center}
         \subfigure[]{
             \label{fig:extra_waveform_test_neu}
-            \includegraphics[width=0.45\textwidth]{extra_neu_waveform_test.png}
+            \includegraphics[width=0.475\textwidth]{extra_neu_waveform_test.png}
         }\quad
         \subfigure[]{
             \label{fig:extra_waveform_test_mag}
-            \includegraphics[width=0.45\textwidth]{extra_mag_waveform_test.png}
+            \includegraphics[width=0.475\textwidth]{extra_mag_waveform_test.png}
         }
     \end{center}
     \caption{Efficiency curves showing the ability of the \ac{CNN} in
@@ -1127,27 +1115,22 @@ The waveforms have not been used for the training of the \ac{CNN}.
 % the new test waveofmr procedure
 %
 Using the procedure described in Sec.~\ref{sec:spwf}, we generate $1200$
-injections~\cm{injections is jargon. Use the same terminolgy as used in the
-rest of the paper} for each distance and therefore each class has $\sim 400$
-injections. The performance of the \ac{CNN} on the test waveforms is shown in
+samples for each distance and therefore each class has $400$
+samples. The performance of the \ac{CNN} on the test waveforms is shown in
 Fig.~\ref{fig:Extratest}. For waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
-at $50$kpc and a \ac{FAP} of $0.1$, the \ac{CNN} achieves a \ac{TAP} of $87\%$
-with H+L+VK and $59\%$ with HLVK respectively. At $60$kpc, the \acp{TAP} drops
+at $50$ kpc and a \ac{FAP} of $10\%$, the \ac{CNN} achieves a \ac{TAP} of $87\%$
+with H+L+VK and $59\%$ with HLVK respectively. At $60$ kpc, the \acp{TAP} drops
 slightly to $83\%$ and $52\%$ respectively. This indicates that with the
 \ac{CNN}, it is possible to detect these waveforms from sources that are at
 distances consistent with the Large and Small Magellanic Clouds. For waveforms
 $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and $70\%$ for the two
-networks if the sources are at $10$kpc and the \ac{FAP} is $0.1$.  The
+networks if the sources are at $10$ kpc and the \ac{FAP} is $10\%$.  The
 efficiency for the waveforms $\text{s}20$ and $\text{SFHx}$ is noticeably
 higher than that for the neutrino-driven mechanism in Fig.~\ref{fig:eff} for
 the same distance. This is because as mentioned before, the detection and
 classification efficiency in Fig.~\ref{fig:eff} are the results averaged over
 the testing samples. It is possible that individual waveforms may be easier for
-the \ac{CNN} to detect and the results here also indicate that the \ac{CNN} has
-generalised the features of the explosion mechanisms.~\cm{this last statement
-is very vague and needs clarification. What are features? and what does
-generalisation mean in this context?}
-
+the \ac{CNN} to detect. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}\label{sec:conclusion}
@@ -1158,16 +1141,16 @@ We have demonstrated that a \ac{CNN} can be applied for the purpose of
 distinguishing \ac{GW} detector time-series among pure background noise and
 \ac{CCSN} explosion mechanisms. We have trained the \ac{CNN} using
 $1.8\times10^{5}$ samples of simulated time series for each distance at a
-number of distances from $10$kpc to $200$kpc. The data samples for each
+number of distances from $10$ kpc to $200$ kpc. The data samples for each
 class consisted of approximately $4\times10^5$ samples. 
 
 %
 % Primary magneto results
 %
 We have shown that with a \ac{GW} detector network of HLVK, when the \ac{FAP}
-was $0.1$, once trained, a \ac{CNN} could achieve a \ac{TAP} close to $80\%$
+was $10\%$, once trained, a \ac{CNN} could achieve a \ac{TAP} close to $80\%$
 for magnetorotational signals from sources at $60$ kpc. Using a network of
-H+L+VK, we showed that the \ac{TAP} is imcreased to $91\%$.  Both the Large and
+H+L+VK, we showed that the \ac{TAP} is increased to $91\%$.  Both the Large and
 Small Magellanic Clouds are within this distance. If the distance is extended
 to $150$ or $200$ kpc, a \ac{TAP} of $54\%$ or $38\%$ respectively are still
 achievable for H+L+VK, indicating the small possibility of detections within
@@ -1177,8 +1160,8 @@ such distances.
 % not so good neutrino results
 %
 For the neutrino-driven mechanism, the weaker amplitudes of the waveforms
-result in lower \acp{TAP} at the same distances.  For sources at $10$kpc, the
-trained \ac{CNN}, with a \ac{FAP} of $0.1$, achieved a \ac{TAP} of $55\%$ and
+result in lower \acp{TAP} at the same distances.  For sources at $10$ kpc, the
+trained \ac{CNN}, with a \ac{FAP} of $10\%$, achieved a \ac{TAP} of $55\%$ and
 $76\%$ for HLVK and H+L+VK respectively. This indicates a Galactic \ac{CCSN}
 event would likely be detectable.
 
@@ -1188,22 +1171,38 @@ event would likely be detectable.
 We used four waveforms that were not used for the training of the \ac{CNN} to
 test the performance of the \ac{CNN} in a more realistic situation. We found
 that for waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ from sources at
-$60$kpc, the \acp{TAP} are $83\%$ and $52\%$ for H+L+VK and HLVK respectively.
+$60$ kpc, the \acp{TAP} are $83\%$ and $52\%$ for H+L+VK and HLVK respectively.
 For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $93\%$ and
-$70\%$ for the two networks respectively. The results prove the possibility of
+$70\%$ for the two networks respectively. All at \ac{FAP} of $10\%$. 
+The results prove the possibility of
 using a \ac{CNN} as a tool for the detection and classification of \ac{CCSN}
 \ac{GW} signals.
-
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{ACKNOWLEDGEMENTS}
-%
-%
-%
+\section{ACKNOWLEDGEMENTS}
+We would like to thank Jade Powell and Marek Szczepanczyk for their 
+constructive comments on the paper.
 I.S.H. and C.M. are supported by the Science and Technology Research Council
 (grant No.~ST/L000946/1) and the European Cooperation in Science and
 Technology (COST) action CA17137. 
 
 \bibliography{main}
+%\input{main.bbl}
 
 \end{document}

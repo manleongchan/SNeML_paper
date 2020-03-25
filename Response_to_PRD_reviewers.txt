@@ -1,0 +1,277 @@
+We would like to express our gratitude to the reviewers for reading 
+through the paper thoroughly and their positive and constructive 
+comments. Below are our response to the comments.
+
+
+Report of Referee A 
+------------------------------------------------------------------------------
+The manuscript aims at the classification of gravitational wave
+signals buried in noise through a convolutional neural network that
+takes time series data from gravitational wave detectors as input and
+works independently. The authors took into account simulated
+waveforms, generated at various distances, for which the explosion
+mechanism is modelled by the neutrino-driven mechanism and the
+magneto-rotational mechanism. After the training of the convolutional
+neural network, the authors estimated the performance of the algorithm
+by constructing the receiver operator characteristic curves. The
+waveforms excluded from the training session of the convolutional
+neural network are used as an extra test for the performance of the
+trained CNN. The manuscript is well organised and clearly written, it
+offers a complete overview of the state of art and it contains a
+significant step forward for the classification of supernova
+gravitational waves signals.
+
+Response: Thank you so much for the very positive comments. 
+          They are much appreciated.
+------------------------------------------------------------------------------
+
+
+Report of Referee B
+------------------------------------------------------------------------------
+The authors present a novel analysis pipeline (at the heart of which
+is a convolutional neural network - CNN) for the detection and
+classification of gravitational waves (GWs) from core-collapse
+supernovae (CCSNe). Employing said pipeline, the authors suggest GWs
+from Galactic CCSNe are likely to be detected with even the current
+generation of ground-based GW detectors. If robust, this result would
+provide an improvement in sensitivity by a factor of a few over
+similar studies using excess-power methods, which is exciting and much
+needed.
+
+The particulars of the conditions for which the flagship paper results
+are quoted, however, cause concern. A Galactic CCSN is a once in a
+lifetime event, and the first "detection" of GWs from stellar collapse
+would certainly not be claimed at any less than 5 sigma. As a
+consequence, any results presented at FAP=1% or FAP=10% on
+detectability seem a little spurious.
+
+Going through the paper and finding the equivalent
+"detection/classification distances" at FAP=0.1% (the most realistic
+case presented, and a little over 3 sigma):
+
+
+* [Fig. 5a] At 20kpc, TAP_HLVK ~ 1%, and TAP_H+L+VK ~ 8% 
+
+* [Fig. 5b] At 20kpc,   TAP_HLVK ~ 92% / TAP_H+L+VK ~ 95%
+                At 60kpc,   TAP_HLVK ~ 55% / TAP_H+L+VK ~ 80%
+                At 100kpc, TAP_HLVK ~ 16% / TAP_H+L+VK ~ 16%
+
+* [Fig. 6a] At 10kpc, TAP_HLVK ~ 12% / TAP_H+L+VK ~ 41%
+
+* [Fig. 6b] At 10kpc, TAP_HLVK ~ 96% / TAP_H+L+VK ~ 98%
+
+* [Fig. 9a] At 10kpc, TAP_HLVK ~ 12% / TAP_H+L+VK ~ 41%
+
+* [Fig. 9b] At 10kpc, TAP_HLVK ~ 96% / TAP_H+L+VK ~ 97%
+
+These numbers (and the above commentary) suggest that a different
+region of parameter space might be more appropriate to study here.
+Assuming TAP>50% and FAP<0.3% as a (generous) lower limit on realistic
+detection claims, it would be instructive to instead show:
+
+* [Fig. 5a] TAP_HLVK vs FAP_HLVK and TAP_H+L+VK vs FAP_H+L+VK between
+0.001% < FAP < 1% at 0.2kpc (Betelgeuse), 2kpc, and 10kpc (typical
+"Galactic SN" distance)
+
+* [Fig. 5b] TAP_HLVK vs FAP_HLVK and TAP_H+L+VK vs FAP_H+L+VK between
+0.001% < FAP < 1% at 2kpc, 20kpc, 60kpc
+
+* [Fig. 6a] TAP_HLVK and TAP_H+L+VK as a function of distance between
+0.5kpc - 20kpc at FAP=0.1%, 0.01%, and 0.001%
+
+* [Fig. 6b] TAP_HLVK and TAP_H+L+VK as a function of distance between
+0.5kpc - 200kpc at FAP=0.1%, 0.01%, and 0.001%
+
+* [Fig. 9a] TAP_HLVK and TAP_H+L+VK as a function of distance between
+0.5kpc - 20kpc at FAP=0.1%, 0.01%, and 0.001%
+
+* [Fig. 9b] TAP_HLVK and TAP_H+L+VK as a function of distance between
+0.5kpc - 200kpc at FAP=0.1%, 0.01%, and 0.001%
+
+
+Looking at Fig. 7, however, I question if it is possible to achieve
+such low FAPs with this pipeline, particularly for the neutrino
+mechanism waveforms. It would be useful to remake this figure at
+distances for which FAP << 0.3% is possible. If not possible, it may
+be beneficial to remove the figure. If not removed, the caption and
+text should be updated to note the large FAPs used.
+
+Response: We have tested again the trained CNN with 1.2^5 test samples 
+          for each distance so that we can achieved a FAP of 1%, 0.1% 
+          and 0.01%. 
+          
+          We appreciate that 0.001% is also one of the requested values
+          of FAP and running the testing at closer distance for neutrino
+          -driven mechanism is advised. 
+          But we also noted that such a low value of FAP would 
+          require an even larger set of test samples and a much longer 
+          amount of time to generate, which maybe too computationally 
+          expensive for us to do. Rerunning the simulations at closer
+          distances will even be more computationally expensive.
+
+          The changes in response to this comment includes: 
+          1. Only TAP values at FAP equal to 1% are qouted in the      
+             abstract and the conclusion. No detection claim is made for 
+             FAP higher than 1%. 
+             We understand that detection claims are advised to be made 
+             at least FAP = 0.1%, but we argue that detections of CCSNe 
+             signals will be made simultaneously with electromagnetic 
+             observations and/or neutrino observations, and therefore 
+             such low FAP may not be absolutely necessary.
+
+          2. The plots and text in the section of results 
+             (section IV and section V).
+
+          3. We retracted claims regarding the ability of the 
+             network HLVK in detecting Galactic events where the explosion 
+             mechanism is neutrino-driven mechanism.
+
+          4. number of training/test samples in the last paragraph of 
+             section III has been updated to be consistent with 
+             this change.
+    
+          5. We would also like to highlight the fact that the plots
+             previously submitted as Fig. 9a and Fig. 9b were actually 
+             duplicates of previous Fig. 6a and Fig. 6b by accident. 
+             Although this mistake was naturaly corrected when we updated
+             the results, we would still like to bring this mistake to the
+             reviewers' attention.
+
+Overall, the study is a novel and interesting work. It is crucial,
+however, to put the authors' pipeline through more rigorous testing
+(i.e. at realistic FAPs, perhaps using realistic noise) before stating
+its ability to detect GWs from Galactic CCSNe. I would suggest framing
+instead the paper as a follow-up pipeline, but take note that the
+authors explicitly distinguish their pipeline from that shown in a
+similar work by Astone+2018 as designed to take time series directly
+from the detectors and find signals, rather than analyzing triggers
+found by some external detection pipeline. Given this, it seems
+appropriate for appreciable corrections to the text and results to be
+requested.
+
+Response: We appreciate this comment and admit that testing/training 
+          the CNN using realistic noise would indeed show a more 
+          realistic results.
+          However, such extension of the current work would require 
+          a whole new set of treatment that is beyond the current scope
+          of this work. 
+          We therefore updated our results with more realistic 
+          values of FAP and leave tests using realistic noise for future 
+          work. 
+
+In the below, I list specific comments by section, denoting the
+relevant paragraph number by p.
+
+I: Introduction
+
+p1: LIGO, Virgo, and KAGRA are not introduced or cited here. Suggest
+to move discussion of second generation detectors (and references)
+from start of p2 here. Aside - has KAGRA now begun operations? If so,
+it may be worth updating the text here.
+
+Response: We have updated the text accordingly.
+
+p2: Specifically, the sentence "The nuclear equation of state will
+then stiffens by the strong nuclear force above the nuclear density
+and stops the core collapse." doesn't really make sense. The equation
+of state stiffens (and subsequently stops the core collapsing) as the
+core density exceeds nuclear density because the strong nuclear force
+becomes repulsive at very small inter-nucleon distances.
+
+Response: Thanks for pointing this out. We have rewritten the sentense 
+          to read "The nuclear equation of state will then stiffens by 
+          the strong nuclear force as the core exceeds nuclear density
+          and stops the core collapse."
+
+II: Convolutional Neural Network & Fig. 1 The technical description of
+the CNN pipeline is thorough and instructive - nice work!
+
+Response: Thank you so much.
+
+Tab. 1 caption: typo at end of first sentence, detectr --> detector
+
+Response: This has been corrected.
+
+III: Data
+
+p3: For the 3D simulations, what is the observer angle for the h+,hx
+used? As the GW signal for CCSNe varies with orientation of the source
+with respect to the observer, it may be useful to add a distribution
+of observer angles for each waveform model to the training set, so as
+to account for this variance. This could also help remedy the issue
+noted in p6 of small sample size of neutrino mechanism waveforms
+compared to magnetorotational mechanism waveforms.
+
+
+Response: the observer angles for all the studies of 3D simulations have
+          been added to the text. We appreciate that our data could be 
+          augmented by varying the observer angles in the data set. 
+          However, we noted that while some of the used studies published 
+          the information or parameters to generate waveforms at random 
+          observer angles, the same information for other studies is not
+          readily available. We therefore decided to use only the published
+          waveforms.
+            
+
+Fig. 2 & Fig. 3: What are the observer angles for these waveforms? As
+an aside, it could be useful to combine these plots into a 4 panel
+figure.
+
+Response: the observer angles for these figures have been added in 
+          the caption.
+
+Note: Appreciated the technical detail included on signal injection
+methodology - very refreshing to see, and crucial for reproducibility.
+
+Response: Thank you so much.
+
+IV: Results and Discussion
+
+I suggest the results are rerun using the parameters highlighted
+above, and the text subsequently rewritten to reflect the updated
+results. At the very least, statements on detecting GWs from a
+Galactic CCSN should be removed (unless results with FAP < 0.3% show
+this is the case), and a clear note/disclaimer on the high FAPs used
+must be added.
+
+Note: Figs. 5 and 6 are clear and well presented - very instructive.
+
+Response: As stated above, we have updated section IV and section V. 
+
+V: Waveforms Excluded From Training
+
+As for the results section, I suggest reruns using parameters
+highlighted above, and the text subsequently rewritten to reflect the
+updated results. Similarly to before, at the very least a disclaimer
+on the FAPs must be added, and detection statements for FAP>0.3%
+removed.
+
+Response: As stated above, we tested again the trained CNN with 
+          1.2 * 10^5 test samples to achieve FAP values of 1%, 0.1%, 
+          0.01% as was done for section IV. The text and plots 
+          are also updated to reflect this change. 
+          Claims regarding the ability of the network HLVK in detecting 
+          Galatic CCSN signals if the explosion mechanism is the 
+          neutrino driven mechanism.
+
+Fig. 8: As for Figs. 2 and 3, what are the observer angles for these
+waveforms. As it is noted that h+ >> hx in the caption, I suspect the
+waveform is for a polar observer, but this should be confirmed and
+noted in the text.
+
+Response: The waveforms shown in Fig. 8a and Fig. 8b are indeed for a 
+          polar observer. This as well as that for Fig. 8c and Fig. 8d
+          have been added in the caption.
+
+VI: Conclusion
+
+As previously noted, only results at FAP=10% are mentioned. As it is
+not realistic to claim detection at such high FAP, the distances
+presented are meaningless. This should be rewritten, pointing instead
+to the results at FAP=0.1%. If Galactic/Magellanic Cloud detections
+are no longer feasible, the abstract (and other relevant sections)
+should be rewritten to reflect that.
+
+Response: We updated the text to be consistent with the uses of more realistic 
+          FAP and retracted claims of detection of Galactic event with HLVK.
+------------------------------------------------------------------------------

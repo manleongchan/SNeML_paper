@@ -986,7 +986,10 @@ are larger than zero will be plotted.
     \caption{Efficiency curves showing the classification ability of the
 \ac{CNN} as a function of distance for both mechanisms and networks.  The left
 panel shows the results for the neutrino-driven mechanism, while the right
-shows those for the magnetorotational mechanism. In both panels, the solid
+shows those for the magnetorotational mechanism. 
+At a certain value of \ac{FAP} and a distance, the value of \ac{TAP}
+will be plotted only if it is not zero.
+In both panels, the solid
 lines show the results for the network H+L+VK, and the dashed lines for HLVK.
 Three \acp{FAP} values are chosen, blue for \ac{FAP} $=1\%$, green for \ac{FAP}
 $=0.1\%$, red for \ac{FAP} $=0.01\%$.\label{fig:eff}}
@@ -1006,12 +1009,16 @@ $=0.1\%$, red for \ac{FAP} $=0.01\%$.\label{fig:eff}}
             \includegraphics[width=0.475\textwidth]{ROC_fixed_mag.png}
         }
     \end{center}
-    \caption{Efficiency curves showing the ability of the \ac{CNN} in
-distinguishing input data with a fixed decision threshold $(50\%)$, 
-and their corresponding \acp{FAP} and \ac{TAP}. 
-The left panel shows the results for the neutrino-driven mechanism, and
-the right shows that for the magnetorotational mechanism. In both panels, the
-solid lines show the \acp{TAP} and \acp{FAP} for the network H+L+VK, and the
+    \caption{The ability of the \ac{CNN} in
+distinguishing input data with a fixed decision threshold $(90\%)$, 
+and their corresponding \acp{FAP} and \acp{TAP}. 
+The left panel shows the results for the neutrino-driven mechanism.
+Since for the neutrino-driven mechanism, the value of \ac{TAP} decreases to zero rapidly
+as distance increases, only the distances at which the corresponding \acp{TAP} are not zero are plotted.
+In the plot, stars are for the network H+L+VK, and the dots are for the network HLVK.
+The right panel shows the results for the magnetorotational mechanism. 
+In the right panel, the solid lines show the \acp{TAP} and \acp{FAP} 
+for the network H+L+VK, and the
 dashed lines show those for HLVK.\label{fig:ROCfixed}}
 \end{figure*}
 

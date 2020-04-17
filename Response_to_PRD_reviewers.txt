@@ -96,35 +96,27 @@ distances for which FAP << 0.3% is possible. If not possible, it may
 be beneficial to remove the figure. If not removed, the caption and
 text should be updated to note the large FAPs used.
 
-Response: We have tested again the trained CNN with 1.2^5 test samples 
-          for each distance so that we can achieved a FAP of 1%, 0.1% 
-          and 0.01%. 
+Response: We have tested again the trained CNN with 1.08^6 test samples 
+          for each distance so that we can achieved a FAP of 0.1%, 0.01% 
+          and 0.001%. 
           
-          We appreciate that 0.001% is also one of the requested values
-          of FAP and running the testing at closer distance for neutrino
-          -driven mechanism is advised. 
-          But we also noted that such a low value of FAP would 
-          require an even larger set of test samples and a much longer 
-          amount of time to generate, which maybe too computationally 
-          expensive for us to do. Rerunning the simulations at closer
-          distances will even be more computationally expensive.
+          We appreciate that re-running the simulations at closer
+          distances is advised, but doing so would be very 
+          computationally expensive.
 
           The changes in response to this comment includes: 
-          1. Only TAP values at FAP equal to 1% are qouted in the      
-             abstract and the conclusion. No detection claim is made for 
-             FAP higher than 1%. 
-             We understand that detection claims are advised to be made 
-             at least FAP = 0.1%, but we argue that detections of CCSNe 
-             signals will be made simultaneously with electromagnetic 
-             observations and/or neutrino observations, and therefore 
-             such low FAP may not be absolutely necessary.
+          1. The plots in the section of results 
+             (section IV and section V) have been updated.
+             The text in these two sections are rewritten.
 
-          2. The plots and text in the section of results 
-             (section IV and section V).
+          2. Only TAP values at FAP equal to 0.1% are qouted in the      
+             abstract and the conclusion. No detection claim is made for 
+             FAP higher than 0.1%. The text in the abstract and the 
+             conclusion has also been modified to accommodate the changes.
 
           3. We retracted claims regarding the ability of the 
-             network HLVK in detecting Galactic events where the explosion 
-             mechanism is neutrino-driven mechanism.
+             networks in detecting Galactic events where the explosion 
+             mechanism is the neutrino-driven mechanism.
 
           4. number of training/test samples in the last paragraph of 
              section III has been updated to be consistent with 
@@ -153,7 +145,7 @@ Response: We appreciate this comment and admit that testing/training
           the CNN using realistic noise would indeed show a more 
           realistic results.
           However, such extension of the current work would require 
-          a whole new set of treatment that is beyond the current scope
+          a whole new set of treatments that is beyond the current scope
           of this work. 
           We therefore updated our results with more realistic 
           values of FAP and leave tests using realistic noise for future 
@@ -247,12 +239,12 @@ on the FAPs must be added, and detection statements for FAP>0.3%
 removed.
 
 Response: As stated above, we tested again the trained CNN with 
-          1.2 * 10^5 test samples to achieve FAP values of 1%, 0.1%, 
-          0.01% as was done for section IV. The text and plots 
+          1.08 * 10^6 test samples to achieve FAP values of 0.1%, 0.01%, 
+          0.001% as was done for section IV. The text and plots 
           are also updated to reflect this change. 
-          Claims regarding the ability of the network HLVK in detecting 
+          Claims regarding the ability of the networks in detecting 
           Galatic CCSN signals if the explosion mechanism is the 
-          neutrino driven mechanism.
+          neutrino driven mechanism are withdrawn.
 
 Fig. 8: As for Figs. 2 and 3, what are the observer angles for these
 waveforms. As it is noted that h+ >> hx in the caption, I suspect the

@@ -87,15 +87,17 @@ the gravitational wave signals buried in noise. For the waveforms used in the
 training of the convolutional neural network, our results suggest that a
 network of advanced LIGO, advanced VIRGO and KAGRA, or a network of LIGO A+,
 advanced VIRGO and KAGRA is likely to detect a magnetorotational core collapse
-supernovae out to the Large or even Small Magellanic Clouds. A Galactic event 
-is likely to be detectable with a network of H+L+VK if the explosion mechanism 
-is the neutrino-driven mechanism.  By testing the convolutional neural network 
-with waveforms not used for training, we show that the true alarm probabilities 
-are $50\%$ and $73\%$ at $50$ kpc for waveforms $\text{R3E1AC}$ and 
-$\text{R4E1FC\_L}$ for networks of HLVK and H+L+VK respectively.  
+supernovae out to the Large or even Small Magellanic Clouds. 
+%A Galactic event is likely to be detectable with a network of H+L+VK 
+%if the explosion mechanism is the neutrino-driven mechanism.  
+By testing the convolutional neural network 
+with waveforms not used for training, we show that the true alarm probability
+is $66\%$ at $60$ kpc for waveforms $\text{R3E1AC}$ and 
+$\text{R4E1FC\_L}$ for networks of H+L+VK.  
 For waveforms $\text{s}20$ and $\text{SFHx}$ at $10$ kpc, 
-the true alarm probabilities are $64\%$ for a network of H+L+VK. 
-All at false alarm probability equal to $1\%$. 
+the true alarm probabilities are $49\%$ and $20\%$ for a network of H+L+VK 
+and HLVK respectively. 
+All at false alarm probability equal to $0.1\%$. 
 \end{abstract}
 
 \pacs{}
@@ -587,7 +589,7 @@ $^*$ Mass of a star in a binary system with an initial helium mass of $3.5\text{
     \end{center}
     \caption{Examples of simulated waveforms for which the explosion is modelled by
 the magnetorotational mechanism. The left panel shows a waveform 
-from~\cite{abdikamalov2014measuring} for an equatorial observer. The progenitor is $12\text{M}_\odot$ with
+from~\cite{abdikamalov2014measuring}. The progenitor is $12\text{M}_\odot$ with
 differential rotation parameter $A=10^4~\text{km}$. The initial angular velocity
 at the core $\Omega_c$ is $5.0~\text{rads/s}$. The middle panel shows a waveform
 from~\cite{dimmelmeier2008gravitational}. The simulation corresponds to a
@@ -596,9 +598,10 @@ progenitor of $15\text{M}_\odot$ with $A=10^5$ km and $\Omega_c =
 from~\cite{richers2017equation} where the progenitor is $12\text{M}_\odot$, $A$
 and $\Omega_c$ are $10^4$ km and $3.0~\text{rad/s}$ respectively. In all panels,
 only the $h_{+}$ polarisations are shown because the simulations are
-axis-symmetric or 2D, and therefore described by only one polarisation.  The
-sources are assumed to be at a distance of $10$ kpc. The x-axes show the time after 
-core bounce. The waveforms shown in all panels are for an observer in the equatorial plane.\label{fig:magwaveforms}} 
+axis-symmetric or 2D, and therefore described by only one polarisation. 
+The waveforms shown in all panels are for an observer in the equatorial plane.
+The sources are assumed to be at a distance of $10$ kpc. The x-axes show the time after 
+core bounce.\label{fig:magwaveforms}} 
 \end{figure*}
 %
 % plot of example neutrino waveforms
@@ -623,11 +626,9 @@ modelled by the neutrino-driven mechanism. From the left to the right, the
 panels show waveforms from~\cite{10.1093mnrasstz990, 
 radice2019characterizing, yakunin2017gravitational}, with progenitors of masses equal to
 $15\text{M}_\odot$, $15\text{M}_\odot$ and $60\text{M}_\odot$ respectively.
-For the left and middle panels, the observer is assumed to be along the pole, 
-while an observer along the equator is assumed for the right panel.
-The sources are assumed to be at $10$ kpc from earth. The x-axes show the time after core bounce.
-The waveform shown in the left panel is for a polar observer, while the other panels show that 
+The waveform shown in the left panel is for a polar observer, while the waveforms in the other panels are 
 for an equatorial observer.
+The sources are assumed to be at $10$ kpc from earth. The x-axes show the time after core bounce.
 \label{fig:neuwaveforms}} 
 \end{figure*}
 %
@@ -799,8 +800,8 @@ This step is essential for the \ac{CNN} to learn the features of the waveforms
 and to identify them effectively under different noise scenarios and starting
 times.  After that, we generate independent noise realisations for the
 background noise class. The entire data set $\bold{D}$ has
-roughly $l = 3.0 \times 10^{5}$ data samples, where each of the 3 classes
-contains approximately $1.0\times10^{5}$ data samples.
+roughly $l = 1.26 \times 10^{6}$ data samples, where each of the 3 classes
+contains approximately $4.2\times10^{5}$ data samples.
 %
 %\begin{equation}\label{eq:finaldata}
 %\bold{D}(\boldsymbol{\alpha}, \boldsymbol{\delta}, \boldsymbol{\delta_t}, \bold{t}, \bold{x}) =  \left(\begin{array}{c}
@@ -825,7 +826,7 @@ input time-series for a single detector. A data sample consists of such a
 time-series containing a signal from the same source or simply background noise
 from all the detectors in the network. The data samples are then split into 3
 groups, with $1.0\times10^{4}$ samples being randomly selected for validation.
-Of the remainder, $\sim 1.7\times10^{5}$ for training and $\sim 1.2\times10^{5}$ for tesing. 
+Of the remainder, $1.70\times10^{5}$ for training and $1.08\times10^{6}$ for tesing. 
 The large number of testing samples is chosen so that low values of \ac{FAP} can be obtained 
 (see section \ref{sec:result} and section \ref{sec:unseen}).
 When the training is finished for a dataset generated at a given distance, the above described
@@ -846,7 +847,8 @@ the paper, we will use their acronyms to refer to the networks, i.e., HLVK and H
 train/validate/test the \ac{CNN}. The blue shows a whitened time-series with a
 signal added to Gaussian noise generated using the power spectral density of \ac{aLIGO}. 
 The red curve shows the same whitened signal free of
-noise. The original waveform is shown in Fig. \ref{fig:neusample1}.
+noise. The optimal signal to noise ratio for this signal is $5.5$.
+The original waveform is shown in Fig. \ref{fig:neusample1}.
 The source is at a distance of $10$ kpc from earth.
 \label{fig:sample}} 
 \end{figure}
@@ -932,7 +934,7 @@ higher than those of neutrino-driven signals.
 distances, $20$, $60$, and $100$ kpc. The left panel shows the results for the
 neutrino-driven mechanism, while the panel on the right shows those for the
 magnetorotational mechanism. In both panels, the solid lines are for the
-network H+L+VK, while the dashed lines are for HLVK. The black diagonal lines in both plots indicate 
+network H+L+VK, while the dashed lines are for HLVK. The black lines in both plots indicate 
 the worst scenario where a model has zero ability in distinguishing its input.
 \label{fig:ROClog}} 
 \end{figure*}
@@ -946,26 +948,26 @@ results for three chosen \acp{FAP} values are shown in Fig.~\ref{fig:eff}.  In
 this figure, a similar trend is seen that magnetorotational signals are easier
 for the \ac{CNN} to identify than neutrino-driven signals at a given distance.
 For magnetorotational signals from sources located at $50$ kpc and a \ac{FAP}
-of $1\%$, the \ac{CNN} achieves a \ac{TAP} of $87\%$ and $72\%$ for the
+of $0.1\%$, the \ac{CNN} achieves a \ac{TAP} of $82\%$ and $66\%$ for the
 networks H+L+VK and HLVK respectively. At more restrict \acp{FAP} such as
-$0.01\%$, the \ac{CNN} still achieves \acp{TAP} of $75\%$ and $62\%$ for sources at
+$0.001\%$, the \ac{CNN} still achieves \acp{TAP} of $72\%$ and $55\%$ for sources at
 the same distance for the two networks respectively.  For sources that are
 located at a slightly further distance of $60$ kpc, the networks achieve a
-\ac{TAP} of $82\%$ (H+L+VK) or $60\%$ (HLVK) at a \ac{FAP} of $1\%$. Such a range
+\ac{TAP} of $77\%$ (H+L+VK) or $54\%$ (HLVK) at a \ac{FAP} of $0.1\%$. Such a range
 includes distances associated with the Large and Small Magellanic Clouds and
 covers the satellite galaxies in between~\cite{karachentsev2004catalog,
-belokurov2007cats}.  For sources at $100$ kpc, the \acp{TAP} are no less than $50\%$ 
-for H+L+VK for all chosen \acp{FAP} values, and is $61\%$ if
-the \ac{FAP} is $1\%$. These numbers indicate that with
+belokurov2007cats}.  For sources at $80$ kpc, the \acp{TAP} are no less than $50\%$ 
+for H+L+VK for all chosen \acp{FAP} values, and is $66\%$ if
+the \ac{FAP} is $0.1\%$. These numbers indicate that with
 such a \ac{GW} network, it is possible to detect magnetorotational \ac{CCSN}
-signals out to such a distance. For sources at $150$ and $200$ kpc, the \acp{TAP}
-drop to $39\%$ and $21\%$ respectively for \ac{FAP} equal to $1\%$.
+signals out to such a distance. For sources at $100$, $150$ and $200$ kpc, the \acp{TAP}
+drop to $55\%$, $33\%$ and $16\%$ respectively for \ac{FAP} equal to $0.1\%$.
 On the other hand, it is more difficult for the
 \ac{CNN} to detect and classify the neutrino-driven signals, due to their
 weaker amplitudes. For example, for sources at $10$ kpc, the \ac{CNN} achieves
-a \ac{TAP} of $53\%$ and $22\%$ for H+L+VK and HLVK respectively if the
-\ac{FAP} is $1\%$.  This means that for a \ac{GW} from a Galactic \ac{CCSN}
-signal it is possible to detect and classify it with a network of H+L+VK.
+a \ac{TAP} of $38\%$ and $10\%$ for H+L+VK and HLVK respectively if the
+\ac{FAP} is $0.1\%$. In Fig.~\ref{fig:eff}, only the values of \ac{TAP} that
+are larger than zero will be plotted.
 
 %
 % the TAP as a function of distance
@@ -1020,26 +1022,32 @@ For example, an input will be assigned into a certain class if the
 corresponding probability is larger than the pre-selected threshold probability. In such a
 scenario, the \ac{FAP} and \ac{TAP} would be affected by the choice of the
 threshold. We show such a result in Fig.~\ref{fig:ROCfixed}, where we employed
-a threshold probability of $95\%$. 
+a threshold probability of $90\%$. 
 This value is chosen so that low values of \ac{FAP} can be maintained throughout all tested distances
 as illustrated by the right y-axes of the figures.
 %because for lower values, 
 %there could be more than a class with predicted probabilities from the \ac{CNN} 
 %larger than the threshold, while higher values could potentially rule out inputs 
 %that may otherwise be correctly identified.
-For H+L+VK and magnetorotational signals at $10$ kpc, the \ac{TAP} is $97\%$. If the distance
-is extended to $100$ kpc, the \ac{TAP} is still larger than $50\%$. 
-For HLVK, the \ac{TAP} is $95\%$ for sources at $10$ kpc and drops to $54\%$ at
+For H+L+VK and magnetorotational signals at $10$ kpc, the \ac{TAP} is $98\%$. 
+If the distance is extended to $100$ kpc, the \ac{TAP} is still larger than $50\%$. 
+For HLVK, the \ac{TAP} is $96\%$ for sources at $10$ kpc and drops to $56\%$ at
 $60$ kpc.
 %The \acp{TAP} decrease to $10\%$ and $9\%$ for sources at $150$ and $200$ kpc.
-For all distances, the \ac{CNN} maintains a \ac{FAP} no larger than $0.2\%$ for
+For all distances, the \ac{CNN} maintains a \ac{FAP} no larger than $0.3\%$ for
 both networks regarding magnetorotational waveforms. For neutrino-driven
-signals, we show that H+L+VK has a \acp{TAP} of $39\%$ at $10$ kpc while it
-is $6\%$ at $10$ kpc for HLVK with \acp{FAP} $\sim 0.1\%$. It should be noted that the results presented in this section are
+signals, we show that H+L+VK has a \acp{TAP} of $44\%$ at $10$ kpc while it
+is $11\%$ at $10$ kpc for HLVK with \acp{FAP} $< 0.3\%$.
+As we have chosen a large value of threshold, the values of \ac{TAP} decreases rapidly 
+as the distance increases. Again, only the values of \ac{TAP} larger than zero will be plotted.
+
+It should be noted that the results presented in this section are
 averaged over all the data samples in the testing samples. The performance on
 any individual waveform may vary depending on the morphology and the amplitudes
-of the waveform.
-
+of the waveform. 
+In addition, if an accurate time window and/or localisation of en event are available
+(e.g. with electromagnetic and/or neutrino observations), 
+such low values of \ac{FAP} may not be necessary. 
 %Also shown in this figure is a curve showing the \ac{TAP} for all the classes, defined by,
 %\begin{equation}\label{eq:TAPforall}
 %\text{TAP}_{\text{all}} = \frac{\text{No. of correctly identified test input}}{\text{No. of test input}}.
@@ -1099,7 +1107,7 @@ panels show the waveforms $\text{R3E1AC}$(left) and $\text{R4E1FC\_L}$(right),
 for a polar observer, modelled by the magnetorotational mechanism. 
 The inset plots show the $h_{\times}$ polarisations of the waveform, which are at least one order of magnitude weaker than the 
 $h_{+}$ polarisations.
-The waveforms shown in the bottom panels are $\text{SFHx}$(left) and $\text{s}20$(right), for an equatorial observer,
+The waveforms shown in the bottom panels are $\text{SFHx}$(left, for an polar observer) and $\text{s}20$(right, for an equatorial observer),
 modelled by the neutrino-driven mechanism. 
 Shown in the x-axes are the time after core bounce.\label{fig:Extratestwaveform}} 
 \end{figure*}
@@ -1130,17 +1138,18 @@ The waveforms have not been used for the training of the \ac{CNN}.
 %
 % the new test waveofmr procedure
 %
-Using the procedure described in Sec.~\ref{sec:spwf}, we generate $1.2\times10^5$
-samples for each distance and therefore each class has $4\times10^4$
+Using the procedure described in Sec.~\ref{sec:spwf}, we generate $1.08\times10^6$
+samples for each distance and therefore each class has $3.6\times10^5$
 samples. The performance of the \ac{CNN} on the test waveforms is shown in
 Fig.~\ref{fig:Extratest}. For waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$
-at $60$ kpc and a \ac{FAP} of $1\%$, the \ac{CNN} achieves a \ac{TAP} of $73\%$
+at $60$ kpc and a \ac{FAP} of $0.1\%$, the \ac{CNN} achieves a \ac{TAP} of $66\%$
 with H+L+VK. This indicates that with the
 \ac{CNN} and a network of H+L+VK, it is possible to detect these waveforms from sources that are at
 distances consistent with the Large and Small Magellanic Clouds.
-For HLVK and a distance of $50$ kpc, a \ac{TAP} of $50\%$ is achieved, showing the possibility of detecting these waveforms out to the Large Magellanic Clouds.
-For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $64\%$ and $36\%$ for the two
-networks if the sources are at $10$ kpc and the \ac{FAP} is $1\%$.  The
+For HLVK and a distance of $40$ kpc, a \ac{TAP} of $54\%$ is achieved, showing the possibility of detecting 
+these waveforms out to the satellite galaxies within such a distance.
+For waveforms $\text{s}20$ and $\text{SFHx}$, the \acp{TAP} are $49\%$ and $20\%$ for the two
+networks if the sources are at $10$ kpc and the \ac{FAP} is $0.1\%$.  The
 efficiency for the waveforms $\text{s}20$ and $\text{SFHx}$ is noticeably
 higher than that for the neutrino-driven mechanism in Fig.~\ref{fig:eff} for
 the same distance. This is because as mentioned before, the detection and
@@ -1155,41 +1164,40 @@ the \ac{CNN} to detect.
 %
 We have demonstrated that a \ac{CNN} can be applied for the purpose of
 distinguishing \ac{GW} detector time-series among pure background noise and
-\ac{CCSN} explosion mechanisms. We have trained the \ac{CNN} using
-$1.8\times10^{5}$ samples of simulated time series for each distance at a
+\ac{CCSN} explosion mechanisms. We have trained, valided, and tested 
+the \ac{CNN} using $1.26\times10^{6}$ samples of simulated time series for each distance at a
 number of distances from $10$ kpc to $200$ kpc. The data samples for each
-class consisted of approximately $4\times10^5$ samples. 
+class consisted of approximately $4.2\times10^5$ samples. 
 
 %
 % Primary magneto results
 %
 We have shown that with a \ac{GW} detector network of HLVK, when the \ac{FAP}
-was $1\%$, once trained, a \ac{CNN} could achieve a \ac{TAP} of $60\%$
+was $0.1\%$, once trained, a \ac{CNN} could achieve a \ac{TAP} of $54\%$
 for magnetorotational signals from sources at $60$ kpc. Using a network of
-H+L+VK, we showed that the \ac{TAP} is increased to $82\%$.  Both the Large and
+H+L+VK, we showed that the \ac{TAP} is $77\%$.  Both the Large and
 Small Magellanic Clouds are within this distance. If the distance is extended
-to $150$ or $200$ kpc, a \ac{TAP} of $39\%$ or $21\%$ respectively are still
+to $150$ or $200$ kpc, a \ac{TAP} of $33\%$ or $16\%$ respectively are still
 achievable for H+L+VK, indicating a small possibility of detections within
 such distances. 
-
 %
 % not so good neutrino results
 %
 For the neutrino-driven mechanism, the weaker amplitudes of the waveforms
 result in lower \acp{TAP} at the same distances.  For sources at $10$ kpc, the
-trained \ac{CNN}, with a \ac{FAP} of $1\%$, achieved a \ac{TAP} of $22\%$ and
-$53\%$ for HLVK and H+L+VK respectively. This indicates a Galactic \ac{CCSN}
-event would likely be detectable with H+L+VK.
-
+trained \ac{CNN}, with a \ac{FAP} of $0.1\%$, achieved a \ac{TAP} of $10\%$ and
+$38\%$ for HLVK and H+L+VK respectively. 
 %
 % statement about out of treaining data extra test samples
 %
+
 We used four waveforms that were not used for the training of the \ac{CNN} to
 test the performance of the \ac{CNN} in a more realistic situation. We found
 that for waveforms $\text{R3E1AC}$ and $\text{R4E1FC\_L}$ from sources at
-$60$ kpc, the \acp{TAP} are $73\%$ and $38\%$ for H+L+VK and HLVK respectively.
-For waveforms $\text{s}20$ and $\text{SFHx}$ at $10$ kpc, the \acp{TAP} are $64\%$ and
-$36\%$ for the two networks respectively. All at \ac{FAP} of $1\%$. 
+$60$ kpc, the \ac{TAP} is $66\%$ for H+L+VK.
+For HLVK and sources at $40$ kpc, the \ac{TAP} is $54\%$.
+For waveforms $\text{s}20$ and $\text{SFHx}$ at $10$ kpc, the \acp{TAP} are $49\%$ and
+$20\%$ for the two networks respectively. All at \ac{FAP} of $0.1\%$. 
 The results prove the possibility of
 using a \ac{CNN} as a tool for the detection and classification of \ac{CCSN}
 \ac{GW} signals.

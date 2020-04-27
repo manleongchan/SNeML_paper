@@ -766,15 +766,14 @@ $P = T_{\text{max}}\times 18\% $  and $p$
 determines where in
 the generated noise the signal will be placed, as given by,
 %
-\begin{equation}
+\begin{multline}
 \bold{d}_j(\alpha, \delta, T, p)=
 \\
 \begin{cases}
-\bold{N}_j(T)~~~~~~~~~~~~~~~~~T < T_{\text{max}} p; \\
+\bold{N}_j(T)~~~~~~~~~~~~~~~~~T < T_{\text{max}} p,~T > \tau + T_{\text{max}} p; \\
 \bold{N}_j(T) + \bold{h}_j(\alpha, \delta, t)~ T_{\text{max}} p \leq T \leq \tau + T_{\text{max}} p; \\
-\bold{N}_j(T)~~~~~~~~~~~~~~~~~T > \tau + T_{\text{max}} p, \\
 \end{cases}
-\end{equation}
+\end{multline}
 %
 where $\tau$ is defined in section \ref{sec:spwf}. 
 This will avoid the possibility that the \ac{CNN}
@@ -920,11 +919,11 @@ higher than those of neutrino-driven signals.
 
 \begin{figure*}
      \begin{center}
-        \subfigure[]{
+        \subfigure[the neutrino-driven mechanism]{
             \label{fig:ROClog1}
             \includegraphics[width=0.475\textwidth]{ROC_curves_neutrino.png}%
         }\quad
-        \subfigure[]{
+        \subfigure[the magnetorotational mechanism]{
             \label{fig:ROClog2}
             \includegraphics[width=0.475\textwidth]{ROC_curves_mag.png}%
         }
@@ -974,11 +973,11 @@ are larger than zero will be plotted.
 %
 \begin{figure*}
      \begin{center}
-        \subfigure[]{
+        \subfigure[the neutrino-driven mechanism]{
             \label{fig:eff1}
             \includegraphics[width=0.475\textwidth]{Neutrino_efficiency.png}
         }\quad
-        \subfigure[]{
+        \subfigure[the magnetorotational mechanism]{
             \label{fig:eff2}
             \includegraphics[width=0.475\textwidth]{Magnetarotational_efficiency.png}
         }
@@ -1000,11 +999,11 @@ $=0.1\%$, red for \ac{FAP} $=0.01\%$.\label{fig:eff}}
 %
 \begin{figure*}
      \begin{center}
-        \subfigure[]{
+        \subfigure[the neutrino-driven mechanism]{
             \label{fig:ROCfixed1}
             \includegraphics[width=0.475\textwidth]{ROC_fixed_neutrino.png}
         }\quad
-        \subfigure[]{
+        \subfigure[the magnetorotational mechanism]{
             \label{fig:ROCfixed2}
             \includegraphics[width=0.475\textwidth]{ROC_fixed_mag.png}
         }
@@ -1123,11 +1122,11 @@ Shown in the x-axes are the time after core bounce.\label{fig:Extratestwaveform}
 %
 \begin{figure}
      \begin{center}
-        \subfigure[]{
+        \subfigure[the neutrino-driven mechanism]{
             \label{fig:extra_waveform_test_neu}
             \includegraphics[width=0.475\textwidth]{extra_neu_waveform_test.png}
         }\quad
-        \subfigure[]{
+        \subfigure[the magnetorotational mechanism]{
             \label{fig:extra_waveform_test_mag}
             \includegraphics[width=0.475\textwidth]{extra_mag_waveform_test.png}
         }

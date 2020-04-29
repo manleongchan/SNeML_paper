@@ -101,8 +101,11 @@ Response: We have tested again the trained CNN with 1.08^6 test samples
           and 0.001%. 
           
           We appreciate that re-running the simulations at closer
-          distances is advised, but doing so would be very 
-          computationally expensive.
+          distances is advised. However, re-running the simulations 
+          at closer distances and generating more testing samples to achieve
+          the requested FAPs are both computationally expensive.
+          We chose to do the latter one as it has the greatest impact on the results 
+          and that aligned more strongly with the referees broader comments.
 
           The changes in response to this comment includes: 
           1. The plots in the section of results (section IV and section V) 
@@ -149,7 +152,9 @@ Response: We appreciate this comment and admit that testing/training
           of this work. 
           We have therefore updated our results with more realistic 
           values of FAP and leave tests using realistic noise for future 
-          work. 
+          work. In addition, we modified the first paragraph of conclusion
+          to include a statement about the use of Gaussian noise.
+          
 
 Below we list specific comments by section, denoting the
 relevant paragraph number by p.

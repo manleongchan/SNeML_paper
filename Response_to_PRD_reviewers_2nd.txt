@@ -1,0 +1,131 @@
+**RR: While I empathise with the issue of computational expense, I'm
+concerned with what is currently presented. This study presents an algorithm
+that is unlikely to detect a galactic supernova at 10kpc. While that's not
+necessarily a deal-breaker - all algorithms start somewhere, further development
+will improve sensitivity no doubt, and proof of principle studies are important
+- baseline metrics from which to evaluate  improvement (such as "horizon
+distance") need to be defined. Nothing is said on the distance to which
+neutrino-mechanism signals - which are expected to be representative of ~99%+ of
+core-collapse supernovae from stellar-evolution calculations - can be observed.
+                 The statement "For waveforms s20 and SFHx at 10 kpc, the true
+alarm probabilities are 49% and 20% for a network of H+L+VK and HLVK
+respectively." is all but meaningless to anyone outside this very specific part
+of GW data analysis. It would be useful to define a figure of merit - perhaps,
+say, the distance at which the true alarm probability is 90% (sort of analogous
+to a horizon distance in this case) - and calculate for all waveforms for the
+two detector networks you consider. This is the distance out to which you can
+see a supernova with this algorithm, and is much more relatable to the average
+reader than what is currently used. It also builds a baseline against which
+improvements can be made in future work, and from which other authors in the
+field can compare and contrast the sensitivity of this work vs other literature.
+                  To conclude, a statement on how far sources can be seen with
+this algorithm is needed. I suspect this can already be done for the
+magnetorotational-mechanism signals with little additional computational cost.
+While I understand it will likely take additional runs to establish "horizon
+distances" for the neutrino-mechanism signals, it truly is crucial to establish
+these numbers - the study is unfinished without them.
+
+
+Response: We have trained, valided, and tested again the CNN with 1.8^5 
+          training samples and 1.08^6 test samples for 0.2, 0.5, 1.0, 3.0, 5.0 
+          7.0 kpc so that we can present results at these distances, as well 
+          as the already simulated 10 kpc, for the neutrino-driven mechanism, 
+          with a FAP of 0.1%, 0.01% and 0.001%. 
+          
+          The changes in response to this comment includes: 
+          1. The plots including the captions relevant to the neutrino-driven 
+             mechanism in the section of results (section IV and section V) have   
+             been updated. The text in these two sections have been modified to  
+             reflect these updated results.
+
+          2. The text in the abstract and the conclusion has also been modified 
+             to accommodate the changes. In addition, claims regarding detections
+             of neutrino-driven signals have been added in these sections.
+
+          3. The second sentence in the penultimate paragraph of section I has 
+             been updated to be consistent with the distances that were simulated. 
+             Likewise, the text in the left column on page 6 has also been changed 
+             to include all the distances simulated. 
+
+          4. The iteration number stated in the first paragraph after Eq. 7 in 
+             section III has increased to 310 to reflect what is actually done.
+    
+          5. In the last paragraph of section IV, we have added general statements 
+             regarding the comparisons between our results and some of those existing
+             in the literature.
+
+*RR: This is fair. It would be instructive, however, to add brief
+(perhaps a sentence or two) comment on the impact that the orientation of the
+source frame with respect to the observer impacts the amplitude and spectrum of
+the signal seen. For example in Fig (8), while hx << h+ in the waveform shown
+(for a polar observer), hx ~ h+ for an equatorial observer. As the waveforms
+you're training on are from 2D simulations, they are linearly polarised (i.e. no
+hx due to imposed axisymmetry of the simulations). That means that when the
+algorithm is looking for "magnetorotational mechanism" signals, it is looking
+only for power in h+, not hx. This makes it particularly well suited should we
+be polar observers, but it's not clear whether the algorithm will find signals
+as well given a random source orientation. As the energy emitted in GWs is
+independent of the source orientation, h+ is smaller where for orientations
+where hx ~ h+, because the GW energy is distributed across both polarisations.
+Smaller amplitude can be degenerate with source distance if you're only
+searching for one polarisation, so I don't think it will have an effect on
+ability to distinguish between mechanisms, but it will likely reduce your
+detection distances - by how much, I'm not sure. To be clear - I agree with you
+that this is beyond the scope of the current work, but a brief mention on this
+issue and why it's important is appropriate.
+
+Response: Thanks for the comments. We added a statement in the end of section IV
+          that reads: 
+          Finally, as mentioned, the magnetorotational waveforms used in this study 
+          are linearly polarised and only have the h+ polarisation. This could potentially 
+          cause the CNN to perform differently in reality. This problem can be solved 
+          by training the CNN using 3D simulated waveforms when a larger number of them 
+          become available.
+
+
+
+ **RR: The left panel in Fig 5 - an ROC curve showing true alarm
+probabilities (TAPs) from 0.001% to <10% (at FAP<0.3%) - shows the algorithm is
+unable to detect neutrino mechanism signals (expected to be ~99%+ of CCSNe) at
+20kpc. I imagine that lines at 60kpc and 100kpc were drawn to match the style of
+the right panel, but even a cursory glance at the results for 20kpc should have
+shown that running at these larger distances would be superfluous. This null
+result is even more apparent in Fig 6, where not a single TAP above 50% is seen
+in the left panel. It seems clear that trying to detect neutrino mechanism
+signals beyond 10kpc at reasonable FAP with this algorithm is unrealistic.
+                  It needs to be shown that this algorithm can detect neutrino
+mechanism signals (at least from the training set!) at some distance. In the
+present manuscript, this is not demonstrated and, worryingly, any discussion of
+this minimal. I suggest you resolve this in one of three ways:
+                      (1) Remake left panel of Fig 5 over 0.001% < FAP < 0.3%
+for a neutrino mechanism signal at 0.2kpc, 1kpc, and 5kpc. Remake the left panel
+of Fig 6 for neutrino mechanism signals between 0.2kpc - 10kpc at
+FAP=0.001%,0.01%,0.1%. Remake the left panel of Fig 7 for neutrino mechanism
+signal at 2kpc, 5kpc, and 10kpc.       
+                      (2) Remove Fig 5 and Fig 7. Remake the left panel of Fig 6
+for neutrino mechanism signals between 0.2kpc - 10kpc at FAP=0.001%,0.01%,0.1%.
+               I recognize the first option (while the ideal solution) is likely
+not viable due to computational constraints, so offer the second option.
+
+
+Response: Thanks for the comments. As stated above, we have trained, valided, 
+          and tested again the trained CNN with 1.8^5 training samples and 
+          1.08^6 test samples for 0.2, 0.5, 1.0, 3.0, 5.0 7.0 kpc.  
+          Please refer to the above answer for other modifications related 
+          to this change.
+
+
+**RR: My comments and reservations are similar to the section above.
+TAPs of 0.001% are meaningless in the context of detection here. I suggest you
+remake Fig 9 between 0.2kpc and 10kpc at FAP=0.1%, 0.01%, 0.001%. Again,
+discussion of the algorithm's poor performance with neutrino mechanism signals
+should be discussed in more depth, and how this could be addressed in future
+work.
+
+
+Response: Thanks for the comments. As stated above, we have trained, valided, 
+          and tested again the trained CNN with 1.8^5 training samples and 
+          1.08^6 test samples for 0.2, 0.5, 1.0, 3.0, 5.0 7.0 kpc.  
+          Please refer to the above answer for other modifications related 
+          to this change.
+

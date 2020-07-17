@@ -77,10 +77,11 @@ issue and why it's important is appropriate.
 Response: Thanks for the comments. We added a statement in the end of section IV
           that reads: 
           Finally, as mentioned, the magnetorotational waveforms used in this study 
-          are linearly polarised and only have the h+ polarisation. This could potentially 
-          cause the CNN to perform differently in reality. This problem can be solved 
-          by training the CNN using 3D simulated waveforms when a larger number of them 
-          become available.
+          are linearly polarised and only have the h+ polarisation. This could 
+          potentially cause the CNN to perform differently in a more realistic scenario 
+          dependent on a number of factors including the unknown division of energy between 
+          polarisation states. . This problem can be solved by training the CNN using 
+          3D simulated waveforms when a larger number of them become available.
 
 
 
